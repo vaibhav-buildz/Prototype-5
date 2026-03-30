@@ -80,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
       }
       draw() {
-        ctx.fillStyle = '#EFEDE6';
+        ctx.fillStyle = '#FFD020'; // Gold dots
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
           const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 100) {
-            ctx.strokeStyle = `rgba(239, 237, 230, ${0.1 * (1 - dist / 100)})`;
+            ctx.strokeStyle = `rgba(255, 208, 32, ${0.2 * (1 - dist / 100)})`; // Gold lines
             ctx.beginPath();
             ctx.moveTo(p1.x, p1.y);
             ctx.lineTo(p2.x, p2.y);
@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       draw() {
         // Crimson to Orange fade
-        aCtx.fillStyle = `rgba(205, 0, 0, ${this.life})`;
+        aCtx.fillStyle = `rgba(240, 96, 32, ${this.life})`;
         aCtx.beginPath();
         aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         aCtx.fill();
