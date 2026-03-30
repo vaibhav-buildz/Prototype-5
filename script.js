@@ -1,11 +1,98 @@
 document.addEventListener('DOMContentLoaded', () => {
     
 
+  /* ---------------------------------
+   * 1. CURSOR & PARTICLE SYSTEM
+   * --------------------------------- */
+  const cursorDot = document.createElement('div');
+  cursorDot.className = 'cursor-dot';
+  document.body.appendChild(cursorDot);
+
+  window.addEventListener('mousemove', (e) => {
+    cursorDot.style.left = `${e.clientX}px`;
+    cursorDot.style.top = `${e.clientY}px`;
+  });
+
+  const hoverable = document.querySelectorAll('a, button, .product-row, .blog-card, .feature-cell');
+  hoverable.forEach(el => {
+    el.addEventListener('mouseenter', () => cursorDot.classList.add('active'));
+    el.addEventListener('mouseleave', () => cursorDot.classList.remove('active'));
+  });
+
+  // Hero Particles
+  const canvas = document.getElementById('hero-particles');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    const particleCount = 40;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    window.addEventListener('resize', resize);
+    resize();
+
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.4;
+        this.vy = (Math.random() - 0.5) * 0.4;
+        this.size = Math.random() * 2 + 1;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.fillStyle = '#EFEDE6';
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+
+    const animateParticles = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p1, i) => {
+        p1.update();
+        p1.draw();
+
+        // Connect particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p1.x - p2.x;
+          const dy = p1.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            ctx.strokeStyle = `rgba(239, 237, 230, ${0.1 * (1 - dist / 100)})`;
+            ctx.beginPath();
+            ctx.moveTo(p1.x, p1.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.stroke();
+          }
+        }
+      });
+      requestAnimationFrame(animateParticles);
+    };
+    animateParticles();
+  }
+
 
   /* ---------------------------------
-   * 2. NAVBAR SCROLL
+   * 2. NAVBAR SCROLL & MOBILE MENU
    * --------------------------------- */
   const navbar = document.getElementById('navbar');
+  const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+  
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -13,6 +100,12 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('scrolled');
     }
   });
+
+  if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navbar.classList.toggle('mobile-menu-active');
+    });
+  }
 
   /* ---------------------------------
    * 3. PARALLAX EFFECTS
@@ -61,6 +154,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // Progress Bar reveal
+  const progressFills = document.querySelectorAll('.upcoming-progress-fill');
+  const progressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Set dynamic widths (could be based on data-progress attribute in future)
+        const targetWidth = entry.target.parentElement.parentElement.parentElement.classList.contains('product-row') ? '70%' : '50%';
+        entry.target.style.width = targetWidth;
+      }
+    });
+  }, { threshold: 0.5 });
+  progressFills.forEach(fill => progressObserver.observe(fill));
 
 
   /* ---------------------------------
@@ -172,5 +278,35 @@ document.addEventListener('DOMContentLoaded', () => {
       if(success) success.style.display = 'block';
     });
   }
+  
+  /* ---------------------------------
+   * 7. PRODUCT SPOTLIGHT
+   * --------------------------------- */
+  const productRows = document.querySelectorAll('.product-row');
+  productRows.forEach(row => {
+    row.addEventListener('mousemove', (e) => {
+      const rect = row.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      row.style.setProperty('--mouse-x', `${x}%`);
+      row.style.setProperty('--mouse-y', `${y}%`);
+    });
+  });
+
+  /* ---------------------------------
+   * 8. HERO PARALLAX ENHANCEMENT
+   * --------------------------------- */
+  const heroImage = document.querySelector('.hero-image');
+  if (heroImage) {
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY;
+      if (scrollY < window.innerHeight) {
+        // Subtle scale and shift
+        const scale = 1 + (scrollY * 0.0005);
+        heroImage.style.transform = `scale(${scale}) translateY(${scrollY * 0.1}px)`;
+      }
+    });
+  }
+
 
 });
