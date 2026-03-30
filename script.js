@@ -2,52 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
   /* ---------------------------------
-   * 1. CURSOR & PARTICLE SYSTEM
+   * 1. PARTICLE SYSTEM
    * --------------------------------- */
-  // Cursor Dot & Trail
-  const cursorDot = document.createElement('div');
-  cursorDot.className = 'cursor-dot';
-  document.body.appendChild(cursorDot);
-
-  const cursorTrail = document.createElement('div');
-  cursorTrail.className = 'cursor-trail';
-  document.body.appendChild(cursorTrail);
-
-  let mouseX = 0, mouseY = 0;
-  let dotX = 0, dotY = 0;
-  let trailX = 0, trailY = 0;
-
-  window.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  const animateCursor = () => {
-    // Smooth easing
-    dotX += (mouseX - dotX) * 0.2;
-    dotY += (mouseY - dotY) * 0.2;
-    trailX += (mouseX - trailX) * 0.1;
-    trailY += (mouseY - trailY) * 0.1;
-
-    cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
-    cursorTrail.style.transform = `translate(${trailX}px, ${trailY}px)`;
-    
-    requestAnimationFrame(animateCursor);
-  };
-  animateCursor();
-
-  const hoverable = document.querySelectorAll('a, button, .product-row, .blog-card, .feature-cell, .nav-brand');
-  hoverable.forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        cursorDot.classList.add('active');
-        cursorTrail.classList.add('active');
-    });
-    el.addEventListener('mouseleave', () => {
-        cursorDot.classList.remove('active');
-        cursorTrail.classList.remove('active');
-    });
-  });
-
   // Hero Particles
   const canvas = document.getElementById('hero-particles');
   if (canvas) {
