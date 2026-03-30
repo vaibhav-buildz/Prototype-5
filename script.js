@@ -4,19 +4,48 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------------------------------
    * 1. CURSOR & PARTICLE SYSTEM
    * --------------------------------- */
+  // Cursor Dot & Trail
   const cursorDot = document.createElement('div');
   cursorDot.className = 'cursor-dot';
   document.body.appendChild(cursorDot);
 
+  const cursorTrail = document.createElement('div');
+  cursorTrail.className = 'cursor-trail';
+  document.body.appendChild(cursorTrail);
+
+  let mouseX = 0, mouseY = 0;
+  let dotX = 0, dotY = 0;
+  let trailX = 0, trailY = 0;
+
   window.addEventListener('mousemove', (e) => {
-    cursorDot.style.left = `${e.clientX}px`;
-    cursorDot.style.top = `${e.clientY}px`;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
   });
 
-  const hoverable = document.querySelectorAll('a, button, .product-row, .blog-card, .feature-cell');
+  const animateCursor = () => {
+    // Smooth easing
+    dotX += (mouseX - dotX) * 0.2;
+    dotY += (mouseY - dotY) * 0.2;
+    trailX += (mouseX - trailX) * 0.1;
+    trailY += (mouseY - trailY) * 0.1;
+
+    cursorDot.style.transform = `translate(${dotX}px, ${dotY}px)`;
+    cursorTrail.style.transform = `translate(${trailX}px, ${trailY}px)`;
+    
+    requestAnimationFrame(animateCursor);
+  };
+  animateCursor();
+
+  const hoverable = document.querySelectorAll('a, button, .product-row, .blog-card, .feature-cell, .nav-brand');
   hoverable.forEach(el => {
-    el.addEventListener('mouseenter', () => cursorDot.classList.add('active'));
-    el.addEventListener('mouseleave', () => cursorDot.classList.remove('active'));
+    el.addEventListener('mouseenter', () => {
+        cursorDot.classList.add('active');
+        cursorTrail.classList.add('active');
+    });
+    el.addEventListener('mouseleave', () => {
+        cursorDot.classList.remove('active');
+        cursorTrail.classList.remove('active');
+    });
   });
 
   // Hero Particles
@@ -154,6 +183,69 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
 
   revealElements.forEach(el => revealObserver.observe(el));
+
+  // Phoenix Particles (About Section)
+  const aboutSection = document.getElementById('about');
+  const aboutCanvas = document.createElement('canvas');
+  aboutCanvas.id = 'about-phoenix-canvas';
+  if (aboutSection) {
+    aboutSection.appendChild(aboutCanvas);
+    const aCtx = aboutCanvas.getContext('2d');
+    let aParticles = [];
+    
+    const aResize = () => {
+      aboutCanvas.width = aboutSection.offsetWidth;
+      aboutCanvas.height = aboutSection.offsetHeight;
+    };
+    window.addEventListener('resize', aResize);
+    aResize();
+
+    class PhoenixParticle {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * aboutCanvas.width;
+        this.y = aboutCanvas.height + 20;
+        this.vx = (Math.random() - 0.5) * 2;
+        this.vy = -Math.random() * 3 - 1;
+        this.life = 1;
+        this.death = Math.random() * 0.02 + 0.005;
+        this.size = Math.random() * 3 + 1;
+      }
+      update(speed) {
+        this.x += this.vx;
+        this.y += this.vy * (1 + speed * 2);
+        this.life -= this.death;
+        if (this.life <= 0) this.reset();
+      }
+      draw() {
+        // Crimson to Orange fade
+        aCtx.fillStyle = `rgba(205, 0, 0, ${this.life})`;
+        aCtx.beginPath();
+        aCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        aCtx.fill();
+      }
+    }
+
+    for (let i = 0; i < 60; i++) aParticles.push(new PhoenixParticle());
+
+    let lastScroll = window.scrollY;
+    const animatePhoenix = () => {
+      const currentScroll = window.scrollY;
+      const scrollSpeed = Math.abs(currentScroll - lastScroll) * 0.05;
+      lastScroll = currentScroll;
+
+      aCtx.clearRect(0, 0, aboutCanvas.width, aboutCanvas.height);
+      aParticles.forEach(p => {
+        p.update(scrollSpeed);
+        p.draw();
+      });
+      requestAnimationFrame(animatePhoenix);
+    };
+    animatePhoenix();
+  }
+
 
   // Progress Bar reveal
   const progressFills = document.querySelectorAll('.upcoming-progress-fill');
