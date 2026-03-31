@@ -268,6 +268,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 500; col
 .products-headline { font-size: clamp(36px, 4vw, 52px); line-height: 1; }
 
 /* Product rows */
+.products-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+  width: 100%;
+}
+
 .product-list { border-top: 1px solid var(--border-peach); }
 .product-row {
   padding: 36px 0; border-bottom: 1px solid var(--border-peach);
@@ -319,9 +327,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 500; col
   overflow: hidden; display: flex; align-items: center; justify-content: center; isolation: isolate;
 }
 .split-content-reveal {
-  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 15vh;
   z-index: 1; opacity: 0; transform: scale(0.95); transition: opacity 0.15s ease-out, transform 0.15s ease-out;
   background: var(--surface-peach);
+  overflow-y: auto;
 }
 .split-products-row {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; width: 100%;
