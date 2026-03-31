@@ -306,6 +306,48 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--font-display); font-weight: 500; col
 .product-row:hover .product-watermark { opacity: .6; }
 
 /* ============================================================
+   05-A SPLIT SCROLL PRODUCTS SECTION
+   ============================================================ */
+.split-scroll-section {
+  height: 300vh;
+  position: relative;
+  background: var(--surface-peach);
+  border-bottom: 1px solid var(--border-peach);
+}
+.split-sticky-container {
+  position: sticky; top: 0; width: 100%; height: 100vh;
+  overflow: hidden; display: flex; align-items: center; justify-content: center; isolation: isolate;
+}
+.split-content-reveal {
+  position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  z-index: 1; opacity: 0; transform: scale(0.95); transition: opacity 0.15s ease-out, transform 0.15s ease-out;
+  background: var(--surface-peach);
+}
+.split-products-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; width: 100%;
+}
+.split-product-card {
+  background: rgba(240,96,32,.03); border: 1px solid var(--border-peach); padding: 40px 32px; border-radius: 20px;
+  display: flex; flex-direction: column; gap: 16px; transition: background 0.3s, transform 0.3s;
+}
+.split-product-card:hover { background: rgba(240,96,32,.08); transform: translateY(-4px); }
+.split-half {
+  position: absolute; left: 0; width: 100%; height: 50vh; background: var(--surface-peach);
+  z-index: 10; overflow: hidden; will-change: transform; pointer-events: none;
+  transition: transform 0.15s ease-out;
+}
+.split-top { top: 0; border-bottom: 1px solid rgba(240,96,32,0.1); }
+.split-bottom { bottom: 0; }
+.split-text {
+  position: absolute; left: 0; width: 100%; text-align: center; font-family: var(--font-display);
+  font-size: clamp(80px, 15vw, 240px); color: var(--accent-orange); line-height: 1; margin: 0; white-space: nowrap;
+}
+.split-top .split-text { bottom: 0; transform: translateY(50%); }
+.split-bottom .split-text { top: 0; transform: translateY(-50%); }
+.split-top .products-section-bg-counter {
+  pointer-events: none; user-select: none;
+}
+/* ============================================================
    06 UPCOMING  (bg-peach diagonal stripe bg)
    ============================================================ */
 .upcoming-section {

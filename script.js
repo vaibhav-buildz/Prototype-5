@@ -356,5 +356,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---------------------------------
+   * 9. SPLIT TEXT SCROLL REVEAL (05 LIVE PRODUCTS)
+   * --------------------------------- */
+  const splitSection = document.querySelector('.split-scroll-section');
+  const splitTop = document.querySelector('.split-top');
+  const splitBottom = document.querySelector('.split-bottom');
+  const splitReveal = document.querySelector('.split-content-reveal');
+
+  if (splitSection && splitTop && splitBottom && splitReveal) {
+    window.addEventListener('scroll', () => {
+      const rect = splitSection.getBoundingClientRect();
+      const scrollProgress = -rect.top / (rect.height - window.innerHeight);
+      
+      if (scrollProgress >= 0 && scrollProgress <= 1) {
+        // Finish opening in 40% of the scroll distance
+        let splitProgress = Math.min(scrollProgress / 0.4, 1);
+        
+        // Ease-out curve so it starts opening quickly and immediately, eliminating the feeling of delay
+        let easeProgress = 1 - (1 - splitProgress) * (1 - splitProgress);
+        
+        splitTop.style.transform = `translateY(-${easeProgress * 50}vh)`;
+        splitBottom.style.transform = `translateY(${easeProgress * 50}vh)`;
+        
+        splitReveal.style.opacity = easeProgress;
+        splitReveal.style.transform = `scale(${0.9 + (0.1 * easeProgress)})`;
+      } else if (scrollProgress < 0) {
+        splitTop.style.transform = `translateY(0)`;
+        splitBottom.style.transform = `translateY(0)`;
+        splitReveal.style.opacity = 0;
+        splitReveal.style.transform = `scale(0.9)`;
+      } else if (scrollProgress > 1) {
+        splitTop.style.transform = `translateY(-50vh)`;
+        splitBottom.style.transform = `translateY(50vh)`;
+        splitReveal.style.opacity = 1;
+        splitReveal.style.transform = `scale(1)`;
+      }
+    });
+  }
 
 });
