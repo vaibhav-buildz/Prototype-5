@@ -182,17 +182,18 @@ h6 {
   left: 0;
   width: 100%;
   height: 68px;
-  background: rgba(255, 240, 230, .95);
-  backdrop-filter: blur(12px);
+  background: rgba(61, 21, 0, 0.96);
+  backdrop-filter: blur(14px);
   border-bottom: 1px solid transparent;
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: border-color .3s;
+  transition: border-color .3s, background .3s;
 }
 
 .navbar.scrolled {
-  border-color: var(--border-peach);
+  border-color: rgba(255, 213, 184, 0.15);
+  background: rgba(61, 21, 0, 0.99);
 }
 
 .navbar .container {
@@ -207,7 +208,7 @@ h6 {
   font-size: 22px;
   font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-heading);
+  color: var(--bg-peach);
   display: flex;
   align-items: center;
   gap: 10px;
@@ -217,7 +218,7 @@ h6 {
 .nav-logo-img {
   height: 42px;
   width: auto;
-  filter: drop-shadow(0 2px 6px rgba(240, 96, 32, .25));
+  filter: drop-shadow(0 2px 6px rgba(240, 96, 32, .35));
 }
 
 .nav-links {
@@ -228,12 +229,12 @@ h6 {
 .nav-links a {
   font-size: 14px;
   font-weight: 500;
-  color: var(--text-body);
+  color: var(--border-peach);
   transition: color .2s;
 }
 
 .nav-links a:hover {
-  color: var(--accent-orange);
+  color: var(--highlight-amber);
 }
 
 .nav-cta a {
@@ -262,7 +263,7 @@ h6 {
   min-height: 100vh;
   padding-top: 68px;
   box-sizing: border-box;
-  background: var(--bg-peach);
+  background: var(--deep-warm);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -274,10 +275,10 @@ h6 {
   inset: 0;
   pointer-events: none;
   background-image:
-    linear-gradient(var(--border-peach) 1px, transparent 1px),
-    linear-gradient(90deg, var(--border-peach) 1px, transparent 1px);
+    linear-gradient(rgba(255, 213, 184, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 213, 184, 0.18) 1px, transparent 1px);
   background-size: 100px 100px;
-  opacity: .12;
+  opacity: 1;
   transform: rotate(-3deg) scale(1.4);
   animation: grid-pan 60s linear infinite;
   will-change: transform;
@@ -315,16 +316,19 @@ h6 {
 .hero-tag {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--accent-orange);
+  color: var(--highlight-amber);
   text-transform: uppercase;
   letter-spacing: .25em;
   margin-bottom: 28px;
 }
 
+/* Hero headline override — white/cream text on dark deep-warm background */
+.hero-section h1.hero-headline,
 .hero-headline {
   font-size: clamp(56px, 7vw, 96px);
   line-height: .9;
   margin-bottom: 32px;
+  color: var(--surface-peach);
 }
 
 .hero-headline .line {
@@ -358,7 +362,7 @@ h6 {
 
 .hero-subheadline {
   font-size: 18px;
-  color: var(--text-body);
+  color: var(--border-peach);
   line-height: 1.65;
   max-width: 480px;
   margin-bottom: 44px;
@@ -392,8 +396,8 @@ h6 {
 }
 
 .btn-secondary {
-  border: 1.5px solid var(--accent-orange);
-  color: var(--accent-orange);
+  border: 1.5px solid var(--border-peach);
+  color: var(--border-peach);
   height: 52px;
   padding: 0 36px;
   font-size: 16px;
@@ -406,7 +410,9 @@ h6 {
 }
 
 .btn-secondary:hover {
-  background: var(--surface-peach);
+  background: rgba(255, 213, 184, 0.1);
+  border-color: var(--highlight-amber);
+  color: var(--highlight-amber);
   transform: translateY(-2px);
 }
 
@@ -416,7 +422,7 @@ h6 {
 }
 
 .hero-abstract {
-  border-left: 1px solid var(--border-peach);
+  border-left: 1px solid rgba(255, 213, 184, 0.2);
   padding: 24px 0 24px 24px;
   overflow: hidden;
 }
@@ -448,8 +454,8 @@ h6 {
   bottom: 10%;
   font-family: var(--font-display);
   font-size: 120px;
-  color: var(--border-peach);
-  opacity: .6;
+  color: var(--accent-orange);
+  opacity: .12;
   pointer-events: none;
   writing-mode: vertical-rl;
   line-height: 1;
@@ -471,7 +477,7 @@ h6 {
 .hero-scroll-indicator-line {
   width: 1px;
   height: 50px;
-  background: var(--border-peach);
+  background: rgba(255, 213, 184, 0.25);
   overflow: hidden;
   position: relative;
 }
@@ -483,7 +489,7 @@ h6 {
   left: 0;
   width: 100%;
   height: 20px;
-  background: var(--accent-orange);
+  background: var(--highlight-amber);
   animation: scroll-drop 1.5s ease-in infinite;
 }
 
@@ -500,7 +506,7 @@ h6 {
 .hero-scroll-indicator-text {
   font-family: var(--font-mono);
   font-size: 10px;
-  color: var(--text-body);
+  color: var(--border-peach);
   letter-spacing: .15em;
 }
 
@@ -560,7 +566,7 @@ h6 {
    04 ABOUT  (bg-peach)
    ============================================================ */
 .about-section {
-  background: var(--bg-peach);
+  background: var(--surface-peach);
   padding: 120px 0;
   border-bottom: 1px solid var(--border-peach);
 }
@@ -879,19 +885,19 @@ h6 {
 
 /* Card colour variants */
 .folder-card-1 {
-  background: var(--surface-peach);
+  background: var(--white);
   z-index: 1;
   transform: translateX(0);
 }
 
 .folder-card-2 {
-  background: #fff5ef;
+  background: var(--surface-peach);
   z-index: 2;
   transform: translateX(100%);
 }
 
 .folder-card-3 {
-  background: #fef0e6;
+  background: var(--bg-peach);
   z-index: 3;
   transform: translateX(100%);
 }
@@ -1036,24 +1042,72 @@ h6 {
 }
 
 /* ============================================================
-   06 UPCOMING  (bg-peach diagonal stripe bg)
+   06 UPCOMING  (deep-warm dark bg — strong contrast from section above)
    ============================================================ */
 .upcoming-section {
-  background: var(--bg-peach);
+  background: var(--deep-warm);
   padding: 120px 0;
-  border-bottom: 1px solid var(--border-peach);
+  border-bottom: 1px solid rgba(255, 213, 184, 0.08);
   position: relative;
   overflow: hidden;
 }
 
+/* Left accent bar */
 .upcoming-section::before {
   content: '';
   position: absolute;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   width: 4px;
   background: linear-gradient(to bottom, var(--accent-orange), var(--glow-gold));
+}
+
+/* Override all text & element colors for dark background */
+.upcoming-section .products-header-content .section-tag {
+  color: var(--glow-gold);
+}
+
+.upcoming-section .products-headline {
+  color: var(--surface-peach);
+}
+
+.upcoming-section .section-counter-bracket {
+  color: var(--highlight-amber);
+}
+
+.upcoming-section .product-list {
+  border-top: 1px solid rgba(255, 213, 184, 0.12);
+}
+
+.upcoming-section .product-row {
+  border-bottom: 1px solid rgba(255, 213, 184, 0.1);
+}
+
+.upcoming-section .product-row:hover {
+  background: rgba(255, 213, 184, 0.04);
+}
+
+.upcoming-section .product-name {
+  color: var(--bg-peach);
+}
+
+.upcoming-section .product-desc {
+  color: var(--border-peach);
+  opacity: 0.7;
+}
+
+.upcoming-section .product-badge {
+  color: var(--highlight-amber);
+}
+
+.upcoming-section .product-cta {
+  color: var(--accent-orange);
+}
+
+.upcoming-section .product-watermark {
+  color: rgba(255, 213, 184, 0.08);
+  opacity: 1;
 }
 
 .upcoming-details-content {
@@ -1065,7 +1119,7 @@ h6 {
 
 .upcoming-prob {
   font-size: 15px;
-  color: var(--text-body);
+  color: var(--border-peach);
   line-height: 1.6;
 }
 
@@ -1078,7 +1132,7 @@ h6 {
 .upcoming-progress-label {
   font-family: var(--font-mono);
   font-size: 11px;
-  color: var(--accent-orange);
+  color: var(--highlight-amber);
   text-transform: uppercase;
   letter-spacing: .15em;
 }
@@ -1086,7 +1140,7 @@ h6 {
 .upcoming-progress-bar {
   width: 100%;
   height: 3px;
-  background: var(--border-peach);
+  background: rgba(255, 213, 184, 0.15);
   border-radius: 100px;
   overflow: hidden;
 }
@@ -1311,7 +1365,7 @@ h6 {
    09 TESTIMONIALS  (warm gradient bg)
    ============================================================ */
 .testimonials-section {
-  background: linear-gradient(160deg, var(--surface-peach) 0%, var(--bg-peach) 100%);
+  background: var(--surface-peach);
   padding: 120px 0 140px;
   overflow: hidden;
 }
@@ -1774,10 +1828,10 @@ h6 {
     top: 68px;
     left: 0;
     right: 0;
-    background: rgba(255, 240, 230, .98);
+    background: rgba(61, 21, 0, 0.99);
     padding: 24px;
     gap: 20px;
-    border-bottom: 1px solid var(--border-peach);
+    border-bottom: 1px solid rgba(255, 213, 184, 0.12);
     z-index: 999;
   }
 
