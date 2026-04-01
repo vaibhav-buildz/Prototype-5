@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
 
   /* ---------------------------------
    * 1. PARTICLE SYSTEM
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
    * --------------------------------- */
   const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-  
+
   window.addEventListener('scroll', () => {
     if (window.scrollY > 50) {
       navbar.classList.add('scrolled');
@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded', () => {
    * --------------------------------- */
   const heroParallax = document.getElementById('hero-parallax');
   const aboutParallax = document.getElementById('about-parallax');
-  
+
   window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-    
+
     // Hero 
     if (heroParallax && scrollY < window.innerHeight) {
       // Moves upward faster than scroll
-      const offset = scrollY * -0.2; 
+      const offset = scrollY * -0.2;
       heroParallax.style.transform = `translateY(${offset}px)`;
     }
 
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const rect = aboutParallax.getBoundingClientRect();
       const elementMid = rect.top + rect.height / 2;
       const windowMid = window.innerHeight / 2;
-      
+
       // Calculate rotation based on distance from center of screen
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         let rotation = (windowMid - elementMid) * 0.01;
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
     aboutSection.appendChild(aboutCanvas);
     const aCtx = aboutCanvas.getContext('2d');
     let aParticles = [];
-    
+
     const aResize = () => {
       aboutCanvas.width = aboutSection.offsetWidth;
       aboutCanvas.height = aboutSection.offsetHeight;
@@ -243,16 +243,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const micro = document.getElementById('newsletter-micro');
   const success = document.getElementById('newsletter-success');
 
-  if(form) {
+  if (form) {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       // Simulate submission
       form.style.display = 'none';
-      if(micro) micro.style.display = 'none';
-      if(success) success.style.display = 'block';
+      if (micro) micro.style.display = 'none';
+      if (success) success.style.display = 'block';
     });
   }
-  
+
   /* ---------------------------------
    * 7. PRODUCT SPOTLIGHT
    * --------------------------------- */
@@ -270,41 +270,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ---------------------------------
-   * 9. SPLIT TEXT SCROLL REVEAL (05 LIVE PRODUCTS)
+   * 9. FOLDER CARD STACK — LIVE & RUNNING
    * --------------------------------- */
-  const splitSection = document.querySelector('.split-scroll-section');
-  const splitTop = document.querySelector('.split-top');
-  const splitBottom = document.querySelector('.split-bottom');
-  const splitReveal = document.querySelector('.split-content-reveal');
+  const folderSection = document.querySelector('.folder-section');
+  const folderCards = document.querySelectorAll('.folder-card');
 
-  if (splitSection && splitTop && splitBottom && splitReveal) {
+  if (folderSection && folderCards.length) {
+    const CARD_COUNT = folderCards.length;   // 3
+
     window.addEventListener('scroll', () => {
-      const rect = splitSection.getBoundingClientRect();
-      const scrollProgress = -rect.top / (rect.height - window.innerHeight);
-      
-      if (scrollProgress >= 0 && scrollProgress <= 1) {
-        // Finish opening in 40% of the scroll distance
-        let splitProgress = Math.min(scrollProgress / 0.7, 1);
-        
-        // Ease-out curve so it starts opening quickly and immediately, eliminating the feeling of delay
-        let easeProgress = 1 - (1 - splitProgress) * (1 - splitProgress);
-        
-        splitTop.style.transform = `translateY(-${easeProgress * 50}vh)`;
-        splitBottom.style.transform = `translateY(${easeProgress * 50}vh)`;
-        
-        splitReveal.style.opacity = easeProgress;
-        splitReveal.style.transform = `scale(${0.9 + (0.1 * easeProgress)})`;
-      } else if (scrollProgress < 0) {
-        splitTop.style.transform = `translateY(0)`;
-        splitBottom.style.transform = `translateY(0)`;
-        splitReveal.style.opacity = 0;
-        splitReveal.style.transform = `scale(0.9)`;
-      } else if (scrollProgress > 1) {
-        splitTop.style.transform = `translateY(-50vh)`;
-        splitBottom.style.transform = `translateY(50vh)`;
-        splitReveal.style.opacity = 1;
-        splitReveal.style.transform = `scale(1)`;
-      }
+      const rect = folderSection.getBoundingClientRect();
+      const total = rect.height - window.innerHeight; // scrollable pixels
+      const scrolled = Math.max(0, -rect.top);           // px scrolled into section
+
+      // Each card gets 1/CARD_COUNT of the total scroll distance
+      const segLen = total / CARD_COUNT;
+
+      folderCards.forEach((card, i) => {
+        if (i === 0) {
+          // Card 1 is always in place (base)
+          card.style.transform = 'translateX(0)';
+          return;
+        }
+        // How far into THIS card's segment is the user?
+        const segStart = segLen * i;
+        const segProgress = (scrolled - segStart) / segLen;   // −∞ → 1+
+        const clamped = Math.max(0, Math.min(segProgress, 1));
+        // Ease-out: starts fast, settles smoothly
+        const eased = 1 - (1 - clamped) * (1 - clamped);
+        // Slide from 100% (off-right) → 0% (in place)
+        const translateX = (1 - eased) * 100;
+        card.style.transform = `translateX(${translateX}%)`;
+      });
     }, { passive: true });
   }
 
