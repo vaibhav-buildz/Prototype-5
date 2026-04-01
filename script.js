@@ -386,3 +386,59 @@ document.addEventListener('DOMContentLoaded', () => {
   }());
 
 });
+
+/* ============================================================
+ * SCROLL SPY — highlights active nav-link as sections enter view
+ * ============================================================ */
+(function () {
+  const sections = [
+    { id: 'about',        selector: '#about' },
+    { id: 'products',     selector: '#products' },
+    { id: 'ecosystem',    selector: '#ecosystem' },
+    { id: 'blog',         selector: '#blog' },
+    { id: 'features',     selector: '#features' },
+    { id: 'testimonials', selector: '#testimonials' },
+  ];
+
+  const navLinks = document.querySelectorAll('.nav-link[data-section]');
+
+  const setActive = (id) => {
+    navLinks.forEach(link => {
+      const isActive = link.dataset.section === id;
+      link.classList.toggle('active', isActive);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const matched = sections.find(s => s.selector === '#' + entry.target.id);
+        if (matched) setActive(matched.id);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(({ selector }) => {
+    const el = document.querySelector(selector);
+    if (el) observer.observe(el);
+  });
+
+  /* Close dropdown on outside click */
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-dropdown-wrap')) {
+      document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.blur());
+    }
+  });
+
+  /* Smooth scroll for ALL nav links (including Products trigger) */
+  document.querySelectorAll('.nav-link, .nav-dropdown-item, .nav-cta a, .nav-brand').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      const target = document.querySelector(href);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+}());
