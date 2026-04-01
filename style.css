@@ -422,7 +422,6 @@ h6 {
 }
 
 .hero-abstract {
-  border-left: 1px solid rgba(255, 213, 184, 0.2);
   padding: 24px 0 24px 24px;
   overflow: hidden;
 }
@@ -511,55 +510,89 @@ h6 {
 }
 
 /* ============================================================
-   03 MARQUEE  (amber ribbon)
+   03 MARQUEE  — dual-row, opposite direction
    ============================================================ */
 .marquee-section {
-  background: var(--highlight-amber);
-  height: 50px;
-  display: flex;
-  align-items: center;
   overflow: hidden;
-  border-top: 1px solid rgba(255, 255, 255, .2);
-  border-bottom: 1px solid rgba(255, 255, 255, .2);
+  display: flex;
+  flex-direction: column;
 }
 
+/* ── Track wrappers ── */
+.marquee-track {
+  display: flex;
+  overflow: hidden;
+  height: 48px;
+  align-items: center;
+}
+
+/* Row 1: vibrant orange — punchy */
+.marquee-track-1 {
+  background: var(--accent-orange);
+  border-bottom: 1px solid rgba(61, 21, 0, 0.12);
+}
+
+/* Row 2: warm peach — soft contrast */
+.marquee-track-2 {
+  background: var(--bg-peach);
+  border-top: 1px solid var(--border-peach);
+}
+
+/* ── Scrolling strips ── */
 .marquee-content {
   display: inline-flex;
-  gap: 40px;
+  gap: 48px;
   align-items: center;
-  animation: marquee 28s linear infinite;
+  animation: marquee-left 22s linear infinite;
   flex-shrink: 0;
   will-change: transform;
+  padding-right: 48px;
 }
 
-.marquee-section:hover .marquee-content {
+.marquee-content--reverse {
+  animation: marquee-right 26s linear infinite;
+}
+
+/* Pause on hover */
+.marquee-track:hover .marquee-content {
   animation-play-state: paused;
 }
 
+/* ── Items ── */
 .marquee-item {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--deep-warm);
-  text-transform: uppercase;
-  letter-spacing: .15em;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 500;
+  font-style: italic;
   white-space: nowrap;
+  letter-spacing: 0.01em;
 }
 
-.marquee-separator {
-  color: var(--deep-warm);
-  font-size: 10px;
-  opacity: .8;
+/* Row 1: white/deep on orange */
+.marquee-track-1 .marquee-item       { color: var(--white); opacity: 0.85; }
+.marquee-track-1 .marquee-item--bold { color: var(--deep-warm); font-weight: 700; font-style: normal; opacity: 1; }
+
+/* Row 2: heading-brown/orange on peach */
+.marquee-track-2 .marquee-item       { color: var(--text-heading); opacity: 0.65; }
+.marquee-track-2 .marquee-item--bold { color: var(--accent-orange); font-weight: 700; font-style: normal; opacity: 1; }
+
+/* ── Separators ── */
+.marquee-sep {
+  font-size: 8px;
+  flex-shrink: 0;
+}
+.marquee-track-1 .marquee-sep { color: var(--deep-warm); opacity: 0.35; }
+.marquee-track-2 .marquee-sep { color: var(--border-peach); opacity: 0.8; }
+
+/* ── Keyframes ── */
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-@keyframes marquee {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+@keyframes marquee-right {
+  0%   { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
 }
 
 /* ============================================================

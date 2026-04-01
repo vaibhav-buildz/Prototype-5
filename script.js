@@ -345,4 +345,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }());
 
+  /* ---------------------------------
+   * 11. 3D ABOUT GRAPHIC TILT
+   * --------------------------------- */
+  (function () {
+    const aboutSect = document.querySelector('.about-section');
+    if (!aboutSect) return;
+
+    const graphic = aboutSect.querySelector('.about-graphic');
+    if (!graphic) return;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+
+    aboutSect.addEventListener('mousemove', (e) => {
+      const r = aboutSect.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width  - 0.5) * 2;
+      ty = ((e.clientY - r.top)  / r.height - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+
+    aboutSect.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      const LERP = 0.06;
+      cx += (tx - cx) * LERP;
+      cy += (ty - cy) * LERP;
+
+      const rotY =  cx * 10;  // max ±10° horizontal
+      const rotX = -cy * 5;   // max ±5° vertical
+
+      graphic.style.transform =
+        `perspective(1000px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+
+      const settled = Math.abs(cx - tx) < 0.001 && Math.abs(cy - ty) < 0.001;
+      raf = settled ? null : requestAnimationFrame(tick);
+    }
+  }());
+
 });
