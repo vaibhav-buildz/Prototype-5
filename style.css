@@ -435,6 +435,24 @@ h6 {
   }
 }
 
+.hero-bg-branding {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-12deg);
+  font-family: var(--font-display);
+  font-size: clamp(120px, 25vw, 480px);
+  font-weight: 900;
+  color: var(--surface-peach);
+  opacity: 0.08; /* Subtle hallmark aesthetic */
+  pointer-events: none;
+  z-index: 0;
+  letter-spacing: -0.04em;
+  user-select: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 #hero-particles {
   position: absolute;
   inset: 0;
@@ -472,34 +490,26 @@ h6 {
   color: var(--surface-peach);
 }
 
-.hero-headline .line {
-  overflow: hidden;
-  display: block;
+.typewriter-text {
+  color: var(--surface-peach);
+  display: inline;
 }
 
-.hero-headline .line span {
-  display: block;
-  transform: translateY(110%);
-  animation: reveal .8s var(--ease-slow) forwards;
+.typewriter-cursor {
+  font-family: var(--font-body);
+  font-weight: 200;
+  color: var(--highlight-amber);
+  margin-left: 6px;
+  animation: blink 0.8s step-end infinite;
+  display: inline;
 }
 
-.hero-headline .line:nth-child(1) span {
-  animation-delay: .1s;
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
-.hero-headline .line:nth-child(2) span {
-  animation-delay: .3s;
-}
 
-.hero-headline .line:nth-child(3) span {
-  animation-delay: .5s;
-}
-
-@keyframes reveal {
-  to {
-    transform: translateY(0);
-  }
-}
 
 .hero-subheadline {
   font-size: 18px;
@@ -602,53 +612,7 @@ h6 {
   user-select: none;
 }
 
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: 32px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  z-index: 3;
-}
 
-.hero-scroll-indicator-line {
-  width: 1px;
-  height: 50px;
-  background: rgba(255, 213, 184, 0.25);
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-scroll-indicator-line::after {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: var(--highlight-amber);
-  animation: scroll-drop 1.5s ease-in infinite;
-}
-
-@keyframes scroll-drop {
-  0% {
-    top: -20px;
-  }
-
-  100% {
-    top: 70px;
-  }
-}
-
-.hero-scroll-indicator-text {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--border-peach);
-  letter-spacing: .15em;
-}
 
 /* ============================================================
    03 MARQUEE  — dual-row, opposite direction
@@ -2051,11 +2015,3 @@ h6 {
   }
 }
 
-/* ============================================================
-   3D HERO IMAGE — Mouse Tilt on image side only
-   ============================================================ */
-.hero-right {
-  perspective: 900px;
-  perspective-origin: 50% 50%;
-  transform-style: preserve-3d;
-}
