@@ -45,7 +45,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
+    let heroAnimating = false;
+    const heroObserver = new IntersectionObserver(([entry]) => {
+      heroAnimating = entry.isIntersecting;
+    });
+    const heroSectionEl = document.getElementById('hero');
+    if (heroSectionEl) heroObserver.observe(heroSectionEl);
+
     const animateParticles = () => {
+      if (!heroAnimating) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p1, i) => {
         p1.update();
@@ -84,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
-  });
+  }, { passive: true });
 
   if (mobileMenuBtn) {
     mobileMenuBtn.addEventListener('click', () => {
@@ -118,11 +126,11 @@ document.addEventListener('DOMContentLoaded', () => {
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         let rotation = (windowMid - elementMid) * 0.01;
         // Clamp rotation
-        rotation = Math.max(0, Math.min(rotation, 5));
+        rotation = Math.max(-3, Math.min(rotation, 5));
         aboutParallax.style.transform = `rotate(${rotation}deg)`;
       }
     }
-  });
+  }, { passive: true });
 
   /* ---------------------------------
    * 4. SCROLL REVEALS
@@ -187,7 +195,15 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < 60; i++) aParticles.push(new PhoenixParticle());
 
     let lastScroll = window.scrollY;
+    let aboutAnimating = false;
+    const aboutObserver = new IntersectionObserver(([entry]) => {
+      aboutAnimating = entry.isIntersecting;
+    });
+    const aboutSectionEl = document.getElementById('about');
+    if (aboutSectionEl) aboutObserver.observe(aboutSectionEl);
+
     const animatePhoenix = () => {
+      if (!aboutAnimating) return;
       const currentScroll = window.scrollY;
       const scrollSpeed = Math.abs(currentScroll - lastScroll) * 0.05;
       lastScroll = currentScroll;
@@ -217,97 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
   progressFills.forEach(fill => progressObserver.observe(fill));
 
 
-  /* ---------------------------------
-   * 5. TESTIMONIALS STACKING SCROLL
-   * --------------------------------- */
-  const pinWrapper = document.getElementById('testimonials-pin');
-  const cards = document.querySelectorAll('.test-card');
-  const numCards = cards.length;
 
-  // Initialize cards
-  cards.forEach((card, index) => {
-    // Top card is visible initially if we want, or they all slide up
-    // Actually the design says: "As user scrolls down, each new card slides UP from the bottom and stacks"
-    if(index === 0) {
-      card.style.transform = `translate(-50%, -50%) translateY(0) scale(1)`;
-      card.style.opacity = 1;
-    } else {
-      card.style.transform = `translate(-50%, -50%) translateY(100vh) scale(1)`;
-      card.style.opacity = 1;
-    }
-    card.style.zIndex = index + 1;
-  });
-
-  window.addEventListener('scroll', () => {
-    if (!pinWrapper) return;
-    
-    const rect = pinWrapper.getBoundingClientRect();
-    const scrollProgress = -rect.top / (rect.height - window.innerHeight);
-    
-    // scrollProgress goes from 0 to 1 while wrapper is pinned
-    if (scrollProgress >= 0 && scrollProgress <= 1) {
-      
-      const progressPerCard = 1 / (numCards - 1);
-
-      cards.forEach((card, i) => {
-        if (i === 0) {
-          // First card handles its scale/shift
-          // if we are scrolling past it into card 1
-          let progressOnThisCard = Math.max(0, Math.min((scrollProgress) / progressPerCard, 1));
-          
-          let scale = 1 - (progressOnThisCard * 0.03 * (numCards - 1 - i));
-          let yOffset = -progressOnThisCard * 20 * (numCards - 1 - i);
-          
-          card.style.transform = `translate(-50%, -50%) translateY(${yOffset}px) scale(${scale})`;
-          
-        } else {
-          // Other cards slide up
-          let activationPoint = (i - 1) * progressPerCard;
-          
-          if (scrollProgress < activationPoint) {
-            // Below screen
-            card.style.transform = `translate(-50%, -50%) translateY(100vh) scale(1)`;
-          } else {
-            // It's coming up or fully up
-            let localProgress = (scrollProgress - activationPoint) / progressPerCard;
-            localProgress = Math.max(0, Math.min(localProgress, 1));
-            
-            // Starts at translateY(100vh), ends at translateY(0)
-            // But if it gets covered by the next card, it also scales down and shifts up
-            
-            let currentY = 100 * (1 - localProgress); // vh
-            
-            // If subsequent cards are covering this one, shift backwards
-            // We find how far the next cards have progressed
-            let postProgress = Math.max(0, (scrollProgress - (i * progressPerCard)) / (1 - i * progressPerCard));
-            postProgress = Math.min(postProgress, 1);
-            
-            let scale = 1 - (postProgress * 0.03 * (numCards - 1 - i));
-            let extraYShift = -postProgress * 20 * (numCards - 1 - i);
-
-            // Wait, vh vs px. Let's convert currentY strictly to explicit translations
-            card.style.transform = `translate(-50%, -50%) translateY(calc(${currentY}vh + ${extraYShift}px)) scale(${scale})`;
-          }
-        }
-      });
-    } else if (scrollProgress < 0) {
-      // Before pin
-      cards.forEach((card, i) => {
-        if (i === 0) {
-          card.style.transform = `translate(-50%, -50%) translateY(0) scale(1)`;
-        } else {
-          card.style.transform = `translate(-50%, -50%) translateY(100vh) scale(1)`;
-        }
-      });
-    } else if (scrollProgress > 1) {
-      // After pin
-      cards.forEach((card, i) => {
-        let scale = 1 - (0.03 * (numCards - 1 - i));
-        let extraYShift = -20 * (numCards - 1 - i);
-        card.style.transform = `translate(-50%, -50%) translateY(${extraYShift}px) scale(${scale})`;
-      });
-    }
-  });
 
 
   /* ---------------------------------
@@ -341,20 +267,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------------------------------
-   * 8. HERO PARALLAX ENHANCEMENT
-   * --------------------------------- */
-  const heroImage = document.querySelector('.hero-image');
-  if (heroImage) {
-    window.addEventListener('scroll', () => {
-      const scrollY = window.scrollY;
-      if (scrollY < window.innerHeight) {
-        // Subtle scale and shift
-        const scale = 1 + (scrollY * 0.0005);
-        heroImage.style.transform = `scale(${scale}) translateY(${scrollY * 0.1}px)`;
-      }
-    });
-  }
+
 
   /* ---------------------------------
    * 9. SPLIT TEXT SCROLL REVEAL (05 LIVE PRODUCTS)
@@ -392,7 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
         splitReveal.style.opacity = 1;
         splitReveal.style.transform = `scale(1)`;
       }
-    });
+    }, { passive: true });
   }
 
 });
