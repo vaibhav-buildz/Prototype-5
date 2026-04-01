@@ -1840,3 +1840,12 @@ h6 {
     padding: 0 24px 24px;
   }
 }
+
+/* ============================================================
+   3D HERO IMAGE — Mouse Tilt on image side only
+   ============================================================ */
+.hero-right {
+  perspective: 900px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+}

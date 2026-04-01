@@ -305,4 +305,44 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  /* ---------------------------------
+   * 10. 3D HERO IMAGE TILT (image side only)
+   * --------------------------------- */
+  (function () {
+    const heroSect = document.querySelector('.hero-section');
+    if (!heroSect) return;
+
+    const imgSide = heroSect.querySelector('.hero-right');
+    if (!imgSide) return;
+
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+
+    heroSect.addEventListener('mousemove', (e) => {
+      const r = heroSect.getBoundingClientRect();
+      tx = ((e.clientX - r.left) / r.width  - 0.5) * 2;  // -1 → +1
+      ty = ((e.clientY - r.top)  / r.height - 0.5) * 2;  // -1 → +1
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+
+    heroSect.addEventListener('mouseleave', () => {
+      tx = 0; ty = 0;
+      if (!raf) raf = requestAnimationFrame(tick);
+    });
+
+    function tick() {
+      const LERP = 0.06;
+      cx += (tx - cx) * LERP;
+      cy += (ty - cy) * LERP;
+
+      const rotY =  cx * 12;  // max ±12° horizontal
+      const rotX = -cy * 6;   // max ±6° vertical
+
+      imgSide.style.transform =
+        `perspective(900px) rotateY(${rotY}deg) rotateX(${rotX}deg)`;
+
+      const settled = Math.abs(cx - tx) < 0.001 && Math.abs(cy - ty) < 0.001;
+      raf = settled ? null : requestAnimationFrame(tick);
+    }
+  }());
+
 });
