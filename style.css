@@ -248,6 +248,7 @@ h6 {
 .nav-link.active {
   position: relative;
 }
+
 .nav-link.active::after {
   content: '';
   position: absolute;
@@ -265,13 +266,14 @@ h6 {
   opacity: .7;
   flex-shrink: 0;
 }
+
 .nav-dropdown-wrap:hover .nav-chevron,
 .nav-dropdown-wrap:focus-within .nav-chevron {
   transform: rotate(180deg);
 }
 
 /* ── Dropdown panel ── */
-.nav-dropdown-wrap {
+.nav-dropdo wn-wrap {
   position: relative;
   list-style: none;
 }
@@ -286,6 +288,7 @@ h6 {
   height: 20px;
   pointer-events: none;
 }
+
 .nav-dropdown-wrap:hover::after {
   pointer-events: auto;
 }
@@ -307,7 +310,7 @@ h6 {
   transition: opacity .2s, transform .2s;
   backdrop-filter: blur(16px);
   z-index: 200;
-  box-shadow: 0 24px 48px rgba(0,0,0,0.4);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.4);
 }
 
 /* Triangle pointer */
@@ -354,6 +357,7 @@ h6 {
   font-size: 7px;
   color: var(--accent-orange);
 }
+
 .nav-dd-dot--soon {
   color: var(--border-peach);
   opacity: .5;
@@ -371,6 +375,7 @@ h6 {
   background: rgba(240, 96, 32, 0.18);
   color: var(--accent-orange);
 }
+
 .nav-dd-tag--soon {
   background: rgba(255, 213, 184, 0.08);
   color: var(--border-peach);
@@ -490,8 +495,15 @@ h6 {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 
@@ -583,157 +595,23 @@ h6 {
   }
 }
 
-.hero-abstract-text {
-  position: absolute;
-  right: -10px;
-  bottom: 10%;
-  font-family: var(--font-display);
-  font-size: 120px;
-  color: var(--accent-orange);
-  opacity: .12;
-  pointer-events: none;
-  writing-mode: vertical-rl;
-  line-height: 1;
-  user-select: none;
-}
 
 
-
-/* ============================================================
-   03 MARQUEE  — dual-row, opposite direction
-   ============================================================ */
-.marquee-section {
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── Track wrappers ── */
-.marquee-track {
-  display: flex;
-  overflow: hidden;
-  height: 48px;
-  align-items: center;
-}
-
-/* Row 1: vibrant orange — punchy */
-.marquee-track-1 {
-  background: var(--accent-orange);
-  border-bottom: 1px solid rgba(61, 21, 0, 0.12);
-}
-
-/* Row 2: warm peach — soft contrast */
-.marquee-track-2 {
-  background: var(--bg-peach);
-  border-top: 1px solid var(--border-peach);
-}
-
-/* ── Scrolling strips ── */
-.marquee-content {
-  display: inline-flex;
-  gap: 48px;
-  align-items: center;
-  animation: marquee-left 22s linear infinite;
-  flex-shrink: 0;
-  will-change: transform;
-  padding-right: 48px;
-}
-
-.marquee-content--reverse {
-  animation: marquee-right 26s linear infinite;
-}
-
-/* Pause on hover */
-.marquee-track:hover .marquee-content {
-  animation-play-state: paused;
-}
-
-/* ── Items ── */
-.marquee-item {
-  font-family: var(--font-display);
-  font-size: 15px;
-  font-weight: 500;
-  font-style: italic;
-  white-space: nowrap;
-  letter-spacing: 0.01em;
-}
-
-/* Row 1: white/deep on orange */
-.marquee-track-1 .marquee-item {
-  color: var(--white);
-  opacity: 0.85;
-}
-
-.marquee-track-1 .marquee-item--bold {
-  color: var(--deep-warm);
-  font-weight: 700;
-  font-style: normal;
-  opacity: 1;
-}
-
-/* Row 2: heading-brown/orange on peach */
-.marquee-track-2 .marquee-item {
-  color: var(--text-heading);
-  opacity: 0.65;
-}
-
-.marquee-track-2 .marquee-item--bold {
-  color: var(--accent-orange);
-  font-weight: 700;
-  font-style: normal;
-  opacity: 1;
-}
-
-/* ── Separators ── */
-.marquee-sep {
-  font-size: 8px;
-  flex-shrink: 0;
-}
-
-.marquee-track-1 .marquee-sep {
-  color: var(--deep-warm);
-  opacity: 0.35;
-}
-
-.marquee-track-2 .marquee-sep {
-  color: var(--border-peach);
-  opacity: 0.8;
-}
-
-/* ── Keyframes ── */
-@keyframes marquee-left {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
-}
-
-@keyframes marquee-right {
-  0% {
-    transform: translateX(-50%);
-  }
-
-  100% {
-    transform: translateX(0);
-  }
-}
 
 /* ============================================================
    04 ABOUT  (bg-peach)
    ============================================================ */
 .about-section {
   background: var(--surface-peach);
-  padding: 120px 0;
+  padding: 160px 0 120px; /* Increased top padding for better transition */
+  border-top: 1px solid var(--border-peach); /* Added border-top for definition */
   border-bottom: 1px solid var(--border-peach);
 }
 
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 80px;
+  gap: 100px; /* Wider gap for cleaner layout */
   align-items: center;
 }
 
@@ -742,7 +620,7 @@ h6 {
   font-size: 120px;
   color: var(--border-peach);
   line-height: 1;
-  margin-bottom: -60px;
+  margin-bottom: -40px; /* Reduced negative margin to avoid overlap and look less compressed */
   pointer-events: none;
   user-select: none;
 }
@@ -1017,6 +895,7 @@ h6 {
   /* 100vh per card */
   position: relative;
   background: var(--bg-peach);
+  border-top: 1px solid var(--border-peach); /* Added border-top for definition */
   border-bottom: 1px solid var(--border-peach);
 }
 
@@ -1063,8 +942,8 @@ h6 {
 
 /* Vertical tab strip on the left */
 .folder-tab {
-  width: 64px;
-  min-width: 64px;
+  width: 80px; /* Expanded for better horizontal breathing room */
+  min-width: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1150,7 +1029,7 @@ h6 {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 60px; /* Increased margin for better separation from CTA button */
 }
 
 .folder-tags span {
@@ -1999,4 +1878,3 @@ h6 {
     padding: 0 24px 24px;
   }
 }
-
