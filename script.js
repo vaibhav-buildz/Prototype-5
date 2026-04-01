@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (scrollProgress >= 0 && scrollProgress <= 1) {
         // Finish opening in 40% of the scroll distance
-        let splitProgress = Math.min(scrollProgress / 0.4, 1);
+        let splitProgress = Math.min(scrollProgress / 0.7, 1);
         
         // Ease-out curve so it starts opening quickly and immediately, eliminating the feeling of delay
         let easeProgress = 1 - (1 - splitProgress) * (1 - splitProgress);
