@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function performType() {
     const currentFullTitle = phrases[phraseIndex];
-    
+
     if (isDeleting) {
       textElement.textContent = currentFullTitle.substring(0, charIndex - 1);
       charIndex--;
@@ -352,12 +352,13 @@ document.addEventListener('DOMContentLoaded', () => {
  * ============================================================ */
 (function () {
   const sections = [
-    { id: 'about',        selector: '#about' },
-    { id: 'products',     selector: '#products' },
-    { id: 'ecosystem',    selector: '#ecosystem' },
-    { id: 'blog',         selector: '#blog' },
-    { id: 'features',     selector: '#features' },
+    { id: 'about', selector: '#about' },
+    { id: 'products', selector: '#products' },
+    { id: 'ecosystem', selector: '#ecosystem' },
+    { id: 'blog', selector: '#blog' },
+    { id: 'features', selector: '#features' },
     { id: 'testimonials', selector: '#testimonials' },
+    { id: 'early-access', selector: '#early-access' },
   ];
 
   const navLinks = document.querySelectorAll('.nav-link[data-section]');
