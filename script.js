@@ -352,11 +352,12 @@ document.addEventListener('DOMContentLoaded', () => {
  * ============================================================ */
 (function () {
   const sections = [
+    { id: 'hero', selector: '#hero' },
     { id: 'about', selector: '#about' },
+    { id: 'about', selector: '#team' },
     { id: 'products', selector: '#products' },
-    { id: 'ecosystem', selector: '#ecosystem' },
+    { id: 'upcoming', selector: '#upcoming' },
     { id: 'blog', selector: '#blog' },
-    { id: 'features', selector: '#features' },
     { id: 'testimonials', selector: '#testimonials' },
     { id: 'early-access', selector: '#early-access' },
   ];
@@ -394,6 +395,10 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Smooth scroll for ALL nav links (including Products trigger) */
   document.querySelectorAll('.nav-link, .nav-dropdown-item, .nav-cta a, .nav-brand').forEach(link => {
     link.addEventListener('click', (e) => {
+      // Automatic menu closure on link selection
+      const navbarFixed = document.getElementById('navbar');
+      if (navbarFixed) navbarFixed.classList.remove('mobile-menu-active');
+
       const href = link.getAttribute('href');
       if (!href || !href.startsWith('#')) return;
       const target = document.querySelector(href);
