@@ -27,25 +27,28 @@
         <li><a href="index.html#hero" class="nav-link draw-underline">Home</a></li>
         <li class="nav-dropdown-wrap">
           <a href="index.html#products" class="nav-link draw-underline nav-dropdown-trigger">Products
-            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </svg>
           </a>
           <ul class="nav-dropdown">
-            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise<span class="nav-dd-tag">PROD</span></a></li>
-            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form<span class="nav-dd-tag">PROD</span></a></li>
+            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise<span
+                  class="nav-dd-tag">PROD</span></a></li>
+            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form<span
+                  class="nav-dd-tag">PROD</span></a></li>
           </ul>
         </li>
         <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
         <li class="nav-links-logo">
           <a href="index.html#hero"><img src="assets/logo.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
         </li>
-        <li><a href="updates.html" class="nav-link draw-underline nav-contact-highlight" data-section="contact">Contact</a></li>
+        <li><a href="updates.html" class="nav-link draw-underline" data-section="contact">Contact</a></li>
         <li><a href="about.html" class="nav-link draw-underline active">About</a></li>
         <li><a href="blog.html" class="nav-link draw-underline">Blog</a></li>
       </ul>
 
-      <div class="nav-cta">
-        <a href="updates.html" id="nav-cta-btn">Get Early Access</a>
-      </div>
+      <div class="nav-cta"></div>
 
       <div class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--highlight-amber)" stroke-width="2">
@@ -58,16 +61,25 @@
   </nav>
 
   <!-- About Hero / Header Section -->
-  <section class="about-hero hero-section" style="min-height: 60vh; padding-top: 120px; align-items: flex-start;">
+  <section class="about-hero hero-section"
+    style="min-height: 80vh; padding-top: 140px; display: flex; align-items: center; justify-content: center;">
     <div class="hero-grid-bg"></div>
-    <div class="container scroll-reveal">
-      <div class="section-tag">// OUR VISION</div>
-      <h1 class="hero-headline" style="font-size: clamp(40px, 6vw, 72px); margin-bottom: 20px;">Built for
-        builders,<br>by builders.</h1>
-      <p class="hero-subheadline" style="max-width: 600px;">
-        We started Blazion to solve the complexities of AI-native infrastructure. Explore our mission and meet the team
-        driving the ignition.
-      </p>
+    <div class="container hero-content scroll-reveal">
+      <div class="hero-left">
+        <div class="section-tag">// OUR VISION</div>
+        <h1 class="hero-headline" style="font-size: clamp(42px, 6vw, 76px); line-height: 1.1; margin-bottom: 24px;">
+          Built for builders,<br>by builders.
+        </h1>
+        <p class="hero-subheadline" style="max-width: 580px; opacity: 0.85; margin-bottom: 0;">
+          We started Blazion to solve the complexities of AI-native infrastructure. We're building the foundation for
+          the next chapter of software.
+        </p>
+      </div>
+      <div class="hero-right">
+        <div class="hero-abstract" id="about-hero-parallax">
+          <img src="assets/about.png" alt="Blazion Vision Monolith" class="hero-image">
+        </div>
+      </div>
     </div>
   </section>
 
