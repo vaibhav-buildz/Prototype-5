@@ -300,11 +300,13 @@ section {
 
 .nav-link {
   font-family: var(--font-mono);
-  font-size: 11px; /* Smaller but uppercase for premium tech feel */
+  font-size: 11px;
+  /* Smaller but uppercase for premium tech feel */
   font-weight: 600;
   text-transform: uppercase;
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.65); /* Faded silver */
+  color: rgba(255, 255, 255, 0.65);
+  /* Faded silver */
   transition: color .4s var(--ease-slow), text-shadow .4s var(--ease-slow), transform .4s var(--ease-slow);
   letter-spacing: 0.15em;
   display: flex;
@@ -665,6 +667,7 @@ section {
   border-radius: 16px;
   filter: drop-shadow(0 12px 40px rgba(15, 23, 42, .18));
   animation: hero-float 8s ease-in-out infinite;
+  transition: all 0.5s var(--ease-slow);
 }
 
 @keyframes hero-float {
