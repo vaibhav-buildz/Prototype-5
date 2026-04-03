@@ -22,40 +22,31 @@
   <nav class="navbar" id="navbar">
     <div class="container">
       <a href="#hero" class="nav-brand">
-        <img src="assets/logo.png" alt="Blazion Logo" class="nav-logo-img">
         BLAZION
       </a>
 
       <ul class="nav-links">
         <li><a href="#hero" class="nav-link draw-underline active" data-section="hero">Home</a></li>
-
-        <!-- Products dropdown -->
         <li class="nav-dropdown-wrap">
-          <a href="#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">
-            Products
-            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round" />
-            </svg>
+          <a href="#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">Products
+            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" /></svg>
           </a>
           <ul class="nav-dropdown">
-            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item"><span class="nav-dd-dot">●</span>Toolvise<span
-                  class="nav-dd-tag">LIVE</span></a></li>
-            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item"><span class="nav-dd-dot">●</span>Blazion Form<span
-                  class="nav-dd-tag">LIVE</span></a></li>
-            <li><a href="#products" class="nav-dropdown-item"><span class="nav-dd-dot">●</span>Blazion Link<span
-                  class="nav-dd-tag">LIVE</span></a></li>
+            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise<span class="nav-dd-tag">PROD</span></a></li>
+            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form<span class="nav-dd-tag">PROD</span></a></li>
           </ul>
         </li>
-
         <li><a href="#upcoming" class="nav-link draw-underline" data-section="upcoming">Upcoming</a></li>
-        <li><a href="#blog" class="nav-link draw-underline" data-section="blog">Blog</a></li>
-        <li><a href="#early-access" class="nav-link draw-underline" data-section="early-access">Updates</a></li>
-        <li><a href="about.html" class="nav-link draw-underline" data-section="about">About</a></li>
+        <li class="nav-links-logo">
+          <a href="#hero"><img src="assets/logo.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
+        </li>
+        <li><a href="updates.html" class="nav-link draw-underline nav-contact-highlight" data-section="contact">Contact</a></li>
+        <li><a href="about.html" class="nav-link draw-underline">About</a></li>
+        <li><a href="blog.html" class="nav-link draw-underline">Blog</a></li>
       </ul>
 
       <div class="nav-cta">
-        <a href="#early-access" id="nav-cta-btn">Get Early Access</a>
+        <a href="updates.html" id="nav-cta-btn">Get Early Access</a>
       </div>
 
       <div class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
@@ -115,7 +106,7 @@
         </div>
         <div class="folder-card-inner">
           <div class="folder-section-tag">WHAT WE'VE SHIPPED</div>
-          <div class="folder-badge">● LIVE</div>
+          <div class="folder-badge">PRODUCTION</div>
           <h2 class="folder-product-name">TOOLVISE</h2>
           <p class="folder-product-desc">Stop guessing. Start building. Toolvise analyzes your project requirements to
             find the perfect tech stack, tools, and personalized learning path for you.</p>
@@ -140,7 +131,7 @@
         </div>
         <div class="folder-card-inner">
           <div class="folder-section-tag">WHAT WE'VE SHIPPED</div>
-          <div class="folder-badge">● LIVE</div>
+          <div class="folder-badge">PRODUCTION</div>
           <h2 class="folder-product-name">BLAZION FORM</h2>
           <p class="folder-product-desc">The only AI-powered form builder engineered for the Indian data landscape —
             native support for Aadhaar, UPI, and OTP verification built-in.</p>
@@ -167,7 +158,7 @@
         </div>
         <div class="folder-card-inner">
           <div class="folder-section-tag">WHAT WE'VE SHIPPED</div>
-          <div class="folder-badge">● LIVE</div>
+          <div class="folder-badge">PRODUCTION</div>
           <h2 class="folder-product-name">BLAZION LINK</h2>
           <p class="folder-product-desc">Universal API bridge with zero-latency intelligent caching — connect
             everything, cache everything.</p>
@@ -228,8 +219,8 @@
             <div class="terminal-tab">blazion.config.js</div>
           </div>
           <div class="terminal-body mono-text">
-            <div class="code-line"><span class="c-keyword">import</span> { blazion } <span class="c-keyword">from</span> <span
-                class="c-string">"@blazion/sdk"</span>;</div>
+            <div class="code-line"><span class="c-keyword">import</span> { blazion } <span class="c-keyword">from</span>
+              <span class="c-string">"@blazion/sdk"</span>;</div>
             <div class="code-line"></div>
             <div class="code-line"><span class="c-comment">// Initialize Blazion ecosystem</span></div>
             <div class="code-line"><span class="c-keyword">const</span> app = blazion({</div>
@@ -241,7 +232,8 @@
             <div class="code-line">});</div>
             <div class="code-line"></div>
             <div class="code-line"><span class="c-comment">// Export production-ready edge function</span></div>
-            <div class="code-line"><span class="c-keyword">export default</span> <span class="c-keyword">async</span> (request)
+            <div class="code-line"><span class="c-keyword">export default</span> <span class="c-keyword">async</span>
+              (request)
               =&gt; {</div>
             <div class="code-line">&nbsp;&nbsp;<span class="c-keyword">const</span> response = <span
                 class="c-keyword">await</span> app.handle(request);</div>
@@ -255,12 +247,12 @@
   </section>
 
   <!-- 05 Upcoming Products / Ecosystem -->
-  <section class="upcoming-section" id="upcoming">
+  <section class="upcoming-section dark-bg" id="upcoming">
     <div class="container">
       <div class="products-header-container scroll-reveal">
         <div class="products-header-content">
           <div class="section-tag">IN DEVELOPMENT</div>
-          <h2 class="products-headline">The Ecosystem Expands.</h2>
+          <h2 class="products-headline" style="color:var(--white)">The Ecosystem Expands.</h2>
         </div>
       </div>
       <div class="product-list scroll-reveal">
@@ -337,77 +329,12 @@
     </div>
   </section>
 
-  <!-- 06 Blog -->
-  <section class="blog-section" id="blog">
-    <div class="container">
-      <div class="section-tag scroll-reveal">FROM THE FORGE</div>
-      <h2 class="blog-headline scroll-reveal">Ideas. Insights. Updates.</h2>
-
-      <div class="featured-article scroll-reveal">
-        <div class="article-image">
-          <img src="assets/blog_featured.png" alt="Building Blazion Store">
-        </div>
-        <div class="featured-article-content">
-          <div class="article-tag">PRODUCT UPDATE</div>
-          <h3 class="featured-article-title">Building Blazion Store — From Prototype to Product</h3>
-          <p class="featured-article-excerpt">The journey of building our first major product was fraught with technical
-            challenges, scaling issues, and countless rebuilds. Here is our unvarnished retrospective.</p>
-          <div class="article-meta">
-            <span>6 min read</span>
-            <a href="#" class="draw-underline-cream">Read Full Article &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="blog-grid scroll-reveal">
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_1.png" alt="Blazor and .NET 9 Implementation">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">ENGINEERING</div>
-            <h4 class="blog-card-title">Why We Chose Blazor + .NET 9 for Our API Marketplace</h4>
-            <div class="article-meta">
-              <span>8 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="AI-Native Software Ecosystems">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">VISION</div>
-            <h4 class="blog-card-title">The Future of AI-Native Software Ecosystems</h4>
-            <div class="article-meta">
-              <span>5 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_3.png" alt="Developer UI Design Principles">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">DESIGN</div>
-            <h4 class="blog-card-title">Designing for Developers: Restraint in User Interface</h4>
-            <div class="article-meta">
-              <span>4 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- 07 Features -->
-  <section class="features-section" id="features">
+  <section class="features-section dark-bg" id="features">
     <div class="container">
-      <div class="section-tag scroll-reveal" style="color:var(--accent-orange)">WHY BLAZION</div>
-      <h2 class="blog-headline" style="color:var(--accent-orange); margin-bottom: 0;">Built Different.</h2>
+      <div class="section-tag scroll-reveal">WHY BLAZION</div>
+      <h2 class="blog-headline" style="color:var(--white); margin-bottom: 0;">Built Different.</h2>
 
       <div class="features-grid scroll-reveal">
         <div class="feature-cell">
@@ -481,8 +408,8 @@
                   <div class="author-role">First Blazer</div>
                 </div>
               </div>
-              <a href="#early-access" class="draw-underline"
-                style="color:var(--accent-orange); font-size:14px; font-weight:500;">Apply for Early Access &rarr;</a>
+              <a href="updates.html" class="draw-underline"
+                style="color:white; font-size:14px; font-weight:500;">Apply for Early Access &rarr;</a>
             </div>
           </div>
           <!-- Card 2 -->
@@ -506,28 +433,14 @@
             <div class="test-card-quote-mark">"</div>
             <div class="test-card-quote">Blazion's edge network setup just works. Zero configuration deploying our
               internal microservices. Pure unadulterated velocity.</div>
+            <div class="test-card-quote">The 'Describe to Build' feature in Blazion Form is a game-changer. We deployed a
+              complex DPDP-compliant onboarding flow in 15 minutes. This is the future.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/avatar_2.png" class="author-avatar" alt="James R.">
+                <img src="assets/avatar_3.png" class="author-avatar" alt="Priya M.">
                 <div>
-                  <div class="author-name">James R.</div>
-                  <div class="author-role">Startup Founder</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
-          </div>
-          <!-- Card 4 -->
-          <div class="test-card" data-index="3">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Tying OpenAPI specifications directly into the monetization layer is something
-              we've been trying to solve internally for 6 months. Blazion solved it in one click.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/avatar_3.png" class="author-avatar" alt="Sara K.">
-                <div>
-                  <div class="author-name">Sara K.</div>
-                  <div class="author-role">Lead Architect</div>
+                  <div class="author-name">Priya M.</div>
+                  <div class="author-role">Product Head</div>
                 </div>
               </div>
               <div class="test-card-stars">★★★★★</div>
@@ -538,83 +451,53 @@
     </div>
   </section>
 
-  <!-- 10 Newsletter / Stay Updated -->
-  <section class="newsletter-section" id="early-access">
-    <!-- Abstract shape for uniqueness -->
-    <div class="newsletter-shape"></div>
-    <div class="container scroll-reveal">
-      <div class="newsletter-glass-card">
-        <div class="newsletter-content-wrap">
-          <div class="section-tag">STAY UPDATED</div>
-          <h2 class="newsletter-headline">Don't Miss the Ignition.</h2>
-          <p class="newsletter-sub">New product launches, dev insights, and startup updates — delivered to your inbox.
-            No noise. Just signal.</p>
-
-          <div class="newsletter-form">
-            <form id="subscribe-form">
-              <div class="newsletter-input-group">
-                <input type="email" class="newsletter-input" placeholder="Your email address" required>
-                <button type="submit" class="newsletter-submit">Subscribe &rarr;</button>
-              </div>
-            </form>
-            <div class="newsletter-micro" id="newsletter-micro">No spam. Unsubscribe anytime.</div>
-            <div class="newsletter-success" id="newsletter-success">You're in. Watch your inbox.</div>
+  <!-- 09.5 FAQ & Infrastructure Stats -->
+  <section class="faq-section" id="faq">
+    <div class="container faq-grid">
+      <div class="faq-left scroll-reveal">
+        <div class="section-tag">// FREQUENTLY ASKED</div>
+        <h2 class="faq-headline">Need Answers? We Got You.</h2>
+        <p class="faq-subheadline">The most common questions about the Blazion infrastructure layer and our roadmap.</p>
+        
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <div class="faq-question">What does "AI-Native" actually mean?</div>
+            <div class="faq-answer">Unlike tools that "add" AI as a wrapper, Blazion is built with intelligence at the kernel level. Every API, form validation, and database query is designed to be understood and optimized by agents in real-time.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Is my data secure in the Blazion ecosystem?</div>
+            <div class="faq-answer">Everything is DPDP-compliant and encrypted at rest with industry-standard 256-bit AES. We offer Indian-region hosting by default for all local fintech compliance.</div>
+          </div>
+          <div class="faq-item">
+             <div class="faq-question">How does Form-to-WhatsApp work?</div>
+             <div class="faq-answer">Blazion Form integrates directly with the WhatsApp Business API, allowing you to trigger flows and receive responses directly in chat without building a custom webhook handler.</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="faq-right scroll-reveal">
+        <div class="stats-card">
+          <div class="stats-item">
+            <div class="stats-num">99.98%</div>
+            <div class="stats-label">API Uptime</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">240ms</div>
+            <div class="stats-label">Avg. Edge Latency</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">50k+</div>
+            <div class="stats-label">Daily Transmissions</div>
+          </div>
+          <div class="stats-item">
+            <div class="stats-num">Zero</div>
+            <div class="stats-label">Config Overhead</div>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- 11 Footer -->
-  <footer class="footer-section" id="contact">
-    <div class="footer-wordmark">BLAZION</div>
-    <div class="container footer-container">
-      <div class="footer-grid">
-        <div>
-          <a href="#" class="footer-logo">
-            <img src="assets/logo.png" alt="Blazion Logo" class="footer-logo-img">
-            BLAZION
-          </a>
-          <p class="footer-tagline">Build. Deploy. Blaze.</p>
-        </div>
-        <div>
-          <div class="footer-col-header">PRODUCTS</div>
-          <div class="footer-links">
-            <a href="https://toolvise.vercel.app/" target="_blank" class="draw-underline-cream">Toolvise</a>
-            <a href="https://blazion-form.vercel.app/" target="_blank" class="draw-underline-cream">Blazion Form</a>
-            <a href="#products" class="draw-underline-cream">Cloud</a>
-            <a href="#products" class="draw-underline-cream">Intelligence</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-header">COMPANY</div>
-          <div class="footer-links">
-            <a href="about.html#about" class="draw-underline-cream">About</a>
-            <a href="#blog" class="draw-underline-cream">Blog</a>
-            <a href="#" class="draw-underline-cream">Careers</a>
-            <a href="#contact" class="draw-underline-cream">Contact</a>
-          </div>
-        </div>
-        <div>
-          <div class="footer-col-header">CONNECT</div>
-          <div class="footer-links">
-            <a href="#" class="draw-underline-cream">Twitter/X</a>
-            <a href="#" class="draw-underline-cream">LinkedIn</a>
-            <a href="#" class="draw-underline-cream">GitHub</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>© 2025 Blazion. All rights reserved.</div>
-        <div class="footer-legal-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="script.js"></script>
 </body>
-
 </html>
