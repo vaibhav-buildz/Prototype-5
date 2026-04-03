@@ -1368,9 +1368,48 @@ section {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 60px;
-  /* Increased margin for better separation from CTA button */
+  margin-bottom: 32px;
 }
+
+/* 04-B PRODUCT FEATURES LIST (New) */
+.product-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 48px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 32px;
+  max-width: 600px;
+}
+
+.product-features-list li {
+  position: relative;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text-body);
+  line-height: 1.5;
+  padding-left: 16px;
+  border-left: 1px solid var(--accent-orange);
+}
+
+.product-features-list li strong {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--text-heading);
+  letter-spacing: 0.1em;
+  margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+  .product-features-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+}
+
 
 .folder-tags span {
   font-family: var(--font-mono);
@@ -1398,7 +1437,7 @@ section {
   border-radius: 8px;
   padding: 12px 24px;
   width: fit-content;
-  transition: background 0.2s, color 0.2s;
+  transition: all .3s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .folder-cta:hover {
@@ -1417,6 +1456,153 @@ section {
   line-height: 1;
   pointer-events: none;
   user-select: none;
+}
+
+/* ============================================================
+   04.5 DEVELOPER EXPERIENCE (DX) — THE CODE BASE
+   ============================================================ */
+.dx-section {
+  padding: 140px 0;
+  background: var(--bg-cream-dark);
+  border-top: 1px solid var(--border-peach);
+  border-bottom: 1px solid var(--border-peach);
+}
+
+.dx-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.dx-headline {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 5vw, 64px);
+  line-height: 1.1;
+  color: var(--text-heading);
+  margin-bottom: 24px;
+}
+
+.dx-body {
+  font-size: 18px;
+  color: var(--text-body);
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 48px;
+}
+
+.dx-features {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.dx-feature-item {
+  display: flex;
+  gap: 20px;
+}
+
+.dx-f-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent-orange);
+  margin-top: 4px;
+}
+
+.dx-f-title {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-heading);
+  margin-bottom: 6px;
+}
+
+.dx-f-desc {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Terminal Preview Styling */
+.dx-terminal {
+  background: #0A1116;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
+}
+
+.terminal-header {
+  background: #111B22;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.terminal-dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.terminal-dots span:nth-child(1) {
+  background: #FF5F56;
+}
+
+.terminal-dots span:nth-child(2) {
+  background: #FFBD2E;
+}
+
+.terminal-dots span:nth-child(3) {
+  background: #27C93F;
+}
+
+.terminal-tab {
+  color: #888;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+}
+
+.terminal-body {
+  padding: 32px 40px;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #D1D5DB;
+}
+
+.code-line {
+  white-space: pre;
+}
+
+.c-keyword {
+  color: #A78BFA;
+}
+
+.c-string {
+  color: #34D399;
+}
+
+.c-comment {
+  color: #6B7280;
+  font-style: italic;
+}
+
+/* Responsive DX and mobile stacks */
+@media (max-width: 900px) {
+  .dx-grid {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
 }
 
 /* ============================================================
