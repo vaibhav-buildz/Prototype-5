@@ -305,9 +305,11 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = rect.height - window.innerHeight; // total scrollable px in section
       const scrolled = Math.max(0, -rect.top);         // px scrolled into section
 
-      // Dynamic scroll calculation based on card count
-      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.90;
-      const staggerStep = folderCards.length > 2 ? total * 0.35 : 0;
+      // Refined for 2 cards over 250vh
+      // Each card has more room to breathe.
+      // Card 2 starts halfway through the section scroll.
+      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.50;
+      const staggerStep = folderCards.length > 2 ? total * 0.35 : total * 0.50;
 
       folderCards.forEach((card, i) => {
         if (i === 0) {

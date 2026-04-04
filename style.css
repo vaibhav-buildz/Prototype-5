@@ -1336,8 +1336,8 @@ section {
    05-A FOLDER CARD STACK — LIVE & RUNNING
    ============================================================ */
 .folder-section {
-  height: 140vh;
-  /* Adjusted for 2 cards */
+  height: 250vh;
+  /* Deep scroll for 2 cards */
   position: relative;
   background: var(--bg-light);
   border-top: 1px solid var(--border-light);
@@ -2813,7 +2813,13 @@ section {
   }
 
   .hero-right {
-    display: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+  }
+  
+  .hero-abstract {
+    max-width: 85%;
   }
 
   .hero-headline {
@@ -2852,13 +2858,16 @@ section {
 
   .footer-grid {
     grid-template-columns: 1fr 1fr;
-    gap: 36px;
+    gap: 48px 24px;
+    margin-bottom: 48px;
   }
 
   .footer-bottom {
     flex-direction: column;
-    gap: 16px;
+    gap: 20px;
     text-align: center;
+    border-top: 1px solid rgba(255, 240, 230, 0.1);
+    padding-top: 32px;
   }
 
   .product-row-top {
@@ -2995,7 +3004,21 @@ section {
 
   .team-card { aspect-ratio: unset; min-height: 320px; }
   .about-stats { flex-direction: column; gap: 24px; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-grid { 
+    grid-template-columns: 1fr; 
+    gap: 48px; 
+    text-align: center;
+    justify-items: center;
+  }
+  .footer-logo {
+    justify-content: center;
+  }
+  .footer-tagline {
+    margin: 0 auto;
+  }
+  .footer-legal-links {
+    justify-content: center;
+  }
   .products-header-container { flex-direction: column; align-items: flex-start; gap: 16px; }
   .upcoming-section .product-row { padding: 28px 16px; }
   .dx-terminal { border-radius: 8px; }
