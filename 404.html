@@ -20,6 +20,7 @@
       overflow: hidden;
       padding: 0 24px;
     }
+
     .not-found-watermark {
       position: absolute;
       top: 50%;
@@ -34,6 +35,7 @@
       line-height: 1;
       white-space: nowrap;
     }
+
     .not-found-content {
       position: relative;
       z-index: 1;
@@ -41,6 +43,7 @@
       flex-direction: column;
       align-items: center;
     }
+
     .not-found-tag {
       font-family: var(--font-mono);
       font-size: 11px;
@@ -50,6 +53,7 @@
       letter-spacing: 0.2em;
       margin-bottom: 24px;
     }
+
     .not-found-headline {
       font-family: var(--font-display);
       font-size: clamp(60px, 8vw, 100px);
@@ -59,6 +63,7 @@
       line-height: 1.1;
       margin-bottom: 24px;
     }
+
     .not-found-subline {
       font-family: var(--font-body);
       font-size: 18px;
@@ -66,6 +71,7 @@
       margin-bottom: 40px;
       max-width: 400px;
     }
+
     .not-found-btn {
       font-family: var(--font-mono);
       font-size: 13px;
@@ -80,10 +86,12 @@
       transition: all 0.3s;
       display: inline-block;
     }
+
     .not-found-btn:hover {
       background-color: var(--accent-dark);
       transform: translateY(-2px);
     }
+
     @media (max-width: 768px) {
       .not-found-watermark {
         font-size: clamp(120px, 25vw, 200px);
@@ -93,7 +101,9 @@
 </head>
 
 <body class="about-page">
-  <div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#C0112B;z-index:9999;transition:width 0.1s linear;pointer-events:none;"></div>
+  <div id="scroll-progress"
+    style="position:fixed;top:0;left:0;height:2px;width:0%;background:#C0112B;z-index:9999;transition:width 0.1s linear;pointer-events:none;">
+  </div>
 
   <!-- Grain Overlay -->
   <div class="grain-overlay"></div>

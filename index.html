@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLAZION - AI-Native Software Ecosystem</title>
-  <meta name="description" content="Blazion is an AI-native, vertically integrated software creation and deployment ecosystem. Build, deploy, and scale with Toolvise, Blazion Form, and more.">
+  <meta name="description"
+    content="Blazion is an AI-native, vertically integrated software creation and deployment ecosystem. Build, deploy, and scale with Toolvise, Blazion Form, and more.">
   <meta property="og:title" content="Blazion — AI-Native Software Ecosystem">
-  <meta property="og:description" content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
+  <meta property="og:description"
+    content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
   <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
   <meta property="og:url" content="https://blazion-io.vercel.app">
   <meta property="og:type" content="website">
@@ -17,7 +19,9 @@
 </head>
 
 <body>
-<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#C0112B;z-index:9999;transition:width 0.1s linear;pointer-events:none;"></div>
+  <div id="scroll-progress"
+    style="position:fixed;top:0;left:0;height:2px;width:0%;background:#C0112B;z-index:9999;transition:width 0.1s linear;pointer-events:none;">
+  </div>
 
   <!-- Grain Overlay -->
   <div class="grain-overlay"></div>
@@ -197,7 +201,8 @@
               <span></span><span></span><span></span>
             </div>
             <div class="terminal-tab">blazion.config.js</div>
-            <button id="copy-code-btn" onclick="copyCode()" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;background:transparent;border:1px solid rgba(255,255,255,0.1);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all 0.2s;">COPY</button>
+            <button id="copy-code-btn" onclick="copyCode()"
+              style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;background:transparent;border:1px solid rgba(255,255,255,0.1);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all 0.2s;">COPY</button>
           </div>
           <div class="terminal-body mono-text">
             <div class="code-line"><span class="c-keyword">import</span> { blazion } <span class="c-keyword">from</span>
@@ -381,7 +386,8 @@
           <!-- Card 1 -->
           <div class="test-card" data-index="0">
             <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Toolvise completely changed my project's trajectory. I was stuck on stack choices for weeks, but it gave me a clear path in under a minute.</div>
+            <div class="test-card-quote">Toolvise completely changed my project's trajectory. I was stuck on stack
+              choices for weeks, but it gave me a clear path in under a minute.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
                 <img src="assets/avatar_marcus_dev_1775304690116.png" class="author-avatar" alt="Marcus T.">
@@ -431,7 +437,8 @@
           <!-- Card 4 -->
           <div class="test-card" data-index="3">
             <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Blazion Form's Bharat-native integration is a lifesaver. We saved months of dev time on UPI and Aadhaar validations alone.</div>
+            <div class="test-card-quote">Blazion Form's Bharat-native integration is a lifesaver. We saved months of dev
+              time on UPI and Aadhaar validations alone.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
                 <img src="assets/avatar_rohan_cto_1775304707697.png" class="author-avatar" alt="Rohan K.">
@@ -447,7 +454,8 @@
           <!-- Card 5 -->
           <div class="test-card" data-index="4">
             <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">The sub-second deploys are real. We've moved our entire frontend to Blazion Edge and seen a 40% jump in Lighthouse scores.</div>
+            <div class="test-card-quote">The sub-second deploys are real. We've moved our entire frontend to Blazion
+              Edge and seen a 40% jump in Lighthouse scores.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
                 <img src="assets/avatar_sarah_engineer_1775304724280.png" class="author-avatar" alt="Sarah J.">
@@ -463,7 +471,8 @@
           <!-- Card 6 -->
           <div class="test-card" data-index="5">
             <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">An absolute game-changer for solo founders. The abstraction layer is so thin yet so powerful. I feel like I have a DevOps team of ten.</div>
+            <div class="test-card-quote">An absolute game-changer for solo founders. The abstraction layer is so thin
+              yet so powerful. I feel like I have a DevOps team of ten.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
                 <img src="assets/avatar_liam_founder_1775304745143.png" class="author-avatar" alt="Liam O.">
@@ -478,7 +487,8 @@
         </div>
 
         <div class="testimonial-cta scroll-reveal" style="text-align: center; margin-top: 60px;">
-          <p class="cta-banner-headline" style="font-size: 24px; margin-bottom: 24px; opacity: 0.9;">Be among the first to build with Blazion</p>
+          <p class="cta-banner-headline" style="font-size: 24px; margin-bottom: 24px; opacity: 0.9;">Be among the first
+            to build with Blazion</p>
           <a href="updates.html" class="btn-primary" style="padding: 12px 32px;">Join for Early Access</a>
         </div>
       </div>
@@ -568,49 +578,49 @@
     }
   </script>
   <script>
-function copyCode() {
-  const code = document.querySelector('.terminal-body').innerText;
-  navigator.clipboard.writeText(code).then(() => {
-    const btn = document.getElementById('copy-code-btn');
-    btn.textContent = 'COPIED';
-    btn.style.color = '#22c55e';
-    btn.style.borderColor = '#22c55e';
-    setTimeout(() => { btn.textContent = 'COPY'; btn.style.color = '#888'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 2000);
-  });
-}
-</script>
-<script>
-// Scroll progress
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const pct = (scrollTop / docHeight) * 100;
-  document.getElementById('scroll-progress').style.width = pct + '%';
-});
-
-// Active nav link
-const navLinks = document.querySelectorAll('.nav-link');
-const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-navLinks.forEach(link => {
-  const href = link.getAttribute('href') || '';
-  if (href.includes(currentPath) || (currentPath === '' && href === '#hero')) {
-    link.classList.add('active');
-  }
-});
-</script>
-<script>
-document.querySelectorAll('a[href]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      document.body.style.transition = 'opacity 0.2s ease';
-      setTimeout(() => { window.location.href = href; }, 200);
+    function copyCode() {
+      const code = document.querySelector('.terminal-body').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-code-btn');
+        btn.textContent = 'COPIED';
+        btn.style.color = '#22c55e';
+        btn.style.borderColor = '#22c55e';
+        setTimeout(() => { btn.textContent = 'COPY'; btn.style.color = '#888'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 2000);
+      });
+    }
+  </script>
+  <script>
+    // Scroll progress
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (scrollTop / docHeight) * 100;
+      document.getElementById('scroll-progress').style.width = pct + '%';
     });
-  }
-});
-</script>
+
+    // Active nav link
+    const navLinks = document.querySelectorAll('.nav-link');
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.includes(currentPath) || (currentPath === '' && href === '#hero')) {
+        link.classList.add('active');
+      }
+    });
+  </script>
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.style.opacity = '0';
+          document.body.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => { window.location.href = href; }, 200);
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

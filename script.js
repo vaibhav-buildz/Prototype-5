@@ -99,14 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
       navbar.classList.remove('scrolled');
     }
 
-    // Hide navbar when scrolling DOWN past 80px; show when scrolling UP
-    if (currentScrollY > 80) {
-      if (scrollDelta > 5) {
-        navbar.classList.add('nav-hidden');
-      } else if (scrollDelta < -5) {
-        navbar.classList.remove('nav-hidden');
-      }
-    } else {
+    // DEBUG: Log scroll state
+    console.log(`Scroll - Y: ${currentScrollY}, Delta: ${scrollDelta}, Classes: ${navbar.className}`);
+
+    // Standard Intelligent Navbar
+    if (currentScrollY < 50) {
+      // Near top: Always show
+      navbar.classList.remove('nav-hidden');
+    } else if (scrollDelta > 10) {
+      // Scrolling DOWN significantly: Hide
+      navbar.classList.add('nav-hidden');
+    } else if (scrollDelta < -10) {
+      // Scrolling UP significantly: Show
       navbar.classList.remove('nav-hidden');
     }
 
@@ -300,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
         folderCards.forEach(card => card.style.transform = 'none');
         return;
       }
-      
+
       const rect = folderSection.getBoundingClientRect();
       const total = rect.height - window.innerHeight; // total scrollable px in section
       const scrolled = Math.max(0, -rect.top);         // px scrolled into section

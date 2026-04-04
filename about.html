@@ -5,9 +5,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Blazion - The Builders & Our Mission</title>
-  <meta name="description" content="Meet the team behind Blazion — builders obsessed with AI-native infrastructure, developer experience, and shipping fast.">
+  <meta name="description"
+    content="Meet the team behind Blazion — builders obsessed with AI-native infrastructure, developer experience, and shipping fast.">
   <meta property="og:title" content="About Blazion — The Builders">
-  <meta property="og:description" content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
+  <meta property="og:description"
+    content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
   <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
   <meta property="og:url" content="https://blazion-io.vercel.app/about.html">
   <meta property="og:type" content="website">
@@ -339,19 +341,19 @@
 
   <script src="script.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
-<script>
-document.querySelectorAll('a[href]').forEach(link => {
-  const href = link.getAttribute('href');
-  if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
-    link.addEventListener('click', function(e) {
-      e.preventDefault();
-      document.body.style.opacity = '0';
-      document.body.style.transition = 'opacity 0.2s ease';
-      setTimeout(() => { window.location.href = href; }, 200);
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.style.opacity = '0';
+          document.body.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => { window.location.href = href; }, 200);
+        });
+      }
     });
-  }
-});
-</script>
+  </script>
 </body>
 
 </html>
