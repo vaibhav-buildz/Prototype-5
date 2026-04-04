@@ -202,17 +202,17 @@
           <div class="footer-links">
             <a href="https://toolvise.vercel.app/" target="_blank" class="draw-underline-cream">Toolvise</a>
             <a href="https://blazion-form.vercel.app/" target="_blank" class="draw-underline-cream">Blazion Form</a>
-            <a href="index.html#products" class="draw-underline-cream">Cloud</a>
-            <a href="index.html#products" class="draw-underline-cream">Intelligence</a>
+            <a href="index.html#upcoming" class="draw-underline-cream">Cloud</a>
+            <a href="index.html#upcoming" class="draw-underline-cream">Intelligence</a>
           </div>
         </div>
         <div>
           <div class="footer-col-header">COMPANY</div>
           <div class="footer-links">
-            <a href="about.html#about" class="draw-underline-cream">About</a>
+            <a href="about.html" class="draw-underline-cream">About</a>
             <a href="blog.html" class="draw-underline-cream">Blog</a>
-            <a href="#" class="draw-underline-cream">Careers</a>
-            <a href="#contact" class="draw-underline-cream">Contact</a>
+            <a href="updates.html" class="draw-underline-cream">Careers</a>
+            <a href="updates.html" class="draw-underline-cream">Contact</a>
           </div>
         </div>
         <div>
@@ -225,16 +225,17 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <div>© 2025 Blazion. All rights reserved.</div>
+        <div>© <span id="year"></span> Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
-          <a href="#">Privacy Policy</a>
-          <a href="#">Terms of Service</a>
+          <a href="updates.html">Privacy Policy</a>
+          <a href="updates.html">Terms of Service</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>

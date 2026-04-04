@@ -307,16 +307,23 @@
         <div>
           <div class="footer-col-header">COMPANY</div>
           <div class="footer-links">
-            <a href="#about" class="draw-underline-cream">About</a>
+            <a href="about.html" class="draw-underline-cream">About</a>
             <a href="blog.html" class="draw-underline-cream">Blog</a>
             <a href="updates.html" class="draw-underline-cream">Careers</a>
             <a href="updates.html" class="draw-underline-cream">Contact</a>
           </div>
         </div>
-
+        <div>
+          <div class="footer-col-header">CONNECT</div>
+          <div class="footer-links">
+            <a href="#" class="draw-underline-cream">Twitter/X</a>
+            <a href="#" class="draw-underline-cream">LinkedIn</a>
+            <a href="#" class="draw-underline-cream">GitHub</a>
+          </div>
+        </div>
       </div>
       <div class="footer-bottom">
-        <div>© 2025 Blazion. All rights reserved.</div>
+        <div>© <span id="year"></span> Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
           <a href="updates.html">Privacy Policy</a>
           <a href="updates.html">Terms of Service</a>
@@ -326,6 +333,7 @@
   </footer>
 
   <script src="script.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 
 </html>
