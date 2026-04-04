@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    
+
     // Background highlight
     if (currentScrollY > 50) {
       navbar.classList.add('scrolled');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Hide/Show Logic
     navbar.style.transform = currentScrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
-    
+
     lastScrollY = currentScrollY;
   }, { passive: true });
 
