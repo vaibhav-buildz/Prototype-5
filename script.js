@@ -86,12 +86,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
+    const currentScrollY = window.scrollY;
+    const scrollDelta = currentScrollY - lastScrollY;
+
+    // Add 'scrolled' class for background styling
+    if (currentScrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
+
+    // Hide navbar when scrolling DOWN past 80px; show when scrolling UP
+    if (currentScrollY > 80) {
+      if (scrollDelta > 5) {
+        navbar.classList.add('nav-hidden');
+      } else if (scrollDelta < -5) {
+        navbar.classList.remove('nav-hidden');
+      }
+    } else {
+      navbar.classList.remove('nav-hidden');
+    }
+
+    lastScrollY = currentScrollY;
   }, { passive: true });
 
   if (mobileMenuBtn) {
