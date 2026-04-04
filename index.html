@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BLAZION - AI-Native Software Ecosystem</title>
-  <meta name="description"
-    content="Blazion is the complete infrastructure layer for modern software — AI-native, vertically integrated, and built for developers who ship without compromise.">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="description" content="Blazion is an AI-native, vertically integrated software creation and deployment ecosystem. Build, deploy, and scale with Toolvise, Blazion Form, and more.">
+  <meta property="og:title" content="Blazion — AI-Native Software Ecosystem">
+  <meta property="og:description" content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
+  <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
+  <meta property="og:url" content="https://blazion-io.vercel.app">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="/assets/black_back.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -398,7 +403,7 @@
           <div class="section-tag">EARLY BLAZERS</div>
           <h2 class="about-headline" style="color:var(--text-heading)">What People Are Saying.</h2>
         </div>
-        <div class="cards-container">
+        <div class="cards-container" style="grid-template-columns: repeat(2, 1fr);">
 
           <!-- Card 2 -->
           <div class="test-card" data-index="1">
@@ -421,9 +426,6 @@
             <div class="test-card-quote-mark">"</div>
             <div class="test-card-quote">Blazion's edge network setup just works. Zero configuration deploying our
               internal microservices. Pure unadulterated velocity.</div>
-            <div class="test-card-quote">The 'Describe to Build' feature in Blazion Form is a game-changer. We deployed
-              a
-              complex DPDP-compliant onboarding flow in 15 minutes. This is the future.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
                 <img src="assets/test_3.png" class="author-avatar" alt="Priya M.">
@@ -435,6 +437,11 @@
               <div class="test-card-stars">★★★★★</div>
             </div>
           </div>
+        </div>
+
+        <div class="testimonial-cta scroll-reveal" style="text-align: center; margin-top: 60px;">
+          <p class="cta-banner-headline" style="font-size: 24px; margin-bottom: 24px; opacity: 0.9;">Be among the first to build with Blazion</p>
+          <a href="updates.html" class="btn-primary" style="padding: 12px 32px;">Join for Early Access</a>
         </div>
       </div>
     </div>
@@ -503,6 +510,25 @@
 
   <script src="script.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>
+    const form = document.querySelector('.newsletter-form');
+    if (form) {
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        const data = new FormData(form);
+        await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        const successMsg = document.getElementById('newsletter-success');
+        if (form) form.style.display = 'none';
+        if (successMsg) successMsg.style.display = 'block';
+      });
+    }
+  </script>
 </body>
 
 </html>

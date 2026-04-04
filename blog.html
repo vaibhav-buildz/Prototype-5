@@ -5,9 +5,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Blog - BLAZION | AI-Native Software Insights</title>
-  <meta name="description"
-    content="Ideas, insights, and engineering updates from the Blazion team. Explore the future of AI-native software.">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="description" content="Engineering retrospectives, product updates, and Blazion's vision for the future of AI-native software architecture.">
+  <meta property="og:title" content="Blog — Blazion Insights from the Frontier">
+  <meta property="og:description" content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
+  <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
+  <meta property="og:url" content="https://blazion-io.vercel.app/blog.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="/assets/black_back.png">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -60,6 +65,33 @@
     </div>
   </nav>
 
+  <style>
+    .blog-coming-soon {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-left: 8px;
+      vertical-align: middle;
+      opacity: 0.8;
+      display: inline-block;
+    }
+
+    .blog-card,
+    .featured-article {
+      cursor: default !important;
+    }
+
+    .blog-card:hover,
+    .featured-article:hover {
+      transform: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+
   <!-- Blog Hero Section -->
   <section class="blog-hero hero-section"
     style="min-height: 80vh; padding-top: 140px; display: flex; align-items: center; justify-content: center;">
@@ -76,7 +108,7 @@
       </div>
       <div class="hero-right">
         <div class="hero-abstract" id="blog-hero-parallax">
-          <img src="assets/blog_featured.png" alt="Blazion Insight Crystal" class="hero-image">
+          <img src="assets/blog_featured.png" alt="Engineering the future of AI-native architecture" class="hero-image">
         </div>
       </div>
     </div>
@@ -87,17 +119,18 @@
     <div class="container">
       <div class="featured-article scroll-reveal" style="margin-top: 0;">
         <div class="article-image">
-          <img src="assets/blog_featured.png" alt="Building Blazion Store"
+          <img src="assets/blog_1.png" alt="Architecture diagram and product prototype for Blazion Store"
             style="filter: brightness(0.8) contrast(1.2);">
         </div>
         <div class="featured-article-content">
           <div class="article-tag">PRODUCT UPDATE</div>
-          <h3 class="featured-article-title">Building Blazion Store — From Prototype to Product</h3>
+          <h3 class="featured-article-title">Building Blazion Store — From Prototype to Product<span
+              class="blog-coming-soon">COMING SOON</span></h3>
           <p class="featured-article-excerpt">The journey of building our first major product was fraught with technical
             challenges, scaling issues, and countless rebuilds. Here is our unvarnished retrospective.</p>
           <div class="article-meta">
             <span>6 min read</span>
-            <a href="#" class="draw-underline-cream">Read Full Article &rarr;</a>
+            <a class="draw-underline-cream">Read Full Article &rarr;</a>
           </div>
         </div>
       </div>
@@ -105,79 +138,85 @@
       <div class="blog-grid scroll-reveal">
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_1.png" alt="Blazor and .NET 9 Implementation">
+            <img src="assets/blog_1.png" alt="Blazor and .NET 9 technical implementation visualization">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">ENGINEERING</div>
-            <h4 class="blog-card-title">Why We Chose Blazor + .NET 9 for Our API Marketplace</h4>
+            <h4 class="blog-card-title">Why We Chose Blazor + .NET 9 for Our API Marketplace<span
+                class="blog-coming-soon">COMING SOON</span></h4>
             <div class="article-meta">
               <span>8 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="AI-Native Software Ecosystems">
+            <img src="assets/blog_2.png" alt="The future of AI-native software ecosystems abstract visual">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">VISION</div>
-            <h4 class="blog-card-title">The Future of AI-Native Software Ecosystems</h4>
+            <h4 class="blog-card-title">The Future of AI-Native Software Ecosystems<span class="blog-coming-soon">COMING
+                SOON</span></h4>
             <div class="article-meta">
               <span>5 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_3.png" alt="Developer UI Design Principles">
+            <img src="assets/blog_3.png" alt="Clean and restrained UI design principles for developers">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">DESIGN</div>
-            <h4 class="blog-card-title">Designing for Developers: Restraint in User Interface</h4>
+            <h4 class="blog-card-title">Designing for Developers: Restraint in User Interface<span
+                class="blog-coming-soon">COMING SOON</span></h4>
             <div class="article-meta">
               <span>4 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="Scaling AI Infrastructure">
+            <img src="assets/blog_featured.png" alt="Scaling global AI infrastructure across Bharat connectivity">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">ENGINEERING</div>
-            <h4 class="blog-card-title">Scaling AI Infrastructure for Bharat's Next Billion</h4>
+            <h4 class="blog-card-title">Scaling AI Infrastructure for Bharat's Next Billion<span
+                class="blog-coming-soon">COMING SOON</span></h4>
             <div class="article-meta">
               <span>10 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_1.png" alt="Developer Experience Metrics">
+            <img src="assets/blog_3.png" alt="Metrics and data visualization for developer joy and velocity">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">CULTURE</div>
-            <h4 class="blog-card-title">Beyond Velocity: Measuring Developer Joy at Blazion</h4>
+            <h4 class="blog-card-title">Beyond Velocity: Measuring Developer Joy at Blazion<span
+                class="blog-coming-soon">COMING SOON</span></h4>
             <div class="article-meta">
               <span>5 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
         <div class="blog-card">
           <div class="blog-card-img article-image">
-            <img src="assets/blog_featured.png" alt="AI First Logic">
+            <img src="assets/blog_2.png" alt="Conceptual divide between AI-first and AI-added architectures">
           </div>
           <div style="padding: 0 24px 24px;">
             <div class="article-tag">TECH</div>
-            <h4 class="blog-card-title">AI-First vs AI-Added: The Architectural Divide</h4>
+            <h4 class="blog-card-title">AI-First vs AI-Added: The Architectural Divide<span
+                class="blog-coming-soon">COMING SOON</span></h4>
             <div class="article-meta">
               <span>12 min read</span>
-              <a href="#" class="draw-underline">Read &rarr;</a>
+              <a class="draw-underline">Read &rarr;</a>
             </div>
           </div>
         </div>
