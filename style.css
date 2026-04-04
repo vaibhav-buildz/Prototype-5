@@ -97,6 +97,7 @@ section {
    UTILITY
    ============================================================ */
 .container {
+  width: 100%;
   max-width: 1320px;
   margin: 0 auto;
   padding: 0 48px;
@@ -1635,6 +1636,8 @@ section {
 
 /* Terminal Preview Styling */
 .dx-terminal {
+  width: 100%;
+  max-width: 100%;
   background: #0A1116;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -2805,7 +2808,8 @@ section {
 
   .hero-content {
     grid-template-columns: 1fr;
-    padding: 60px 0 80px;
+    padding-top: 60px;
+    padding-bottom: 80px;
   }
 
   .hero-right {
@@ -2827,6 +2831,12 @@ section {
     grid-template-columns: 1fr;
     gap: 48px;
   }
+
+  .dx-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
 
   .about-image {
     height: 280px;
@@ -2889,6 +2899,7 @@ section {
     border-radius: 16px;
     height: auto;
     min-height: 100vh;
+    transform: none !important;
   }
 
   .folder-tab {

@@ -296,6 +296,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (folderSection && folderCards.length) {
     window.addEventListener('scroll', () => {
+      if (window.innerWidth <= 1024) {
+        folderCards.forEach(card => card.style.transform = 'none');
+        return;
+      }
+      
       const rect = folderSection.getBoundingClientRect();
       const total = rect.height - window.innerHeight; // total scrollable px in section
       const scrolled = Math.max(0, -rect.top);         // px scrolled into section
