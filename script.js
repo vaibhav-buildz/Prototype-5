@@ -300,10 +300,9 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = rect.height - window.innerHeight; // total scrollable px in section
       const scrolled = Math.max(0, -rect.top);         // px scrolled into section
 
-      // Each card animates over 40% of total scroll.
-      // Cards are staggered by 35% — card 2 enters first, card 3 follows clearly after.
-      const animWindow = total * 0.40;
-      const staggerStep = total * 0.35;
+      // Dynamic scroll calculation based on card count
+      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.90;
+      const staggerStep = folderCards.length > 2 ? total * 0.35 : 0;
 
       folderCards.forEach((card, i) => {
         if (i === 0) {
