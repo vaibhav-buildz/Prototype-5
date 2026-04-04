@@ -257,7 +257,7 @@ section {
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: transform 0.3s ease, border-color 0.3s, background 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .navbar.nav-hidden {
