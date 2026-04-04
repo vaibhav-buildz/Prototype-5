@@ -253,12 +253,11 @@ section {
   height: 68px;
   background: rgba(2, 6, 23, 0.96);
   backdrop-filter: blur(8px);
-  /* Reduced from 14px for better clarity */
   border-bottom: 1px solid transparent;
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: border-color .3s, background .3s, transform .35s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.3s ease, border-color 0.3s, background 0.3s;
 }
 
 .navbar.nav-hidden {
@@ -2813,6 +2812,7 @@ section {
   .nav-links-logo {
     display: none;
   }
+
   .features-grid {
     grid-template-columns: 1fr;
     border-radius: 12px;
@@ -2829,7 +2829,7 @@ section {
     justify-content: center;
     margin-top: 24px;
   }
-  
+
   .hero-abstract {
     max-width: 85%;
   }
@@ -3001,6 +3001,7 @@ section {
   .cta-banner-section {
     padding: 80px 0;
   }
+
   .cta-banner-headline {
     font-size: 42px;
   }
@@ -3014,39 +3015,81 @@ section {
     padding: 10px 16px !important;
   }
 
-  .team-card { aspect-ratio: unset; min-height: 320px; }
-  .about-stats { flex-direction: column; gap: 24px; }
-  .footer-grid { 
-    grid-template-columns: 1fr; 
-    gap: 48px; 
+  .team-card {
+    aspect-ratio: unset;
+    min-height: 320px;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
     text-align: center;
     justify-items: center;
   }
+
   .footer-logo {
     justify-content: center;
   }
+
   .footer-tagline {
     margin: 0 auto;
   }
+
   .footer-legal-links {
     justify-content: center;
   }
-  .products-header-container { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .upcoming-section .product-row { padding: 28px 16px; }
-  .dx-terminal { border-radius: 8px; }
-  .nav-brand { font-size: 18px; }
+
+  .products-header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .upcoming-section .product-row {
+    padding: 28px 16px;
+  }
+
+  .dx-terminal {
+    border-radius: 8px;
+  }
+
+  .nav-brand {
+    font-size: 18px;
+  }
 }
 
 @keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.4; transform: scale(0.8); }
+
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.4;
+    transform: scale(0.8);
+  }
 }
 
 
 body {
   animation: page-fade-in 0.3s ease forwards;
 }
+
 @keyframes page-fade-in {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

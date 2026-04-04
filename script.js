@@ -90,30 +90,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
-    const scrollDelta = currentScrollY - lastScrollY;
-
-    // Add 'scrolled' class for background styling
+    
+    // Background highlight
     if (currentScrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
 
-    // DEBUG: Log scroll state
-    console.log(`Scroll - Y: ${currentScrollY}, Delta: ${scrollDelta}, Classes: ${navbar.className}`);
-
-    // Standard Intelligent Navbar
-    if (currentScrollY < 50) {
-      // Near top: Always show
-      navbar.classList.remove('nav-hidden');
-    } else if (scrollDelta > 10) {
-      // Scrolling DOWN significantly: Hide
-      navbar.classList.add('nav-hidden');
-    } else if (scrollDelta < -10) {
-      // Scrolling UP significantly: Show
-      navbar.classList.remove('nav-hidden');
-    }
-
+    // Hide/Show Logic
+    navbar.style.transform = currentScrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
+    
     lastScrollY = currentScrollY;
   }, { passive: true });
 
