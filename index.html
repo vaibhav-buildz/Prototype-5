@@ -17,6 +17,7 @@
 </head>
 
 <body>
+<div id="scroll-progress" style="position:fixed;top:0;left:0;height:2px;width:0%;background:#C0112B;z-index:9999;transition:width 0.1s linear;pointer-events:none;"></div>
 
   <!-- Grain Overlay -->
   <div class="grain-overlay"></div>
@@ -34,6 +35,10 @@
         <li><a href="#hero" class="nav-link draw-underline active" data-section="hero">Home</a></li>
         <li class="nav-dropdown-wrap">
           <a href="#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">Products
+            <span style="display:inline-flex;align-items:center;gap:5px;margin-left:8px;font-family:'IBM Plex Mono',monospace;font-size:9px;color:#22c55e;letter-spacing:0.1em;">
+              <span style="width:6px;height:6px;border-radius:50%;background:#22c55e;animation:pulse-dot 1.5s ease-in-out infinite;display:inline-block;"></span>
+              2 LIVE
+            </span>
             <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
               <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
@@ -96,12 +101,6 @@
   </section>
 
 
-
-
-
-
-
-
   <!-- 04 Live Products -->
   <!-- 05 Live & Running — Folder Stack -->
   <section class="folder-section" id="products">
@@ -159,30 +158,6 @@
         </div>
       </div>
 
-      <!-- Card 3: BLAZION LINK -->
-      <div class="folder-card folder-card-3" data-index="2">
-        <div class="folder-tab">
-          <span class="folder-tab-label">LINK</span>
-        </div>
-        <div class="folder-card-inner">
-          <div class="folder-section-tag">WHAT WE'VE SHIPPED</div>
-          <div class="folder-badge">PRODUCTION</div>
-          <h2 class="folder-product-name">BLAZION LINK</h2>
-          <p class="folder-product-desc">Universal API bridge with zero-latency intelligent caching — connect
-            everything, cache everything.</p>
-          <div class="folder-tags">
-            <span>Cross-Region Sync</span><span>Auto-Retry Logic</span>
-            <span>Semantic Caching</span><span>Unified Auth</span>
-          </div>
-          <ul class="product-features-list">
-            <li><strong>Universal Bridge:</strong> Connect disparate API protocols with a single intelligent layer.</li>
-            <li><strong>Edge Caching:</strong> Global data persistence with sub-millisecond cold-start retrieval.</li>
-            <li><strong>Auth Gateway:</strong> Unified authentication layer for all your internal microservices.</li>
-            <li><strong>Auto-Resiliency:</strong> Intelligent retry logic and circuit breakers built-in.</li>
-          </ul>
-          <a href="#" class="folder-cta">Sync Now &rarr;</a>
-        </div>
-      </div>
 
     </div>
   </section>
@@ -225,6 +200,7 @@
               <span></span><span></span><span></span>
             </div>
             <div class="terminal-tab">blazion.config.js</div>
+            <button id="copy-code-btn" onclick="copyCode()" style="margin-left:auto;font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;background:transparent;border:1px solid rgba(255,255,255,0.1);padding:4px 12px;border-radius:4px;cursor:pointer;transition:all 0.2s;">COPY</button>
           </div>
           <div class="terminal-body mono-text">
             <div class="code-line"><span class="c-keyword">import</span> { blazion } <span class="c-keyword">from</span>
@@ -529,6 +505,50 @@
       });
     }
   </script>
+  <script>
+function copyCode() {
+  const code = document.querySelector('.terminal-body').innerText;
+  navigator.clipboard.writeText(code).then(() => {
+    const btn = document.getElementById('copy-code-btn');
+    btn.textContent = 'COPIED';
+    btn.style.color = '#22c55e';
+    btn.style.borderColor = '#22c55e';
+    setTimeout(() => { btn.textContent = 'COPY'; btn.style.color = '#888'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 2000);
+  });
+}
+</script>
+<script>
+// Scroll progress
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = (scrollTop / docHeight) * 100;
+  document.getElementById('scroll-progress').style.width = pct + '%';
+});
+
+// Active nav link
+const navLinks = document.querySelectorAll('.nav-link');
+const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+navLinks.forEach(link => {
+  const href = link.getAttribute('href') || '';
+  if (href.includes(currentPath) || (currentPath === '' && href === '#hero')) {
+    link.classList.add('active');
+  }
+});
+</script>
+<script>
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.2s ease';
+      setTimeout(() => { window.location.href = href; }, 200);
+    });
+  }
+});
+</script>
 </body>
 
 </html>

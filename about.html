@@ -339,6 +339,19 @@
 
   <script src="script.js"></script>
   <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+document.querySelectorAll('a[href]').forEach(link => {
+  const href = link.getAttribute('href');
+  if (!href.startsWith('#') && !href.startsWith('http') && href.endsWith('.html')) {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      document.body.style.opacity = '0';
+      document.body.style.transition = 'opacity 0.2s ease';
+      setTimeout(() => { window.location.href = href; }, 200);
+    });
+  }
+});
+</script>
 </body>
 
 </html>
