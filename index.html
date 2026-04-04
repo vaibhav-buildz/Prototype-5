@@ -36,9 +36,9 @@
           </a>
           <ul class="nav-dropdown">
             <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise<span
-                  class="nav-dd-tag">PROD</span></a></li>
+                  class="nav-dd-tag--prod">PROD</span></a></li>
             <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form<span
-                  class="nav-dd-tag">PROD</span></a></li>
+                  class="nav-dd-tag--prod">PROD</span></a></li>
           </ul>
         </li>
         <li><a href="#upcoming" class="nav-link draw-underline" data-section="upcoming">Upcoming</a></li>
@@ -53,7 +53,7 @@
       <div class="nav-cta"></div>
 
       <div class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--highlight-amber)" stroke-width="2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted-strong)" stroke-width="2">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -70,15 +70,15 @@
       <div class="hero-left">
         <div class="hero-tag">AI-Native Software Ecosystem</div>
         <h1 class="hero-headline">
-          <span id="typewriter-text" class="typewriter-text"></span><span class="typewriter-cursor">|</span>
+          <span id="typewriter-text" class="typewriter-text">Build. Deploy. Blaze.</span><span
+            class="typewriter-cursor">|</span>
         </h1>
         <p class="hero-subheadline">
           Blazion is the complete infrastructure layer for modern software — AI-native, vertically integrated, and built
           for developers who ship without compromise.
         </p>
         <div class="hero-ctas">
-          <a href="#" class="btn-primary">Try Now</a>
-          <a href="#products" class="btn-secondary">See Products</a>
+          <a href="#products" class="btn-primary">Try Now</a>
         </div>
       </div>
       <div class="hero-right">
@@ -267,7 +267,7 @@
             <div class="product-desc">Your AI-powered IDE in the cloud</div>
             <div class="product-status">
               <div class="product-badge">◌ COMING SOON</div>
-              <a href="#" class="product-cta draw-underline">Join Waitlist &rarr;</a>
+              <a href="updates.html" class="product-cta draw-underline">Join Waitlist &rarr;</a>
             </div>
           </div>
           <div class="product-row-details">
@@ -290,7 +290,7 @@
             <div class="product-desc">One-click deploy. Zero config. Infinite scale.</div>
             <div class="product-status">
               <div class="product-badge">◌ COMING SOON</div>
-              <a href="#" class="product-cta draw-underline">Join Waitlist &rarr;</a>
+              <a href="updates.html" class="product-cta draw-underline">Join Waitlist &rarr;</a>
             </div>
           </div>
           <div class="product-row-details">
@@ -313,7 +313,7 @@
             <div class="product-desc">The AI brain behind your entire stack</div>
             <div class="product-status">
               <div class="product-badge">◌ COMING SOON</div>
-              <a href="#" class="product-cta draw-underline">Join Waitlist &rarr;</a>
+              <a href="updates.html" class="product-cta draw-underline">Join Waitlist &rarr;</a>
             </div>
           </div>
           <div class="product-row-details">
@@ -399,23 +399,7 @@
           <h2 class="about-headline" style="color:var(--text-heading)">What People Are Saying.</h2>
         </div>
         <div class="cards-container">
-          <!-- Card 1 -->
-          <div class="test-card" data-index="0">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Be among the first to build with Blazion. Join our early access and share your
-              story.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <div class="author-avatar mono-text">?</div>
-                <div>
-                  <div class="author-name">You?</div>
-                  <div class="author-role">First Blazer</div>
-                </div>
-              </div>
-              <a href="updates.html" class="draw-underline" style="color:white; font-size:14px; font-weight:500;">Apply
-                for Early Access &rarr;</a>
-            </div>
-          </div>
+
           <!-- Card 2 -->
           <div class="test-card" data-index="1">
             <div class="test-card-quote-mark">"</div>
@@ -423,7 +407,7 @@
               magic. It completely alters how teams prototype and ship software.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                  <img src="assets/test_1.png" class="author-avatar" alt="Evangeline H.">
+                <img src="assets/test_1.png" class="author-avatar" alt="Evangeline H.">
                 <div>
                   <div class="author-name">Evangeline H.</div>
                   <div class="author-role">Senior Protocol Engineer</div>
@@ -442,7 +426,7 @@
               complex DPDP-compliant onboarding flow in 15 minutes. This is the future.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                  <img src="assets/test_3.png" class="author-avatar" alt="Priya M.">
+                <img src="assets/test_3.png" class="author-avatar" alt="Priya M.">
                 <div>
                   <div class="author-name">Priya M.</div>
                   <div class="author-role">Product Head</div>
@@ -457,6 +441,16 @@
   </section>
 
 
+
+  <!-- 10 Standalone CTA -->
+  <section class="cta-banner-section">
+    <div class="container" style="display: flex; justify-content: center;">
+      <div class="cta-banner-content">
+        <h2 class="cta-banner-headline">Ready to build the future?</h2>
+        <a href="updates.html" class="cta-banner-link">Apply for Early Access &rarr;</a>
+      </div>
+    </div>
+  </section>
 
   <!-- 11 Footer -->
   <footer class="footer-section" id="contact">
