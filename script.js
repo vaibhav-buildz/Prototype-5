@@ -1,3 +1,11 @@
+// Page fade-in: opacity only — using transform would break position:fixed on navbar
+document.documentElement.style.opacity = '0';
+window.addEventListener('load', () => {
+  document.documentElement.style.transition = 'opacity 0.3s ease';
+  document.documentElement.style.opacity = '1';
+  setTimeout(() => { document.documentElement.style.transition = ''; }, 400);
+});
+
 document.addEventListener('DOMContentLoaded', () => {
 
 
@@ -86,22 +94,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 
-  let lastScrollY = window.scrollY;
-
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
 
-    // Background highlight
+    // Background highlight on scroll
     if (currentScrollY > 50) {
       navbar.classList.add('scrolled');
     } else {
       navbar.classList.remove('scrolled');
     }
-
-    // Hide/Show Logic
-    navbar.style.transform = currentScrollY > lastScrollY ? 'translateY(-100%)' : 'translateY(0)';
-
-    lastScrollY = currentScrollY;
   }, { passive: true });
 
   if (mobileMenuBtn) {
