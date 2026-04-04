@@ -1343,7 +1343,7 @@ section {
    05-A FOLDER CARD STACK — LIVE & RUNNING
    ============================================================ */
 .folder-section {
-  height: 300vh;
+  height: 230vh;
   /* 100vh per card */
   position: relative;
   background: var(--bg-peach);

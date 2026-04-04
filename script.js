@@ -295,29 +295,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const folderCards = document.querySelectorAll('.folder-card');
 
   if (folderSection && folderCards.length) {
-    const CARD_COUNT = folderCards.length;   // 3
-
     window.addEventListener('scroll', () => {
       const rect = folderSection.getBoundingClientRect();
-      const total = rect.height - window.innerHeight; // scrollable pixels
-      const scrolled = Math.max(0, -rect.top);           // px scrolled into section
+      const total = rect.height - window.innerHeight; // total scrollable px in section
+      const scrolled = Math.max(0, -rect.top);         // px scrolled into section
 
-      // Each card gets 1/CARD_COUNT of the total scroll distance
-      const segLen = total / CARD_COUNT;
+      // Each card animates over 40% of total scroll.
+      // Cards are staggered by 35% — card 2 enters first, card 3 follows clearly after.
+      const animWindow = total * 0.40;
+      const staggerStep = total * 0.35;
 
       folderCards.forEach((card, i) => {
         if (i === 0) {
-          // Card 1 is always in place (base)
           card.style.transform = 'translateX(0)';
           return;
         }
-        // How far into THIS card's segment is the user?
-        const segStart = segLen * i;
-        const segProgress = (scrolled - segStart) / segLen;   // −∞ → 1+
+        const segStart = staggerStep * (i - 1);
+        const segProgress = (scrolled - segStart) / animWindow;
         const clamped = Math.max(0, Math.min(segProgress, 1));
-        // Ease-out: starts fast, settles smoothly
-        const eased = 1 - (1 - clamped) * (1 - clamped);
-        // Slide from 100% (off-right) → 0% (in place)
+        // Cubic ease-out — snappy start, smooth landing
+        const eased = 1 - Math.pow(1 - clamped, 3);
         const translateX = (1 - eased) * 100;
         card.style.transform = `translateX(${translateX}%)`;
       });
