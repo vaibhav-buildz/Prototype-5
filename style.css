@@ -257,7 +257,11 @@ section {
   z-index: 1000;
   display: flex;
   align-items: center;
-  transition: border-color 0.3s, background 0.3s;
+  transition: border-color 0.3s, background 0.3s, transform 0.35s ease;
+}
+
+.navbar.nav-hidden {
+  transform: translateY(-100%);
 }
 
 .navbar.scrolled {

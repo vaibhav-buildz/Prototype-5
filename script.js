@@ -94,6 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbar = document.getElementById('navbar');
   const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
 
+  let lastScrollY = window.scrollY;
+
   window.addEventListener('scroll', () => {
     const currentScrollY = window.scrollY;
 
@@ -103,6 +105,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       navbar.classList.remove('scrolled');
     }
+
+    // Hide on scroll down, show on scroll up
+    // Always keep visible when near the top (< 80px)
+    if (currentScrollY < 80) {
+      navbar.classList.remove('nav-hidden');
+    } else if (currentScrollY > lastScrollY) {
+      navbar.classList.add('nav-hidden');    // scrolling down → hide
+    } else {
+      navbar.classList.remove('nav-hidden'); // scrolling up → show
+    }
+
+    lastScrollY = currentScrollY;
   }, { passive: true });
 
   if (mobileMenuBtn) {
