@@ -1,4 +1,11 @@
 {
+  "name": "blazion-prototype-5",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node serve.js",
+    "retheme": "node retheme.js",
+    "start": "npm run dev"
+  },
   "dependencies": {
     "play-sound": "^1.1.6"
   }
