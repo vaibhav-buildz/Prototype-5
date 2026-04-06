@@ -195,6 +195,11 @@ section {
   }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .section-label {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -2770,12 +2775,13 @@ section {
     display: block !important;
     cursor: pointer;
     z-index: 1100;
+    color: var(--white);
   }
 
   /* Force hide nav components below 1024px by default */
   #navbar .nav-links,
   #navbar .nav-cta {
-    display: none !important;
+    display: none;
   }
 
   /* Show ONLY when mobile-menu-active is present on #navbar */
@@ -2791,6 +2797,7 @@ section {
     padding: 100px 40px 40px;
     gap: 24px;
     z-index: 1050;
+    opacity: 1 !important;
     animation: fadeIn .3s var(--ease-slow) forwards;
     height: 100vh;
     overflow-y: auto;
@@ -2806,7 +2813,7 @@ section {
     padding: 0;
     background: transparent;
     animation: fadeIn .3s ease .15s forwards;
-    opacity: 0;
+    opacity: 1 !important;
   }
 
   .nav-dropdown {
