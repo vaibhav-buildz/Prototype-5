@@ -2784,8 +2784,12 @@ section {
     display: none;
   }
 
-  /* Show ONLY when mobile-menu-active is present on #navbar */
-  #navbar.mobile-menu-active .nav-links {
+  /* Show ONLY when nav-open is present on body */
+  body.nav-open {
+    overflow: hidden;
+  }
+
+  body.nav-open .nav-links {
     display: flex !important;
     flex-direction: column;
     position: fixed;
@@ -2793,17 +2797,18 @@ section {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(2, 6, 23, 0.99);
+    background: #020617; /* Solid rich black background */
     padding: 100px 40px 40px;
-    gap: 24px;
+    gap: 32px;
     z-index: 1050;
     opacity: 1 !important;
     animation: fadeIn .3s var(--ease-slow) forwards;
     height: 100vh;
     overflow-y: auto;
+    align-items: flex-start;
   }
 
-  #navbar.mobile-menu-active .nav-cta {
+  body.nav-open .nav-cta {
     display: block !important;
     position: fixed;
     bottom: 40px;
