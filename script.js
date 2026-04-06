@@ -314,19 +314,21 @@ document.addEventListener('DOMContentLoaded', () => {
       // Refined for 2 cards over 250vh
       // Each card has more room to breathe.
       // Card 2 starts halfway through the section scroll.
-      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.50;
-      const staggerStep = folderCards.length > 2 ? total * 0.35 : total * 0.50;
+      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.70;
+      const staggerStep = folderCards.length > 2 ? total * 0.35 : total * 0.20;
 
       folderCards.forEach((card, i) => {
         if (i === 0) {
           card.style.transform = 'translateX(0)';
           return;
         }
-        const segStart = staggerStep * (i - 1);
+        const segStart = folderCards.length === 2 ? staggerStep : staggerStep * (i - 1);
         const segProgress = (scrolled - segStart) / animWindow;
         const clamped = Math.max(0, Math.min(segProgress, 1));
-        // Cubic ease-out — snappy start, smooth landing
-        const eased = 1 - Math.pow(1 - clamped, 3);
+        
+        // Quad Ease-In-Out — smoother start and landing
+        const eased = clamped < 0.5 ? 2 * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 2) / 2;
+        
         const translateX = (1 - eased) * 100;
         card.style.transform = `translateX(${translateX}%)`;
       });
@@ -435,4 +437,22 @@ document.addEventListener('DOMContentLoaded', () => {
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
+
+  /* Mobile Menu Toggle Logic */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const navbar = document.getElementById('navbar');
+  
+  if (mobileMenuBtn && navbar) {
+    mobileMenuBtn.addEventListener('click', () => {
+      navbar.classList.toggle('mobile-menu-active');
+      
+      // Update icon based on state
+      const isActive = navbar.classList.contains('mobile-menu-active');
+      if (isActive) {
+        mobileMenuBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
+      } else {
+        mobileMenuBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+      }
+    });
+  }
 }());
