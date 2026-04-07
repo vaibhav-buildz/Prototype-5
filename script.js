@@ -1,9 +1,8 @@
 // Page fade-in: opacity only — using transform would break position:fixed on navbar
 document.documentElement.style.opacity = '0';
-window.addEventListener('load', () => {
-  document.documentElement.style.transition = 'opacity 0.3s ease';
+document.addEventListener('DOMContentLoaded', () => {
+  document.documentElement.style.transition = 'opacity 0.25s ease';
   document.documentElement.style.opacity = '1';
-  setTimeout(() => { document.documentElement.style.transition = ''; }, 400);
 });
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -12,13 +11,13 @@ document.addEventListener('DOMContentLoaded', () => {
   /* ---------------------------------
    * 1. PARTICLE SYSTEM
    * --------------------------------- */
-  // Hero Particles
+  // Hero Particles - Disabled on Mobile for performance
   const canvas = document.getElementById('hero-particles');
-  if (canvas) {
+  if (canvas && window.innerWidth > 1024) {
     const ctx = canvas.getContext('2d');
     let particles = [];
     const particleCount = 40;
-
+    
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -27,9 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     resize();
 
     class Particle {
-      constructor() {
-        this.reset();
-      }
+      constructor() { this.reset(); }
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
@@ -38,13 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
         this.size = Math.random() * 2 + 1;
       }
       update() {
-        this.x += this.vx;
-        this.y += this.vy;
+        this.x += this.vx; this.y += this.vy;
         if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
         if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
       }
       draw() {
-        ctx.fillStyle = '#FFD020'; // Gold dots
+        ctx.fillStyle = '#FFD020';
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
         ctx.fill();
@@ -54,9 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
     let heroAnimating = false;
-    const heroObserver = new IntersectionObserver(([entry]) => {
-      heroAnimating = entry.isIntersecting;
-    });
+    const heroObserver = new IntersectionObserver(([e]) => { heroAnimating = e.isIntersecting; });
     const heroSectionEl = document.getElementById('hero');
     if (heroSectionEl) heroObserver.observe(heroSectionEl);
 
@@ -64,21 +58,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!heroAnimating) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particles.forEach((p1, i) => {
-        p1.update();
-        p1.draw();
-
-        // Connect particles
+        p1.update(); p1.draw();
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
-          const dx = p1.x - p2.x;
-          const dy = p1.y - p2.y;
+          const dx = p1.x - p2.x; const dy = p1.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < 100) {
-            ctx.strokeStyle = `rgba(255, 208, 32, ${0.2 * (1 - dist / 100)})`; // Gold lines
-            ctx.beginPath();
-            ctx.moveTo(p1.x, p1.y);
-            ctx.lineTo(p2.x, p2.y);
-            ctx.stroke();
+            ctx.strokeStyle = `rgba(255, 208, 32, ${0.2 * (1 - dist / 100)})`;
+            ctx.beginPath(); ctx.moveTo(p1.x, p1.y); ctx.lineTo(p2.x, p2.y); ctx.stroke();
           }
         }
       });
@@ -119,11 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
     lastScrollY = currentScrollY;
   }, { passive: true });
 
-  if (mobileMenuBtn) {
-    mobileMenuBtn.addEventListener('click', () => {
-      navbar.classList.toggle('mobile-menu-active');
-    });
-  }
 
   /* ---------------------------------
    * 3. PARALLAX EFFECTS
@@ -427,65 +409,25 @@ document.addEventListener('DOMContentLoaded', () => {
         : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
     };
     
-    mobileMenuBtn.addEventListener('click', () => {
+    mobileMenuBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
       document.body.classList.toggle('nav-open');
       syncBtnState();
     });
     
     syncBtnState(); // Initial state
+    window.syncBtnState = syncBtnState; // Make it global for nav selection
   }
 
-  /* Mobile Dropdown (Accordion) - Only show options when clicked */
-  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
-    trigger.addEventListener('click', function(e) {
-      if (window.innerWidth <= 1024) {
-        e.preventDefault();
-        e.stopPropagation();
-        const parent = this.closest('.nav-dropdown-wrap');
-        parent.classList.toggle('mobile-dropdown-open');
-      }
-    });
-  });
-
-  /* Smooth scroll for ALL nav links */
-  document.querySelectorAll('.nav-link, .nav-dropdown-item, .nav-cta a, .nav-brand').forEach(link => {
-    link.addEventListener('click', (e) => {
-      // Close menu and dropdowns on selection
-      if (document.body.classList.contains('nav-open')) {
+  /* Click outside to close the mobile menu */
+  document.addEventListener('click', (e) => {
+    if (document.body.classList.contains('nav-open')) {
+      const navbar = document.getElementById('navbar');
+      if (navbar && !navbar.contains(e.target)) {
         document.body.classList.remove('nav-open');
-        document.querySelectorAll('.mobile-dropdown-open').forEach(d => d.classList.remove('mobile-dropdown-open'));
-        if (typeof syncBtnState === 'function') syncBtnState();
+        if (typeof window.syncBtnState === 'function') window.syncBtnState();
       }
-
-      const href = link.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
+    }
   });
-
-  /* Mobile Menu Toggle Logic */
-  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-  const navbar = document.getElementById('navbar');
-  
-  if (mobileMenuBtn && navbar) {
-    // Sync initial state
-    const syncState = () => {
-      const isOpen = document.body.classList.contains('nav-open');
-      if (isOpen) {
-        mobileMenuBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`;
-      } else {
-        mobileMenuBtn.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
-      }
-    };
-    
-    mobileMenuBtn.addEventListener('click', () => {
-      document.body.classList.toggle('nav-open');
-      syncState();
-    });
-    
-    syncState(); // Initial sync
-  }
 }());
