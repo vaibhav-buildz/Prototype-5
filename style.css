@@ -1072,6 +1072,53 @@ section {
   color: #999;
   border: 1px solid #DDD;
   transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  position: relative; /* Required for the tooltip positioning */
+}
+
+/* Custom CSS Tooltip bubble */
+.team-social::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: var(--text-heading, #0A0A0A);
+  color: var(--white, #FFFFFF);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 4px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
+/* Tooltip triangle */
+.team-social::before {
+  content: '';
+  position: absolute;
+  bottom: calc(100% + 4px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  border: 6px solid transparent;
+  border-top-color: var(--text-heading, #0A0A0A);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 10;
+}
+
+.team-social:hover::after,
+.team-social:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  transition-delay: 0.3s; /* Slight delay before showing */
 }
 
 .team-social:hover {
