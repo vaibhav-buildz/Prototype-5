@@ -2660,7 +2660,7 @@ section {
 
 .footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+  grid-template-columns: 2.5fr 1fr 1fr 1fr 1.2fr;
   gap: 60px;
   margin-bottom: 64px;
 }
@@ -2688,6 +2688,20 @@ section {
   color: rgba(255, 240, 230, .7);
   line-height: 1.5;
   max-width: 260px;
+  margin-bottom: 24px;
+}
+
+.footer-address {
+  font-size: 14px;
+  color: rgba(255, 240, 230, 0.6);
+  line-height: 1.6;
+  font-style: normal;
+}
+
+.footer-address strong {
+  display: block;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 4px;
 }
 
 .footer-col-header {
@@ -2938,10 +2952,10 @@ section {
 
   .footer-bottom {
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
     text-align: center;
     border-top: 1px solid rgba(255, 240, 230, 0.1);
-    padding-top: 32px;
+    padding-top: 24px;
   }
 
   .product-row-top {
@@ -3129,14 +3143,27 @@ section {
   }
 
   .footer-section {
-    padding: 60px 0 32px;
+    padding: 40px 0 24px;
   }
 
+  /* Compact 2-row layout:
+     Row 1 → Logo block (full width)
+     Row 2 → Links grid (2x2 or 3x1) */
   .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px 16px;
+    margin-bottom: 32px;
+  }
+
+  /* Logo/Location spans all columns on mobile */
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
     text-align: center;
-    justify-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(255, 240, 230, 0.1);
   }
 
   .footer-logo {
@@ -3144,11 +3171,28 @@ section {
   }
 
   .footer-tagline {
-    margin: 0 auto;
+    margin: 0 auto 16px auto;
+    font-size: 13px;
+  }
+
+  /* Tighten link columns on small screens */
+  .footer-col-header {
+    font-size: 10px;
+    margin-bottom: 14px;
+  }
+
+  .footer-links {
+    gap: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
   }
 
   .footer-legal-links {
     justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
   }
 
   .products-header-container {
