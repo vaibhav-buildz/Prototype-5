@@ -415,19 +415,47 @@ document.addEventListener('DOMContentLoaded', () => {
     if (el) observer.observe(el);
   });
 
-  /* Close dropdown on outside click */
-  document.addEventListener('click', (e) => {
-    if (!e.target.closest('.nav-dropdown-wrap')) {
-      document.querySelectorAll('.nav-dropdown-wrap').forEach(w => w.blur());
-    }
+  /* Combined mobile menu and dropdown logic */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const navbarFixed = document.getElementById('navbar');
+  
+  if (mobileMenuBtn && navbarFixed) {
+    const syncBtnState = () => {
+      const isOpen = document.body.classList.contains('nav-open');
+      mobileMenuBtn.innerHTML = isOpen 
+        ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
+        : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
+    };
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      document.body.classList.toggle('nav-open');
+      syncBtnState();
+    });
+    
+    syncBtnState(); // Initial state
+  }
+
+  /* Mobile Dropdown (Accordion) - Only show options when clicked */
+  document.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function(e) {
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        e.stopPropagation();
+        const parent = this.closest('.nav-dropdown-wrap');
+        parent.classList.toggle('mobile-dropdown-open');
+      }
+    });
   });
 
-  /* Smooth scroll for ALL nav links (including Products trigger) */
+  /* Smooth scroll for ALL nav links */
   document.querySelectorAll('.nav-link, .nav-dropdown-item, .nav-cta a, .nav-brand').forEach(link => {
     link.addEventListener('click', (e) => {
-      // Automatic menu closure on link selection
-      const navbarFixed = document.getElementById('navbar');
-      if (navbarFixed) navbarFixed.classList.remove('mobile-menu-active');
+      // Close menu and dropdowns on selection
+      if (document.body.classList.contains('nav-open')) {
+        document.body.classList.remove('nav-open');
+        document.querySelectorAll('.mobile-dropdown-open').forEach(d => d.classList.remove('mobile-dropdown-open'));
+        if (typeof syncBtnState === 'function') syncBtnState();
+      }
 
       const href = link.getAttribute('href');
       if (!href || !href.startsWith('#')) return;
