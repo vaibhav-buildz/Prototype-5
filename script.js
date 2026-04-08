@@ -420,8 +420,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.syncBtnState = syncBtnState; // Make it global for nav selection
   }
 
-  /* Click outside to close the mobile menu */
+  /* Click outside to close the mobile menu or dropdowns */
   document.addEventListener('click', (e) => {
+    // 1. Handle Mobile Menu Close
     if (document.body.classList.contains('nav-open')) {
       const navbar = document.getElementById('navbar');
       if (navbar && !navbar.contains(e.target)) {
@@ -429,5 +430,26 @@ document.addEventListener('DOMContentLoaded', () => {
         if (typeof window.syncBtnState === 'function') window.syncBtnState();
       }
     }
+
+    // 2. Handle Dropdown Close (Click Outside)
+    const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
+    if (dropdownWrap && !dropdownWrap.contains(e.target)) {
+      dropdownWrap.classList.remove('dropdown-open');
+    }
   });
+
+  /* Products Dropdown Toggle (Tap/Click for Mobile) */
+  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+  const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
+
+  if (dropdownTrigger && dropdownWrap) {
+    dropdownTrigger.addEventListener('click', (e) => {
+      // Toggle only on mobile/touch viewports (<= 1024px)
+      if (window.innerWidth <= 1024) {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdownWrap.classList.toggle('dropdown-open');
+      }
+    });
+  }
 }());
