@@ -537,7 +537,7 @@ section {
 
 .nav-cta a:hover {
   background: #94A3B8;
-  color: var(--white);
+  color: #0F172A;
   box-shadow: 0 4px 15px rgba(148, 163, 184, 0.3);
 }
 
@@ -669,8 +669,8 @@ section {
 
 .btn-primary {
   background: #94A3B8;
-  /* Indigo Lead Action */
-  color: var(--white);
+  /* Slate Lead Action */
+  color: #0F172A;
   height: 52px;
   padding: 0 36px;
   font-size: 16px;
@@ -686,6 +686,7 @@ section {
 
 .btn-primary:hover {
   background: #6B7280;
+  color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 12px 24px rgba(148, 163, 184, 0.4);
 }
@@ -1340,7 +1341,7 @@ section {
 
 .folder-cta:hover {
   background: #94A3B8;
-  color: white;
+  color: #0F172A;
   box-shadow: 0 8px 16px rgba(148, 163, 184, 0.2);
 }
 
@@ -2283,7 +2284,7 @@ section {
   height: 56px;
   padding: 0 32px;
   background: #94A3B8;
-  color: var(--white);
+  color: #0F172A;
   font-size: 16px;
   font-weight: 700;
   border: none;
@@ -2296,6 +2297,7 @@ section {
 
 .newsletter-submit:hover {
   background: #6B7280;
+  color: var(--white);
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(148, 163, 184, 0.4);
 }
