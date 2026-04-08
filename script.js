@@ -400,10 +400,13 @@ document.addEventListener('DOMContentLoaded', () => {
   /* Combined mobile menu and dropdown logic */
   const mobileMenuBtn = document.getElementById('mobile-menu-btn');
   const navbarFixed = document.getElementById('navbar');
+  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
+  const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
   
   if (mobileMenuBtn && navbarFixed) {
     const syncBtnState = () => {
       const isOpen = document.body.classList.contains('nav-open');
+      // Update SVG to either Hamburger or Close (X)
       mobileMenuBtn.innerHTML = isOpen 
         ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
         : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
@@ -417,31 +420,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     
     syncBtnState(); // Initial state
-    window.syncBtnState = syncBtnState; // Make it global for nav selection
+    window.syncBtnState = syncBtnState;
   }
 
-  /* Click outside to close the mobile menu or dropdowns */
-  document.addEventListener('click', (e) => {
-    // 1. Handle Mobile Menu Close
-    if (document.body.classList.contains('nav-open')) {
-      const navbar = document.getElementById('navbar');
-      if (navbar && !navbar.contains(e.target)) {
-        document.body.classList.remove('nav-open');
-        if (typeof window.syncBtnState === 'function') window.syncBtnState();
-      }
-    }
-
-    // 2. Handle Dropdown Close (Click Outside)
-    const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
-    if (dropdownWrap && !dropdownWrap.contains(e.target)) {
-      dropdownWrap.classList.remove('dropdown-open');
-    }
-  });
-
-  /* Products Dropdown Toggle (Tap/Click for Mobile) */
-  const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
-  const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
-
+  /* Products Dropdown Toggle (Accordion for Mobile) */
   if (dropdownTrigger && dropdownWrap) {
     dropdownTrigger.addEventListener('click', (e) => {
       // Toggle only on mobile/touch viewports (<= 1024px)
@@ -451,5 +433,38 @@ document.addEventListener('DOMContentLoaded', () => {
         dropdownWrap.classList.toggle('dropdown-open');
       }
     });
+  }
+
+  /* Click outside to close the mobile menu or dropdowns */
+  document.addEventListener('click', (e) => {
+    // 1. Handle Mobile Menu Close
+    if (document.body.classList.contains('nav-open')) {
+      const navbar = document.getElementById('navbar');
+      if (navbar && !navbar.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        document.body.classList.remove('nav-open');
+        if (typeof window.syncBtnState === 'function') window.syncBtnState();
+      }
+    }
+
+    // 2. Handle Dropdown Close (Click Outside)
+    if (dropdownWrap && !dropdownWrap.contains(e.target)) {
+      dropdownWrap.classList.remove('dropdown-open');
+    }
+  });
+
+  /* Testimonials Carousel Indicator Sync */
+  const tGrid = document.querySelector('.testimonials-grid');
+  const tDots = document.querySelectorAll('.t-dot');
+
+  if (tGrid && tDots.length) {
+    tGrid.addEventListener('scroll', () => {
+      const scrollLeft = tGrid.scrollLeft;
+      const cardWidth = tGrid.querySelector('.test-card').offsetWidth + 16; // width + gap
+      const index = Math.round(scrollLeft / cardWidth);
+
+      tDots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+    }, { passive: true });
   }
 }());

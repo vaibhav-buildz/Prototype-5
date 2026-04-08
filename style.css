@@ -701,18 +701,33 @@ section {
 }
 
 .hero-abstract {
+  max-width: 100%;
   padding: 24px 0 24px 24px;
   overflow: hidden;
 }
 
 .hero-image {
-  width: 100%;
+  max-width: 100%;
+  height: auto;
+  display: block;
   max-height: 520px;
   object-fit: contain;
   border-radius: 16px;
   filter: drop-shadow(0 12px 40px rgba(15, 23, 42, .18));
   animation: hero-float 8s ease-in-out infinite;
   transition: all 0.5s var(--ease-slow);
+}
+
+@media (max-width: 400px) {
+  .hero-abstract {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-abstract {
+    padding-left: 0;
+  }
 }
 
 @keyframes hero-float {
@@ -1694,6 +1709,7 @@ section {
   background: var(--bg-cream-dark);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
+  overflow-x: hidden; /* Safety against horizontal bleed */
 }
 
 .dx-grid {
@@ -1805,6 +1821,12 @@ section {
 }
 
 /* Mobile Touch Target Optimization (375px - 430px) */
+@media (max-width: 480px) {
+  .terminal-body {
+    padding: 24px 20px;
+  }
+}
+
 @media (max-width: 430px) {
   #copy-code-btn {
     min-width: 44px;
@@ -1817,6 +1839,8 @@ section {
     justify-content: center;
   }
 }
+
+
 
 .terminal-dots {
   display: flex;
@@ -1854,6 +1878,7 @@ section {
   line-height: 1.8;
   color: #D1D5DB;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Smooth iOS inertial scrolling */
 }
 
 .code-line {
@@ -2226,22 +2251,54 @@ section {
   color: var(--text-heading);
 }
 
-.testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+@media (max-width: 768px) {
+  .testimonials-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 20px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+  
+  .testimonials-grid::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .test-card {
+    min-width: 85vw;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
 }
 
-@media (max-width: 1024px) {
-  .testimonials-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.testimonial-indicators {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 24px;
 }
 
 @media (max-width: 768px) {
-  .testimonials-grid {
-    grid-template-columns: 1fr;
+  .testimonial-indicators {
+    display: flex;
   }
+}
+
+.t-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.1);
+  transition: all 0.3s ease;
+}
+
+.t-dot.active {
+  background: var(--accent-dark);
+  transform: scale(1.2);
+  width: 20px;
+  border-radius: 10px;
 }
 
 .testimonials-section {
@@ -2980,11 +3037,22 @@ section {
   }
 
   .mobile-menu-btn {
-    display: block !important;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
     z-index: 1100;
     color: var(--white);
-    scale: 0.85;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s;
+  }
+
+  .mobile-menu-btn:active {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(0.95);
   }
 
   /* Hide desktop links */
@@ -3055,22 +3123,34 @@ section {
     width: 100%;
     background: transparent !important;
     border: none !important;
-    padding: 8px 0 0 20px !important;
-    margin: 4px 0 12px 0 !important;
+    padding: 0 0 0 16px !important;
+    margin: 8px 0 0 0 !important;
     gap: 4px;
     opacity: 1 !important;
     pointer-events: auto !important;
     transform: none !important;
   }
 
-  .nav-dropdown-wrap.mobile-dropdown-open .nav-dropdown {
+  .nav-dropdown-wrap.dropdown-open .nav-dropdown {
     display: flex !important;
   }
 
   .nav-dropdown-item {
     font-size: 14px;
-    padding: 10px 0;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
     color: rgba(255, 255, 255, 0.6);
+  }
+
+  .nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 0;
+    font-size: 16px;
+    color: var(--white);
   }
 
   .nav-dropdown-item:hover {
@@ -3110,7 +3190,7 @@ section {
   .hero-right {
     display: flex;
     justify-content: center;
-    margin-top: 24px;
+    margin-top: 48px; /* Increased for better mobile breathing room */
   }
 
   .hero-abstract {
