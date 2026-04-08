@@ -1913,20 +1913,28 @@ section {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    gap: 16px;
-    padding-bottom: 20px;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
+    gap: 0;
+    padding: 8px 20px 24px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    margin: 0 -20px;
   }
-  
+
   .testimonials-grid::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
   }
 
   .test-card {
-    min-width: 85vw;
-    scroll-snap-align: start;
+    min-width: calc(100vw - 40px);
+    max-width: calc(100vw - 40px);
+    scroll-snap-align: center;
     flex-shrink: 0;
+    border: 1.5px solid var(--border-silver);
+    background: var(--white);
+    box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+    padding: 24px;
+    border-radius: 16px;
+    margin: 0 20px;
   }
 }
 
@@ -1973,7 +1981,7 @@ section {
 
 .test-card {
   background: var(--white);
-  border: 1px solid rgba(226, 232, 240, 0.15);
+  border: 1.5px solid var(--border-light);
   border-radius: 16px;
   padding: 32px;
   position: relative !important;
@@ -1983,6 +1991,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 2px 12px rgba(15, 23, 42, 0.06);
 }
 
 .test-card:hover {
@@ -2016,7 +2025,7 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid rgba(226, 232, 240, 0.1);
+  border-top: 1px solid rgba(226, 232, 240, 0.6);
   padding-top: 20px;
 }
 
