@@ -1080,40 +1080,7 @@ section {
     border-bottom: none;
   }
 
-  .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    text-align: center;
-  }
 
-  .footer-grid > div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .footer-links a {
-    justify-content: center; /* Center-align link text in single column */
-    width: 100%;
-  }
-
-  .footer-address {
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-  .footer-hq-address {
-    border-left: none;
-    padding-left: 0;
-    text-align: center;
-  }
-
-  .footer-hq-address a {
-    min-height: 44px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-  }
 }
 
 .product-watermark {
@@ -3221,6 +3188,37 @@ section {
     align-items: center;
   }
   .team-socials {
+    justify-content: center;
+  }
+
+  /* Footer Mobile Overrides (v2) - Fixed Precedence */
+  .footer-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .footer-grid > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-links a {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .footer-hq-address {
+    border-left: none !important;
+    padding-left: 0 !important;
+    text-align: center;
+  }
+
+  .footer-hq-address a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
   }
 }
