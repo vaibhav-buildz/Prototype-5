@@ -4,8 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Updates & Reach - BLAZION | AI-Native Infrastructure</title>
-  <meta name="description" content="Stay updated with Blazion's progress and get in touch with our team of engineers.">
+  <title>Updates — Blazion</title>
+  <meta name="description" content="Join the Blazion private beta. Get early access to AI-native infrastructure built for developers.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -40,7 +40,7 @@
         </li>
         <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
         <li class="nav-links-logo">
-          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
+          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center" loading="lazy"></a>
         </li>
         <li><a href="updates.html" class="nav-link draw-underline active" data-section="contact">Contact</a></li>
         <li><a href="about.html" class="nav-link draw-underline">About</a></li>
@@ -123,7 +123,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
         <div>
           <a href="index.html#hero" class="footer-logo">
-            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" style="filter: brightness(0) invert(1);">
+            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" loading="lazy" style="filter: brightness(0) invert(1);">
             BLAZION
           </a>
           <p class="footer-tagline">Build. Deploy. Blaze.</p>
@@ -199,6 +199,19 @@
         document.getElementById('newsletter-success').style.display = 'block';
       });
     }
+  </script>
+  <script>
+    document.querySelectorAll('a[href]').forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && href.endsWith('.html')) {
+        link.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.body.style.opacity = '0';
+          document.body.style.transition = 'opacity 0.2s ease';
+          setTimeout(() => { window.location.href = href; }, 200);
+        });
+      }
+    });
   </script>
 </body>
 

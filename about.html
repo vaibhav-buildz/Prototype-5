@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Blazion - The Builders & Our Mission</title>
+  <title>About — Blazion</title>
   <meta name="description"
-    content="Meet the team behind Blazion — builders obsessed with AI-native infrastructure, developer experience, and shipping fast.">
+    content="Meet the builders behind Blazion — the AI-native infrastructure layer for modern software.">
   <meta property="og:title" content="About Blazion — The Builders">
   <meta property="og:description"
     content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
@@ -48,7 +48,7 @@
         </li>
         <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
         <li class="nav-links-logo">
-          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
+          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center" loading="lazy"></a>
         </li>
         <li><a href="updates.html" class="nav-link draw-underline" data-section="contact">Contact</a></li>
         <li><a href="about.html" class="nav-link draw-underline active">About</a></li>
@@ -110,7 +110,7 @@
         <article class="team-card scroll-reveal">
           <div class="team-card-photo-wrap">
             <div class="team-card-photo">
-              <img src="assets/avatar_1.png" alt="Aditya kr Singh" class="team-photo-img">
+              <img src="assets/avatar_1.png" alt="Aditya kr Singh" class="team-photo-img" loading="lazy">
             </div>
           </div>
           <div class="team-card-body">
@@ -141,7 +141,7 @@
         <article class="team-card scroll-reveal">
           <div class="team-card-photo-wrap">
             <div class="team-card-photo">
-              <img src="assets/avatar_2.png" alt="Aryan Yadav" class="team-photo-img">
+              <img src="assets/avatar_2.png" alt="Aryan Yadav" class="team-photo-img" loading="lazy">
             </div>
           </div>
           <div class="team-card-body">
@@ -171,7 +171,7 @@
         <article class="team-card scroll-reveal">
           <div class="team-card-photo-wrap">
             <div class="team-card-photo">
-              <img src="assets/avatar_3.png" alt="Vaibhav Yadav" class="team-photo-img">
+              <img src="assets/avatar_3.png" alt="Vaibhav Yadav" class="team-photo-img" loading="lazy">
             </div>
           </div>
           <div class="team-card-body">
@@ -220,7 +220,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
         <div>
           <a href="index.html#hero" class="footer-logo">
-            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" style="filter: brightness(0) invert(1);">
+            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" loading="lazy" style="filter: brightness(0) invert(1);">
             BLAZION
           </a>
           <p class="footer-tagline">Build. Deploy. Blaze.</p>
@@ -279,7 +279,7 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>var yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();</script>
   <script>
     document.querySelectorAll('a[href]').forEach(link => {
       const href = link.getAttribute('href');

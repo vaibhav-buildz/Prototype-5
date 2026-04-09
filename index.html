@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BLAZION - AI-Native Software Ecosystem</title>
+  <title>Blazion — AI-Native Software Ecosystem</title>
   <meta name="description"
-    content="Blazion is an AI-native, vertically integrated software creation and deployment ecosystem. Build, deploy, and scale with Toolvise, Blazion Form, and more.">
+    content="Blazion is the AI-native, vertically integrated software creation and deployment ecosystem for developers who ship without compromise.">
   <meta property="og:title" content="Blazion — AI-Native Software Ecosystem">
   <meta property="og:description"
     content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
@@ -94,7 +94,7 @@
       </div>
       <div class="hero-right">
         <div class="hero-abstract" id="hero-parallax">
-          <img src="assets/hero.png" alt="Blazion Infinite Infrastructure Visual" class="hero-image">
+          <img src="assets/hero.png" alt="Blazion Infinite Infrastructure Visual" class="hero-image" loading="eager">
         </div>
       </div>
     </div>
@@ -389,7 +389,7 @@
               choices for weeks, but it gave me a clear path in under a minute.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/avatar_marcus_dev_1775304690116.png" class="author-avatar" alt="Marcus T.">
+                <img src="assets/avatar_marcus_dev_1775304690116.png" class="author-avatar" alt="Marcus T." loading="lazy">
                 <div>
                   <div class="author-name">Marcus T.</div>
                   <div class="author-role">Indie Developer</div>
@@ -406,7 +406,7 @@
               magic. It completely alters how teams prototype and ship software.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/test_1.png" class="author-avatar" alt="Evangeline H.">
+                <img src="assets/test_1.png" class="author-avatar" alt="Evangeline H." loading="lazy">
                 <div>
                   <div class="author-name">Evangeline H.</div>
                   <div class="author-role">Senior Protocol Engineer</div>
@@ -423,7 +423,7 @@
               internal microservices. Pure unadulterated velocity.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/test_3.png" class="author-avatar" alt="Priya M.">
+                <img src="assets/test_3.png" class="author-avatar" alt="Priya M." loading="lazy">
                 <div>
                   <div class="author-name">Priya M.</div>
                   <div class="author-role">Product Head</div>
@@ -440,7 +440,7 @@
               time on UPI and Aadhaar validations alone.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/avatar_rohan_cto_1775304707697.png" class="author-avatar" alt="Rohan K.">
+                <img src="assets/avatar_rohan_cto_1775304707697.png" class="author-avatar" alt="Rohan K." loading="lazy">
                 <div>
                   <div class="author-name">Rohan K.</div>
                   <div class="author-role">CTO, Fintech Startup</div>
@@ -457,7 +457,7 @@
               Edge and seen a 40% jump in Lighthouse scores.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/avatar_sarah_engineer_1775304724280.png" class="author-avatar" alt="Sarah J.">
+                <img src="assets/avatar_sarah_engineer_1775304724280.png" class="author-avatar" alt="Sarah J." loading="lazy">
                 <div>
                   <div class="author-name">Sarah J.</div>
                   <div class="author-role">Full-stack Engineer</div>
@@ -474,7 +474,7 @@
               yet so powerful. I feel like I have a DevOps team of ten.</div>
             <div class="test-card-bottom">
               <div class="test-card-author">
-                <img src="assets/avatar_liam_founder_1775304745143.png" class="author-avatar" alt="Liam O.">
+                <img src="assets/avatar_liam_founder_1775304745143.png" class="author-avatar" alt="Liam O." loading="lazy">
                 <div>
                   <div class="author-name">Liam O.</div>
                   <div class="author-role">Solo Founder</div>
@@ -519,7 +519,7 @@
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
         <div>
           <a href="#hero" class="footer-logo">
-            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" style="filter: brightness(0) invert(1);">
+            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" loading="lazy" style="filter: brightness(0) invert(1);">
             BLAZION
           </a>
           <p class="footer-tagline">Build. Deploy. Blaze.</p>
@@ -578,7 +578,7 @@
   </footer>
 
   <script src="script.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+  <script>var yearEl = document.getElementById('year'); if (yearEl) yearEl.textContent = new Date().getFullYear();</script>
   <script>
     const form = document.querySelector('.newsletter-form');
     if (form) {

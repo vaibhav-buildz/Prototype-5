@@ -3159,6 +3159,66 @@ section {
   }
 }
 
+/* Fix 4: Logo stability at mid-breakpoints (768–900px) */
+@media (min-width: 768px) and (max-width: 900px) {
+  .nav-links {
+    gap: 18px;
+  }
+  .nav-links-logo {
+    padding: 0 8px;
+  }
+  .nav-logo-img-center {
+    height: 36px;
+  }
+  .nav-link {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+}
+
+/* Fix 15: Builder cards at exactly 480px single column */
+@media (max-width: 480px) {
+  .team-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+  }
+  .team-card {
+    border-right: none !important;
+    padding: 16px !important;
+  }
+  .team-card-photo-wrap {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto 12px;
+  }
+  .team-card-photo {
+    width: 88px;
+    height: 88px;
+    margin: 0 auto;
+  }
+  .team-name {
+    font-size: 20px;
+  }
+  .team-card-body {
+    text-align: center;
+    align-items: center;
+  }
+  .team-socials {
+    justify-content: center;
+  }
+}
+
+/* Fix 23: Footer links 44px tap target on mobile */
+@media (max-width: 768px) {
+  .footer-links a {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+  .footer-address {
+    line-height: 1.8;
+  }
+}
+
 @keyframes pulse-dot {
 
   0%,
