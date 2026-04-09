@@ -2503,7 +2503,7 @@ section {
 /* Headquarters address block */
 .footer-hq-address {
   border-left: 2px solid #94A3B8;
-  padding-left: 8px;
+  padding-left: 12px;
   font-size: 14px;
   color: rgba(255, 240, 230, 0.75);
   line-height: 1.8;
@@ -3160,38 +3160,61 @@ section {
   }
 }
 
-/* Fix 15: Builder cards at exactly 480px single column */
+/* Responsive Overrides (Standardized) */
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 32px 24px !important;
+  }
+  
+  .team-grid > article:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  .footer-links a {
+    min-height: 44px;
+    padding: 8px 0;
+  }
+
+  .footer-address {
+    line-height: 1.8;
+  }
+}
+
 @media (max-width: 480px) {
   .team-grid {
     grid-template-columns: 1fr !important;
-    gap: 24px;
+    gap: 24px !important;
   }
+  
+  .team-grid > article:last-child:nth-child(odd) {
+    grid-column: unset;
+    max-width: 100%;
+    margin: 0;
+  }
+  
   .team-card {
-    border-right: none !important;
-    padding: 16px !important;
+    padding: 24px 16px !important;
+    min-height: auto !important;
   }
-  .team-card-photo-wrap {
-    width: 88px;
-    height: 88px;
+  
+  .team-card-photo-wrap,
+  .team-photo-img {
+    width: 96px !important;
+    height: 96px !important;
     margin: 0 auto 12px;
   }
-  .team-card-photo {
-    width: 88px;
-    height: 88px;
-    margin: 0 auto;
-  }
-  .team-name {
-    font-size: 20px;
-  }
+  
   .team-card-body {
     text-align: center;
-    align-items: center;
   }
+  
   .team-socials {
     justify-content: center;
   }
 
-  /* Footer Mobile Overrides (v2) - Fixed Precedence */
   .footer-grid {
     grid-template-columns: 1fr !important;
     gap: 40px;
@@ -3220,17 +3243,6 @@ section {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-/* Fix 23: Footer links 44px tap target on mobile */
-@media (max-width: 768px) {
-  .footer-links a {
-    min-height: 44px;
-    padding: 8px 0;
-  }
-  .footer-address {
-    line-height: 1.8;
   }
 }
 

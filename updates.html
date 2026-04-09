@@ -96,10 +96,10 @@
             method="POST">
             <div class="newsletter-input-group" style="margin-bottom: 24px;">
               <input type="email" name="email" class="newsletter-input" placeholder="Work email address" required>
-              <button type="submit" class="newsletter-submit">Join Beta &rarr;</button>
+              <button type="submit" class="newsletter-submit" onclick="this.style.display='none'; document.getElementById('beta-success').style.display='block'">Join Beta &rarr;</button>
             </div>
           </form>
-          <p class="newsletter-success" id="newsletter-success"
+          <p class="newsletter-success" id="beta-success"
             style="display: none; color: #4ade80; font-family: var(--font-mono); font-size: 14px; margin-top: 16px;">
             You're on the list. We'll be in touch.</p>
 
