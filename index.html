@@ -159,6 +159,30 @@
         </div>
       </div>
 
+      <!-- Card 3: BLAZION STORE -->
+      <div class="folder-card folder-card-3" data-index="2">
+        <div class="folder-tab">
+          <span class="folder-tab-label">STORE</span>
+        </div>
+        <div class="folder-card-inner">
+          <div class="folder-section-tag">WHAT WE'VE SHIPPED</div>
+          <div class="folder-badge">PRODUCTION</div>
+          <h2 class="folder-product-name">BLAZION STORE</h2>
+          <p class="folder-product-desc">The curated marketplace for developer tools, templates, and production-ready components — built by the Blazion community, for the Blazion community.</p>
+          <div class="folder-tags">
+            <span>Curated Tools</span><span>Templates</span>
+            <span>Components</span><span>Community Built</span>
+          </div>
+          <ul class="product-features-list">
+            <li><strong>Curated Marketplace:</strong> Hand-picked developer tools and resources vetted by the Blazion team.</li>
+            <li><strong>Production Templates:</strong> Ship faster with battle-tested starter kits and boilerplates.</li>
+            <li><strong>Component Library:</strong> Drag-and-drop UI components built for Blazion's design system.</li>
+            <li><strong>Community Driven:</strong> Publish, share, and monetize your own tools on the platform.</li>
+          </ul>
+          <a href="updates.html" class="folder-cta">Explore Store &rarr;</a>
+        </div>
+      </div>
+
 
     </div>
   </section>
@@ -534,8 +558,8 @@
           <div class="footer-links">
             <a href="https://toolvise.vercel.app/" target="_blank">Toolvise</a>
             <a href="https://blazion-form.vercel.app/" target="_blank">Blazion Form</a>
-            <a href="#upcoming">Blazion Studio</a>
-            <a href="#upcoming">Blazion Cloud</a>
+            <a href="index.html#upcoming">Blazion Studio</a>
+            <a href="index.html#upcoming">Blazion Cloud</a>
           </div>
         </div>
         <div>
@@ -550,10 +574,10 @@
         <div>
           <div class="footer-col-header">RESOURCES</div>
           <div class="footer-links">
-            <a href="updates.html">Documentation</a>
-            <a href="updates.html">API Status</a>
-            <a href="updates.html">Help Center</a>
-            <a href="updates.html">Guides</a>
+            <a href="updates.html#early-access" title="Coming soon">Documentation</a>
+            <a href="updates.html#early-access" title="Coming soon">API Status</a>
+            <a href="updates.html#early-access" title="Coming soon">Help Center</a>
+            <a href="updates.html#early-access" title="Coming soon">Guides</a>
           </div>
         </div>
         <div>
@@ -577,11 +601,11 @@
       <div class="footer-bottom" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
         <div>© 2025 Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
-          <a href="updates.html">Privacy Policy</a>
+          <a href="updates.html#early-access" title="Coming soon">Privacy Policy</a>
           <span>·</span>
-          <a href="updates.html">Terms of Service</a>
+          <a href="updates.html#early-access" title="Coming soon">Terms of Service</a>
           <span>·</span>
-          <a href="updates.html">Security</a>
+          <a href="updates.html#early-access" title="Coming soon">Security</a>
         </div>
       </div>
     </div>
@@ -613,10 +637,10 @@
       const code = document.querySelector('.terminal-body').innerText;
       navigator.clipboard.writeText(code).then(() => {
         const btn = document.getElementById('copy-code-btn');
-        btn.textContent = 'COPIED';
+        btn.textContent = 'COPIED ✓';
         btn.style.color = '#22c55e';
         btn.style.borderColor = '#22c55e';
-        setTimeout(() => { btn.textContent = 'COPY'; btn.style.color = '#888'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 2000);
+        setTimeout(() => { btn.textContent = 'COPY'; btn.style.color = '#888'; btn.style.borderColor = 'rgba(255,255,255,0.1)'; }, 1500);
       });
     }
   </script>

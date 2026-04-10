@@ -479,6 +479,16 @@ section {
   color: var(--white);
 }
 
+.nav-dd-tag--prod {
+  margin-left: 6px;
+  font-size: 10px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  opacity: 0.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
 /* Dot indicator */
 .nav-dd-dot {
   font-size: 7px;
