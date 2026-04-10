@@ -1143,7 +1143,7 @@ section {
   border-radius: 24px 24px 0 0;
   overflow: hidden;
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.08);
-  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* 600ms Easing Duration */
+  /* JS manages transform; removed slow CSS transition to prevent scroll-jitter */
 }
 
 /* Card colour variants */
@@ -3108,11 +3108,35 @@ section {
     padding: 24px 0 16px;
   }
 
-  /* Compact 2-column layout for link columns on mobile */
+  /* Ultra-compact 2-row layout for footer on mobile */
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 12px;
-    margin-bottom: 24px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px 8px;
+    margin-bottom: 20px;
+  }
+  
+  /* Hide redundant Connect column on mobile since the email is in Headquarters */
+  .footer-grid > div:nth-child(4) {
+    display: none;
+  }
+
+  /* Let Headquarters span full width to breathe */
+  .footer-grid > div:nth-child(5) {
+    grid-column: span 3;
+  }
+  
+  .footer-hq-address {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .footer-hq-address a {
+    min-height: auto !important;
+    margin-top: 4px !important;
+  }
+
+  .footer-container > div[style] {
+    margin-bottom: 20px !important;
   }
 
   .footer-logo {

@@ -293,24 +293,22 @@ document.addEventListener('DOMContentLoaded', () => {
       const total = rect.height - window.innerHeight; // total scrollable px in section
       const scrolled = Math.max(0, -rect.top);         // px scrolled into section
 
-      // Refined for 2 cards over 250vh
-      // Each card has more room to breathe.
-      // Card 2 starts halfway through the section scroll.
-      // Configuration for 2 cards (Toolvise, Blazion Form)
-      // animWindow is the vertical scroll distance over which the card moves
-      // To slow down the "step" by 50% as requested, we use a wider relative window
-      const animWindow = total * 1.5; 
-      const staggerStep = total * 0.1; 
+      // We have 2 cards. Card 1 is static. Card 2 animate from right to left.
+      // We want Card 2 to start animating slightly after scroll starts, 
+      // and finish animating just before the scroll section ends.
+      const staggerStep = total * 0.05; 
+      const animWindow = total * 0.85; 
       
       folderCards.forEach((card, i) => {
-        // Skip first card (it remains static/background)
+        // Skip first card
         if (i === 0) return;
         
         const cardProgress = (scrolled - staggerStep) / animWindow;
+        // smooth step interpolation instead of pure linear
         const clamped = Math.max(0, Math.min(cardProgress, 1));
         
-        // Quad Ease-In-Out — smoother start and landing
-        const eased = clamped < 0.5 ? 2 * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 2) / 2;
+        // Sine ease-in-out for a very smooth arrival without harsh stops
+        const eased = -(Math.cos(Math.PI * clamped) - 1) / 2;
         
         const translateX = (1 - eased) * 100;
         card.style.transform = `translateX(${translateX}%)`;
