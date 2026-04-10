@@ -296,17 +296,18 @@ document.addEventListener('DOMContentLoaded', () => {
       // Refined for 2 cards over 250vh
       // Each card has more room to breathe.
       // Card 2 starts halfway through the section scroll.
-      const animWindow = folderCards.length > 2 ? total * 0.40 : total * 0.70;
-      const staggerStep = folderCards.length > 2 ? total * 0.35 : total * 0.20;
-
+      // Configuration for 2 cards (Toolvise, Blazion Form)
+      // animWindow is the vertical scroll distance over which the card moves
+      // To slow down the "step" by 50% as requested, we use a wider relative window
+      const animWindow = total * 1.5; 
+      const staggerStep = total * 0.1; 
+      
       folderCards.forEach((card, i) => {
-        if (i === 0) {
-          card.style.transform = 'translateX(0)';
-          return;
-        }
-        const segStart = folderCards.length === 2 ? staggerStep : staggerStep * (i - 1);
-        const segProgress = (scrolled - segStart) / animWindow;
-        const clamped = Math.max(0, Math.min(segProgress, 1));
+        // Skip first card (it remains static/background)
+        if (i === 0) return;
+        
+        const cardProgress = (scrolled - staggerStep) / animWindow;
+        const clamped = Math.max(0, Math.min(cardProgress, 1));
         
         // Quad Ease-In-Out — smoother start and landing
         const eased = clamped < 0.5 ? 2 * clamped * clamped : 1 - Math.pow(-2 * clamped + 2, 2) / 2;
