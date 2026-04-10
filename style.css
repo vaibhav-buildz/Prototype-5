@@ -1116,14 +1116,12 @@ section {
    05-A FOLDER CARD STACK — LIVE & RUNNING
    ============================================================ */
 .folder-section {
-  height: 220vh;
-  /* Deep scroll for 2 cards */
+  height: 350vh; /* Increased for smoother/slower scroll step */
   position: relative;
   background: var(--bg-light);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
   margin-bottom: 20px;
-  /* Spacer before next section */
 }
 
 .folder-sticky {
@@ -1145,6 +1143,7 @@ section {
   border-radius: 24px 24px 0 0;
   overflow: hidden;
   box-shadow: -8px 0 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1); /* 600ms Easing Duration */
 }
 
 /* Card colour variants */
@@ -2949,15 +2948,30 @@ section {
   .folder-sticky {
     position: relative;
     height: auto;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 5%;
+    scrollbar-width: none; /* Hide scrollbar for premium look */
+  }
+
+  .folder-sticky::-webkit-scrollbar {
+    display: none;
   }
 
   .folder-card {
     position: relative;
+    flex: 0 0 90%; /* Show peeking next card */
+    max-width: 90%;
+    margin: 0 10px;
     flex-direction: column;
     border-radius: 16px;
     height: auto;
-    min-height: 100vh;
+    min-height: 80vh;
     transform: none !important;
+    scroll-snap-align: center;
   }
 
   .folder-tab {
