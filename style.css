@@ -3263,3 +3263,119 @@ section {
 
 /* Page fade-in handled by JS transition on body.style.opacity to avoid
    creating a stacking context that breaks position:fixed on the navbar */
+
+/* ==========================================================================
+   Founder Quotes Carousel (About Page)
+   ========================================================================== */
+.founder-quotes-carousel {
+  margin: 60px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.quotes-card-container {
+  position: relative;
+  width: 100%;
+  max-width: 800px;
+  background-color: #D32F2F; /* Cherry Red */
+  color: #FFFFFF; /* White */
+  padding: 60px 40px;
+  border-radius: 0; /* Sharp corners */
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.quotes-card-grain {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background-image: url('data:image/svg+xml,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
+  pointer-events: none;
+  z-index: 1;
+}
+
+.quotes-slider {
+  position: relative;
+  z-index: 2;
+  min-height: 200px;
+  display: flex;
+}
+
+.quote-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  pointer-events: none;
+}
+
+.quote-slide.active {
+  position: relative; /* Take up space */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.quote-mark {
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.3);
+  display: block;
+  margin-bottom: 20px;
+}
+
+.quote-text {
+  font-size: 24px;
+  line-height: 1.5;
+  font-weight: 500;
+  margin-bottom: 30px;
+  letter-spacing: -0.01em;
+}
+
+.quote-author {
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0.9;
+  font-style: normal;
+}
+
+.quotes-dots {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+  padding-bottom: 10px;
+}
+
+.quote-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.quote-dot.active {
+  background-color: #FFFFFF;
+  transform: scale(1.2);
+}
+
+@media (max-width: 768px) {
+  .quotes-card-container {
+    padding: 40px 20px;
+  }
+  .quote-text {
+    font-size: 20px;
+  }
+}

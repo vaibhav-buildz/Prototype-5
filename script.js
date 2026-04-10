@@ -467,4 +467,57 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }, { passive: true });
   }
+
+  /* ---------------------------------
+   * 13. FOUNDER QUOTES CAROUSEL
+   * --------------------------------- */
+  const quotesSlides = document.querySelectorAll('.quote-slide');
+  const quotesDots = document.querySelectorAll('.quote-dot');
+  
+  if(quotesSlides.length > 0) {
+    let currentQuoteSlide = 0;
+    let quoteSlideInterval;
+
+    const showQuoteSlide = (index) => {
+      quotesSlides.forEach((slide, i) => {
+        if (i === index) {
+          slide.classList.add('active');
+        } else {
+          slide.classList.remove('active');
+        }
+      });
+
+      quotesDots.forEach((dot, i) => {
+        if (i === index) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+    };
+
+    const nextQuoteSlide = () => {
+      currentQuoteSlide = (currentQuoteSlide + 1) % quotesSlides.length;
+      showQuoteSlide(currentQuoteSlide);
+    };
+
+    const startQuoteSlideshow = () => {
+      quoteSlideInterval = setInterval(nextQuoteSlide, 3000);
+    };
+
+    const resetQuoteSlideshow = () => {
+      clearInterval(quoteSlideInterval);
+      startQuoteSlideshow();
+    };
+
+    quotesDots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentQuoteSlide = index;
+        showQuoteSlide(currentQuoteSlide);
+        resetQuoteSlideshow();
+      });
+    });
+
+    startQuoteSlideshow();
+  }
 }());
