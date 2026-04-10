@@ -202,7 +202,7 @@
       <!-- Founder Quotes Carousel -->
 <section style="padding: 80px 5%; background: var(--bg, #0b0f1a);">
   <div style="max-width: 780px; margin: 0 auto; position: relative;">
-    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 32px;">// LEADER'S WORD</p>
+    <p style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 32px;">// FOUNDER'S WORDS</p>
     <div id="quote-card" style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #ffffff; padding: 52px 52px 44px; background: rgba(255,255,255,0.04); overflow: hidden; min-height: 220px;">
       <span style="position: absolute; top: 12px; left: 24px; font-size: 120px; line-height: 1; color: #ffffff; opacity: 0.06; font-family: Georgia, serif; user-select: none;">"</span>
       <div id="quote-text" style="position: relative; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.75; color: #ffffff; transition: opacity 0.4s ease, transform 0.4s ease;"></div>
@@ -211,33 +211,26 @@
     <div style="display: flex; gap: 10px; margin-top: 24px; justify-content: center;" id="quote-dots"></div>
   </div>
 </section>
-
 <script>
 const quotes = [
-  { text: "I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed - everything in one place, actually built for developers.", author: "— Aditya kr Singh, Founder & CEO, Blazion" },
+  { text: "I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.", author: "— Aditya kr Singh, Founder & CEO, Blazion" },
   { text: "Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.", author: "— Aditya kr Singh, Founder & CEO, Blazion" },
-  { text: "I'm not building a product company. I'm building the layer underneath - so that every builder who comes after me has a cleaner foundation to stand on.", author: "— Aditya kr Singh, Founder & CEO, Blazion" }
+  { text: "I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.", author: "— Aditya kr Singh, Founder & CEO, Blazion" }
 ];
 let current = 0, timer;
 const textEl = document.getElementById('quote-text');
 const authorEl = document.getElementById('quote-author');
 const dotsEl = document.getElementById('quote-dots');
 const card = document.getElementById('quote-card');
-
 function buildDots() {
   dotsEl.innerHTML = '';
   quotes.forEach((_, i) => {
     const d = document.createElement('div');
     d.style.cssText = `width:7px;height:7px;cursor:pointer;transition:background 0.3s,opacity 0.3s;${i===current?'background:#fff;opacity:1;':'background:transparent;border:1px solid rgba(255,255,255,0.4);opacity:0.5;'}`;
-    d.onclick = () => {
-      clearInterval(timer);
-      goTo(i);
-      timer = setInterval(next, 3000);
-    };
+    d.onclick = () => goTo(i);
     dotsEl.appendChild(d);
   });
 }
-
 function goTo(index) {
   textEl.style.opacity = '0';
   textEl.style.transform = 'translateY(-12px)';
@@ -259,16 +252,11 @@ function goTo(index) {
     buildDots();
   }, 380);
 }
-
-function next() { goTo((current + 1) % quotes.length); }
-function startTimer() { timer = setInterval(next, 2500); }
+function startTimer() { timer = setInterval(() => goTo((current + 1) % quotes.length), 4000); }
 function stopTimer() { clearInterval(timer); }
-
 card.addEventListener('mouseenter', stopTimer);
 card.addEventListener('mouseleave', startTimer);
-
-goTo(0);
-startTimer();
+goTo(0); startTimer();
 </script>
 
     </div>
@@ -296,6 +284,7 @@ startTimer();
           <div class="footer-links">
             <a href="https://toolvise.vercel.app/" target="_blank">Toolvise</a>
             <a href="https://blazion-form.vercel.app/" target="_blank">Blazion Form</a>
+            <a href="updates.html">Blazion Store</a>
             <a href="index.html#upcoming">Blazion Studio</a>
             <a href="index.html#upcoming">Blazion Cloud</a>
           </div>
@@ -337,7 +326,7 @@ startTimer();
       </div>
 
       <div class="footer-bottom" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
-        <div>© <span id="year">2026</span> Blazion. All rights reserved.</div>
+        <div>© 2026 Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
           <a href="updates.html#early-access" title="Coming soon">Privacy Policy</a>
           <span>·</span>
