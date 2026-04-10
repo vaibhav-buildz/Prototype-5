@@ -93,18 +93,26 @@
           <p class="newsletter-sub" style="margin-bottom: 32px;">Register for the BLAZION Private Beta and be the first
             to deploy with AI-native infrastructure.</p>
 
-          <form id="updates-page-form" class="newsletter-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-            <div style="margin-bottom: 20px;">
-              <input type="email" name="email" id="newsletter-email" 
-                style="width: 100%; padding: 12px 16px; background: #0b0f1a; border: 1px solid white; border-radius: 4px; color: white; font-family: inherit; font-size: 15px;" 
-                placeholder="Enter your email address">
-              <p id="email-error" style="display: none; color: #ff4d4d; font-family: var(--font-mono); font-size: 12px; margin-top: 8px;">Please enter a valid email.</p>
-            </div>
-            <button type="submit" class="newsletter-submit" style="width: 100%; justify-content: center; padding: 14px;">Join Beta &rarr;</button>
-          </form>
-          <p class="newsletter-success" id="newsletter-success"
-            style="display: none; color: #4ade80; font-family: var(--font-mono); font-size: 14px; margin-top: 16px;">
-            You're on the list. We'll be in touch.</p>
+          <div style="margin-top:24px;max-width:480px;">
+            <input id="beta-email" type="email" placeholder="Enter your email address" style="width:100%;padding:12px 16px;background:transparent;border:1px solid rgba(255,255,255,0.3);color:#fff;font-family:'IBM Plex Mono',monospace;font-size:14px;outline:none;margin-bottom:12px;box-sizing:border-box;">
+            <p id="beta-error" style="color:#ff5555;font-size:12px;font-family:'IBM Plex Mono',monospace;margin-bottom:8px;display:none;">Please enter a valid email.</p>
+            <button id="beta-btn" onclick="submitBeta()" style="padding:12px 28px;background:#fff;color:#000;border:none;font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:0.05em;cursor:pointer;">Join Beta &rarr;</button>
+            <p id="beta-success" style="display:none;color:rgba(255,255,255,0.6);font-family:'IBM Plex Mono',monospace;font-size:13px;margin-top:16px;">You're on the list. We'll be in touch.</p>
+          </div>
+          <script>
+          function submitBeta(){
+            var email=document.getElementById('beta-email').value;
+            var err=document.getElementById('beta-error');
+            var success=document.getElementById('beta-success');
+            var btn=document.getElementById('beta-btn');
+            var input=document.getElementById('beta-email');
+            if(!email||!email.includes('@')){err.style.display='block';return;}
+            err.style.display='none';
+            input.style.display='none';
+            btn.style.display='none';
+            success.style.display='block';
+          }
+          </script>
 
           <div style="border-top: 1px solid rgba(226, 232, 240, 0.1); padding-top: 40px; margin-top: 40px;">
             <div class="section-tag">DIRECT LINE</div>
