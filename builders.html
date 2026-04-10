@@ -24,10 +24,7 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html#hero" class="nav-link draw-underline">Home</a></li>
-        <li><a href="about.html" class="nav-link draw-underline" data-section="about">About</a></li>
-
-        <!-- Products dropdown -->
+        <li><a href="index.html#hero" class="nav-link draw-underline active" data-section="hero">Home</a></li>
         <li class="nav-dropdown-wrap">
           <a href="index.html#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">
             Products
@@ -43,12 +40,13 @@
                   class="nav-dd-tag--prod">VISIT</span></a></li>
           </ul>
         </li>
-        <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
+        <li><a href="index.html#upcoming" class="nav-link draw-underline" data-section="upcoming">Upcoming</a></li>
         <li class="nav-links-logo">
           <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
         </li>
         <li><a href="builders.html" class="nav-link draw-underline active">Builders</a></li>
-        <li><a href="updates.html" class="nav-link draw-underline nav-contact-highlight">Contact</a></li>
+        <li><a href="updates.html" class="nav-link draw-underline" data-section="contact">Contact</a></li>
+        <li><a href="about.html" class="nav-link draw-underline">About</a></li>
         <li><a href="blog.html" class="nav-link draw-underline">Blog</a></li>
       </ul>
 
@@ -316,10 +314,20 @@
             <a href="mailto:hello@blazion.io">hello@blazion.io</a>
           </div>
         </div>
+        <div>
+          <div class="footer-col-header">HEADQUARTERS</div>
+          <address class="footer-hq-address">
+            <strong>Blazion Technologies</strong>
+            Beta 1, Sector Knowledge Park<br>
+            Greater Noida, Uttar Pradesh<br>
+            India — 201310<br>
+            <a href="mailto:hello@blazion.io" class="footer-links" style="color: rgba(255, 240, 230, 0.85); margin-top: 4px; display: inline-flex; align-items: center; min-height: 44px;">hello@blazion.io</a>
+          </address>
+        </div>
       </div>
 
       <div class="footer-bottom" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
-        <div>© 2025 Blazion. All rights reserved.</div>
+        <div>© <span id="year">2026</span> Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
           <a href="updates.html">Privacy Policy</a>
           <span>·</span>

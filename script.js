@@ -468,3 +468,35 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 }());
+
+/* ---------------------------------
+ * 13. ACTIVE NAV LINK & YEAR SYNC
+ * --------------------------------- */
+document.addEventListener('DOMContentLoaded', () => {
+  const navLinks = document.querySelectorAll('.nav-link');
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href') || '';
+    if (href.includes(currentPath) || (currentPath === '' && href === '#hero')) {
+      link.classList.add('active');
+    }
+  });
+
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  // Page fade links
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href');
+    if (href && !href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && href.endsWith('.html')) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.2s ease';
+        setTimeout(() => { window.location.href = href; }, 200);
+      });
+    }
+  });
+});
+

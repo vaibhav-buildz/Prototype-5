@@ -42,6 +42,7 @@
         <li class="nav-links-logo">
           <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center" loading="lazy"></a>
         </li>
+        <li><a href="builders.html" class="nav-link draw-underline" data-section="builders">Builders</a></li>
         <li><a href="updates.html" class="nav-link draw-underline active" data-section="contact">Contact</a></li>
         <li><a href="about.html" class="nav-link draw-underline">About</a></li>
         <li><a href="blog.html" class="nav-link draw-underline">Blog</a></li>
@@ -96,10 +97,10 @@
             method="POST">
             <div class="newsletter-input-group" style="margin-bottom: 24px;">
               <input type="email" name="email" class="newsletter-input" placeholder="Work email address" required>
-              <button type="submit" class="newsletter-submit" onclick="this.style.display='none'; document.getElementById('beta-success').style.display='block'">Join Beta &rarr;</button>
+              <button type="submit" class="newsletter-submit">Join Beta &rarr;</button>
             </div>
           </form>
-          <p class="newsletter-success" id="beta-success"
+          <p class="newsletter-success" id="newsletter-success"
             style="display: none; color: #4ade80; font-family: var(--font-mono); font-size: 14px; margin-top: 16px;">
             You're on the list. We'll be in touch.</p>
 
@@ -179,7 +180,7 @@
       </div>
 
       <div class="footer-bottom" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
-        <div>© 2025 Blazion. All rights reserved.</div>
+        <div>© <span id="year">2026</span> Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
           <a href="updates.html#early-access" title="Coming soon">Privacy Policy</a>
           <span>·</span>
@@ -205,23 +206,11 @@
             'Accept': 'application/json'
           }
         });
-        form.style.display = 'none';
-        document.getElementById('newsletter-success').style.display = 'block';
+        const successMsg = document.getElementById('newsletter-success');
+        if (form) form.style.display = 'none';
+        if (successMsg) successMsg.style.display = 'block';
       });
     }
-  </script>
-  <script>
-    document.querySelectorAll('a[href]').forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href.startsWith('#') && !href.startsWith('http') && !href.startsWith('mailto') && href.endsWith('.html')) {
-        link.addEventListener('click', function (e) {
-          e.preventDefault();
-          document.body.style.opacity = '0';
-          document.body.style.transition = 'opacity 0.2s ease';
-          setTimeout(() => { window.location.href = href; }, 200);
-        });
-      }
-    });
   </script>
 </body>
 
