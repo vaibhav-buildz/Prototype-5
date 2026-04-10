@@ -226,7 +226,7 @@
               <span></span><span></span><span></span>
             </div>
             <div class="terminal-tab">blazion.config.js</div>
-            <button id="copy-code-btn" onclick="copyCode()">COPY</button>
+            <button id="copy-code-btn">COPY</button>
           </div>
           <div class="terminal-body mono-text">
             <div class="code-line"><span class="c-keyword">import</span> { blazion } <span class="c-keyword">from</span>
@@ -576,7 +576,7 @@
         <div>
           <div class="footer-col-header">RESOURCES</div>
           <div class="footer-links">
-            <a href="updates.html#early-access" title="Coming soon">Documentation</a>
+            <a href="documentation.html">Documentation</a>
             <a href="updates.html#early-access" title="Coming soon">API Status</a>
             <a href="updates.html#early-access" title="Coming soon">Help Center</a>
             <a href="updates.html#early-access" title="Coming soon">Guides</a>
@@ -614,16 +614,13 @@
   </footer>
 
   <script>
-    function copyCode() {
+    document.getElementById('copy-code-btn').addEventListener('click', function() {
       const code = document.querySelector('.terminal-body').innerText;
       navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById('copy-code-btn');
-        btn.textContent = 'COPIED ✓';
-        setTimeout(() => {
-          btn.textContent = 'COPY';
-        }, 1500);
+        this.textContent = 'COPIED ✓';
+        setTimeout(() => { this.textContent = 'COPY'; }, 1500);
       });
-    }
+    });
   </script>
   <script src="script.js"></script>
 </body>
