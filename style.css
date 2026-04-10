@@ -2314,6 +2314,44 @@ section {
   margin-top: 16px;
 }
 
+/* ============================================================
+   09 TEAM SECTION
+   ============================================================ */
+.team-header {
+  max-width: 800px;
+  margin-bottom: 64px;
+}
+
+.team-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+
+.team-headline {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 400;
+  color: var(--text-heading);
+  line-height: 1.1;
+  margin-bottom: 24px;
+  letter-spacing: -0.02em;
+}
+
+.team-subline {
+  font-family: var(--font-body);
+  font-size: 18px;
+  color: var(--text-body);
+  opacity: 0.85;
+  line-height: 1.6;
+  max-width: 650px;
+}
+
 .team-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
