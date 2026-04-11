@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (canvas && window.innerWidth > 1024) {
     const ctx = canvas.getContext('2d');
     let particles = [];
-    const particleCount = 40;
-    
+    const particleCount = 25; // Optimized for performance
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
@@ -113,29 +113,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroParallax = document.getElementById('hero-parallax');
   const aboutParallax = document.getElementById('about-parallax');
 
+  let scrollTicker = false;
   window.addEventListener('scroll', () => {
-    const scrollY = window.scrollY;
-
-    // Hero 
-    if (heroParallax && scrollY < window.innerHeight) {
-      // Moves upward faster than scroll
-      const offset = scrollY * -0.2;
-      heroParallax.style.transform = `translateY(${offset}px)`;
-    }
-
-    // About (Rotates 5deg on scroll)
-    if (aboutParallax) {
-      const rect = aboutParallax.getBoundingClientRect();
-      const elementMid = rect.top + rect.height / 2;
-      const windowMid = window.innerHeight / 2;
-
-      // Calculate rotation based on distance from center of screen
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        let rotation = (windowMid - elementMid) * 0.01;
-        // Clamp rotation
-        rotation = Math.max(-3, Math.min(rotation, 5));
-        aboutParallax.style.transform = `rotate(${rotation}deg)`;
-      }
+    if (!scrollTicker) {
+      window.requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        // Hero 
+        if (heroParallax && scrollY < window.innerHeight) {
+          heroParallax.style.transform = `translateY(${scrollY * -0.15}px)`;
+        }
+        // About (Rotates 5deg on scroll)
+        if (aboutParallax) {
+          const rect = aboutParallax.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) {
+            const windowMid = window.innerHeight / 2;
+            const elementMid = rect.top + rect.height / 2;
+            let rotation = (windowMid - elementMid) * 0.005;
+            rotation = Math.max(-3, Math.min(rotation, 5));
+            aboutParallax.style.transform = `rotate(${rotation}deg)`;
+          }
+        }
+        scrollTicker = false;
+      });
+      scrollTicker = true;
     }
   }, { passive: true });
 
@@ -199,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    for (let i = 0; i < 60; i++) aParticles.push(new PhoenixParticle());
+    for (let i = 0; i < 35; i++) aParticles.push(new PhoenixParticle());
 
     let lastScroll = window.scrollY;
     let aboutAnimating = false;
@@ -265,12 +265,19 @@ document.addEventListener('DOMContentLoaded', () => {
    * --------------------------------- */
   const productRows = document.querySelectorAll('.product-row');
   productRows.forEach(row => {
+    let mouseTicker = false;
     row.addEventListener('mousemove', (e) => {
-      const rect = row.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      row.style.setProperty('--mouse-x', `${x}%`);
-      row.style.setProperty('--mouse-y', `${y}%`);
+      if (!mouseTicker) {
+        window.requestAnimationFrame(() => {
+          const rect = row.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          row.style.setProperty('--mouse-x', `${x}%`);
+          row.style.setProperty('--mouse-y', `${y}%`);
+          mouseTicker = false;
+        });
+        mouseTicker = true;
+      }
     });
   });
 
@@ -296,20 +303,20 @@ document.addEventListener('DOMContentLoaded', () => {
       // We have 2 cards. Card 1 is static. Card 2 animate from right to left.
       // We want Card 2 to start animating slightly after scroll starts, 
       // and finish animating just before the scroll section ends.
-      const staggerStep = total * 0.05; 
-      const animWindow = total * 0.85; 
-      
+      const staggerStep = total * 0.05;
+      const animWindow = total * 0.85;
+
       folderCards.forEach((card, i) => {
         // Skip first card
         if (i === 0) return;
-        
+
         const cardProgress = (scrolled - staggerStep) / animWindow;
         // smooth step interpolation instead of pure linear
         const clamped = Math.max(0, Math.min(cardProgress, 1));
-        
+
         // Sine ease-in-out for a very smooth arrival without harsh stops
         const eased = -(Math.cos(Math.PI * clamped) - 1) / 2;
-        
+
         const translateX = (1 - eased) * 100;
         card.style.transform = `translateX(${translateX}%)`;
       });
@@ -401,23 +408,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const navbarFixed = document.getElementById('navbar');
   const dropdownTrigger = document.querySelector('.nav-dropdown-trigger');
   const dropdownWrap = document.querySelector('.nav-dropdown-wrap');
-  
+
   if (mobileMenuBtn && navbarFixed) {
     const syncBtnState = () => {
       const isOpen = document.body.classList.contains('nav-open');
       // Update SVG to either Hamburger or Close (X)
-      mobileMenuBtn.innerHTML = isOpen 
+      mobileMenuBtn.innerHTML = isOpen
         ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`
         : `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>`;
     };
-    
+
     mobileMenuBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
       document.body.classList.toggle('nav-open');
       syncBtnState();
     });
-    
+
     syncBtnState(); // Initial state
     window.syncBtnState = syncBtnState;
   }
@@ -474,7 +481,7 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const currentPath = window.location.pathname.split('/').pop() || 'index.html';
-  
+
   navLinks.forEach(link => {
     const href = link.getAttribute('href') || '';
     if (href.includes(currentPath) || (currentPath === '' && href === '#hero')) {

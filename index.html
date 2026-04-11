@@ -125,7 +125,8 @@
           </div>
           <ul class="product-features-list">
             <li><strong>Intelligent Finder:</strong> Describe your project and get a curated stack in seconds.</li>
-            <li><strong>Leaderboard:</strong> Discover what the top builders are using for their production apps.</li>
+            <li><strong>Leaderboard:</strong> Discover what the top engineering teams are using for their production
+              apps.</li>
             <li><strong>Pathways:</strong> Step-by-step learning modules for every tool in your recommended stack.</li>
             <li><strong>Stack Explorer:</strong> High-fidelity database of developer tools with real-world ratings.</li>
           </ul>
@@ -555,7 +556,7 @@
         <div>
           <div class="footer-col-header">RESOURCES</div>
           <div class="footer-links">
-            <a href="documentation.html">Documentation</a>
+            <a href="updates.html#early-access" title="Coming soon">Documentation</a>
             <a href="updates.html#early-access" title="Coming soon">API Status</a>
             <a href="updates.html#early-access" title="Coming soon">Help Center</a>
             <a href="updates.html#early-access" title="Coming soon">Guides</a>
@@ -597,17 +598,17 @@
 
   <script src="script.js"></script>
   <script>
-document.querySelectorAll('button').forEach(function(btn){
-  if(btn.textContent.trim()==='COPY'){
-    btn.addEventListener('click',function(){
-      var code=this.closest('section,div').querySelector('pre,code');
-      navigator.clipboard.writeText(code?code.innerText:'').then(function(){
-        btn.textContent='COPIED ✓';
-        setTimeout(function(){btn.textContent='COPY';},1500);
-      });
+    document.querySelectorAll('button').forEach(function (btn) {
+      if (btn.textContent.trim() === 'COPY') {
+        btn.addEventListener('click', function () {
+          var code = this.closest('section,div').querySelector('pre,code');
+          navigator.clipboard.writeText(code ? code.innerText : '').then(function () {
+            btn.textContent = 'COPIED ✓';
+            setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
+          });
+        });
+      }
     });
-  }
-});
   </script>
 </body>
 
