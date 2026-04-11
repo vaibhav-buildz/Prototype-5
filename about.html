@@ -283,73 +283,48 @@
   </section>
 
 
-  <!-- Founder Quotes Carousel -->
-  <section style="padding: 80px 5%; background: var(--bg, #0b0f1a);">
-    <div style="max-width: 780px; margin: 0 auto; position: relative;">
-      <p
-        style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.15em; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-bottom: 32px;">
-        // FOUNDER'S WORDS</p>
-      <div id="quote-card"
-        style="position: relative; border: 1px solid rgba(255,255,255,0.1); border-left: 3px solid #ffffff; padding: 52px 52px 44px; background: rgba(255,255,255,0.04); overflow: hidden; min-height: 220px;">
-        <span
-          style="position: absolute; top: 12px; left: 24px; font-size: 120px; line-height: 1; color: #ffffff; opacity: 0.06; font-family: Georgia, serif; user-select: none;">"</span>
-        <div id="quote-text"
-          style="position: relative; font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.75; color: #ffffff; transition: opacity 0.4s ease, transform 0.4s ease;">
-        </div>
-        <div id="quote-author"
-          style="margin-top: 28px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.4); letter-spacing: 0.08em; transition: opacity 0.4s ease;">
-        </div>
-      </div>
-      <div style="display: flex; gap: 10px; margin-top: 24px; justify-content: center;" id="quote-dots"></div>
+<!-- Leader's Words Interactive Section -->
+<section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
+  <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
+    <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">// LEADER'S WORDS</p>
+    <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;min-height:240px; display: flex; flex-direction: column; justify-content: center;">
+      <span style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
+      <div id="qt" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;"></div>
+      <div id="qa" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;"></div>
     </div>
-  </section>
-  <script>
-    const quotes = [
-      { text: "I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.", author: "— Aditya kr Singh, Founder & CEO, Blazion" },
-      { text: "Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.", author: "— Aditya kr Singh, Founder & CEO, Blazion" },
-      { text: "I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.", author: "— Aditya kr Singh, Founder & CEO, Blazion" }
-    ];
-    let current = 0, timer;
-    const textEl = document.getElementById('quote-text');
-    const authorEl = document.getElementById('quote-author');
-    const dotsEl = document.getElementById('quote-dots');
-    const card = document.getElementById('quote-card');
-    function buildDots() {
-      dotsEl.innerHTML = '';
-      quotes.forEach((_, i) => {
-        const d = document.createElement('div');
-        d.style.cssText = `width:7px;height:7px;cursor:pointer;transition:background 0.3s,opacity 0.3s;${i === current ? 'background:#fff;opacity:1;' : 'background:transparent;border:1px solid rgba(255,255,255,0.4);opacity:0.5;'}`;
-        d.onclick = () => goTo(i);
-        dotsEl.appendChild(d);
-      });
-    }
-    function goTo(index) {
-      textEl.style.opacity = '0';
-      textEl.style.transform = 'translateY(-12px)';
-      authorEl.style.opacity = '0';
-      setTimeout(() => {
-        current = index;
-        textEl.textContent = quotes[current].text;
-        authorEl.textContent = quotes[current].author;
-        textEl.style.transform = 'translateY(12px)';
-        requestAnimationFrame(() => {
-          textEl.style.transition = 'none';
-          requestAnimationFrame(() => {
-            textEl.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
-            textEl.style.opacity = '1';
-            textEl.style.transform = 'translateY(0)';
-            authorEl.style.opacity = '1';
-          });
-        });
-        buildDots();
-      }, 380);
-    }
-    function startTimer() { timer = setInterval(() => goTo((current + 1) % quotes.length), 4000); }
-    function stopTimer() { clearInterval(timer); }
-    card.addEventListener('mouseenter', stopTimer);
-    card.addEventListener('mouseleave', startTimer);
-    goTo(0); startTimer();
-  </script>
+    <div id="qdots" style="display:flex;gap:12px;margin-top:32px;justify-content:center;"></div>
+  </div>
+</section>
+<script>
+(function(){
+  var q=[
+    {t:"I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.",a:"— Vaibhav Yadav, Blazion"},
+    {t:"Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.",a:"— Vaibhav Yadav, Blazion"},
+    {t:"I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.",a:"— Vaibhav Yadav, Blazion"}
+  ];
+  var c=0,tmr,te=document.getElementById('qt'),ae=document.getElementById('qa'),de=document.getElementById('qdots'),card=document.getElementById('qcard');
+  if(!te || !ae || !de || !card) return;
+  function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){go(i);};de.appendChild(d);});}
+  function go(i){
+    te.style.opacity='0'; te.style.transform='translateY(-12px)'; ae.style.opacity='0';
+    setTimeout(function(){
+      c=i; te.textContent=q[c].t; ae.textContent=q[c].a;
+      te.style.transition='none'; ae.style.transition='none';
+      te.style.transform='translateY(12px)';
+      te.offsetHeight;
+      te.style.transition='opacity 0.5s ease, transform 0.5s ease';
+      ae.style.transition='opacity 0.5s ease';
+      te.style.opacity='1'; te.style.transform='translateY(0)'; ae.style.opacity='1';
+      dots();
+    },400);
+  }
+  function start(){tmr=setInterval(function(){go((c+1)%q.length);},5000);}
+  function stop(){clearInterval(tmr);}
+  card.addEventListener('mouseenter',stop);
+  card.addEventListener('mouseleave',start);
+  go(0);start();
+})();
+</script>
 
 
 
@@ -376,7 +351,6 @@
           <div class="footer-links">
             <a href="https://toolvise.vercel.app/" target="_blank">Toolvise</a>
             <a href="https://blazion-form.vercel.app/" target="_blank">Blazion Form</a>
-            <a href="updates.html">Blazion Store</a>
             <a href="index.html#upcoming">Blazion Studio</a>
             <a href="index.html#upcoming">Blazion Cloud</a>
           </div>
