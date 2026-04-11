@@ -498,11 +498,10 @@
           <span class="t-dot"></span>
         </div>
 
+        </div>
       </div>
     </div>
-    </div>
   </section>
-
 
 
   <!-- 10 Standalone CTA -->
@@ -598,17 +597,17 @@
 
   <script src="script.js"></script>
   <script>
-    document.querySelectorAll('button').forEach(function (btn) {
-      if (btn.textContent.trim() === 'COPY') {
-        btn.addEventListener('click', function () {
-          var code = this.closest('section,div').querySelector('pre,code');
-          navigator.clipboard.writeText(code ? code.innerText : '').then(function () {
-            btn.textContent = 'COPIED ✓';
-            setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
-          });
-        });
-      }
+document.querySelectorAll('button').forEach(function(btn){
+  if(btn.textContent.trim()==='COPY'){
+    btn.addEventListener('click',function(){
+      var code=this.closest('section,div').querySelector('pre,code');
+      navigator.clipboard.writeText(code?code.innerText:'').then(function(){
+        btn.textContent='COPIED ✓';
+        setTimeout(function(){btn.textContent='COPY';},1500);
+      });
     });
+  }
+});
   </script>
 </body>
 
