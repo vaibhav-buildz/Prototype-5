@@ -587,16 +587,24 @@
     </div>
   </footer>
 
+
+  <script src="script.js"></script>
   <script>
-    document.getElementById('copy-code-btn').addEventListener('click', function() {
-      const code = document.querySelector('.terminal-body').innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        this.textContent = 'COPIED ✓';
-        setTimeout(() => { this.textContent = 'COPY'; }, 1500);
-      });
+    const copyBtn = document.querySelector('[data-copy], .copy-btn, button');
+    // Find the actual COPY button — look for the button near the code block
+    // and attach this handler to it:
+    document.querySelectorAll('button').forEach(btn => {
+      if (btn.textContent.trim() === 'COPY') {
+        btn.addEventListener('click', function () {
+          const code = this.closest('section, div, .dx-terminal').querySelector('pre, code, .terminal-body');
+          navigator.clipboard.writeText(code ? code.innerText : '').then(() => {
+            this.textContent = 'COPIED ✓';
+            setTimeout(() => { this.textContent = 'COPY'; }, 1500);
+          });
+        });
+      }
     });
   </script>
-  <script src="script.js"></script>
 </body>
 
 </html>
