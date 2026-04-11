@@ -196,8 +196,15 @@ section {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .section-label {
@@ -235,7 +242,8 @@ section {
 
 @media (max-width: 1024px) {
   .grain-overlay {
-    animation: none; /* Disable grain animation on mobile to save GPU */
+    animation: none;
+    /* Disable grain animation on mobile to save GPU */
   }
 }
 
@@ -265,7 +273,8 @@ section {
   background: rgba(2, 6, 23, 0.96);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid transparent;
-  z-index: 10000; /* Highest priority */
+  z-index: 10000;
+  /* Highest priority */
   display: flex;
   align-items: center;
   transition: border-color 0.3s, background 0.3s, transform 0.35s ease, height 0.3s ease;
@@ -1060,13 +1069,15 @@ section {
 
 @media (max-width: 480px) {
   .product-features {
-    gap: 6px; /* Slightly tighter gap on small screens */
+    gap: 6px;
+    /* Slightly tighter gap on small screens */
   }
-  
+
   .product-feature-tag {
     flex: 1 1 calc(50% - 6px);
     text-align: center;
-    white-space: normal; /* Allow internal wrap if name is long */
+    white-space: normal;
+    /* Allow internal wrap if name is long */
     line-height: 1.2;
     padding: 6px 8px;
     display: flex;
@@ -1116,7 +1127,8 @@ section {
    05-A FOLDER CARD STACK — LIVE & RUNNING
    ============================================================ */
 .folder-section {
-  height: 350vh; /* Increased for smoother/slower scroll step */
+  height: 350vh;
+  /* Increased for smoother/slower scroll step */
   position: relative;
   background: var(--bg-light);
   border-top: 1px solid var(--border-light);
@@ -1298,7 +1310,8 @@ section {
 }
 
 
-.folder-tags span, .stat-pill {
+.folder-tags span,
+.stat-pill {
   font-family: var(--font-mono);
   font-size: 11px;
   font-weight: 600;
@@ -1306,7 +1319,8 @@ section {
   color: var(--white);
   background: #94A3B8;
   border: 1px solid #94A3B8;
-  border-radius: 0; /* Sharp corners per spec */
+  border-radius: 0;
+  /* Sharp corners per spec */
   padding: 5px 12px;
   text-transform: uppercase;
 }
@@ -1355,7 +1369,8 @@ section {
   background: var(--bg-cream-dark);
   border-top: 1px solid var(--border-light);
   border-bottom: 1px solid var(--border-light);
-  overflow-x: hidden; /* Safety against horizontal bleed */
+  overflow-x: hidden;
+  /* Safety against horizontal bleed */
 }
 
 .dx-grid {
@@ -1424,7 +1439,8 @@ section {
   border: 1px solid rgba(255, 255, 255, 0.1);
   overflow: hidden;
   box-shadow: 0 40px 100px rgba(0, 0, 0, 0.2);
-  position: relative; /* For absolute positioning of copy button */
+  position: relative;
+  /* For absolute positioning of copy button */
 }
 
 .terminal-header {
@@ -1524,7 +1540,8 @@ section {
   line-height: 1.8;
   color: #D1D5DB;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* Smooth iOS inertial scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth iOS inertial scrolling */
 }
 
 .code-line {
@@ -2460,9 +2477,11 @@ section {
   .team-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .team-card:nth-child(3n) {
     border-right: 1px solid var(--border-light);
   }
+
   .team-card:nth-child(2n) {
     border-right: none;
   }
@@ -2472,6 +2491,7 @@ section {
   .team-grid {
     grid-template-columns: 1fr;
   }
+
   .team-card {
     border-right: none;
   }
@@ -2593,7 +2613,8 @@ section {
 .footer-address {
   font-size: 14px;
   color: rgba(255, 240, 230, 0.6);
-  line-height: 1.8; /* More breathable for mobile readability */
+  line-height: 1.8;
+  /* More breathable for mobile readability */
   font-style: normal;
 }
 
@@ -2616,7 +2637,8 @@ section {
 .footer-links {
   display: flex;
   flex-direction: column;
-  gap: 0; /* Gap removed to use min-height/padding for tap targets */
+  gap: 0;
+  /* Gap removed to use min-height/padding for tap targets */
 }
 
 .footer-links a {
@@ -2625,7 +2647,8 @@ section {
   transition: color .2s;
   display: flex;
   align-items: center;
-  min-height: 32px; /* Balanced for visual density while remaining tap-friendly */
+  min-height: 32px;
+  /* Balanced for visual density while remaining tap-friendly */
   padding: 2px 0;
 }
 
@@ -2770,7 +2793,8 @@ section {
     width: 100%;
     max-height: 480px;
     background: rgba(2, 6, 23, 0.96);
-    backdrop-filter: blur(4px); /* Reduced for mobile performance */
+    backdrop-filter: blur(4px);
+    /* Reduced for mobile performance */
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 24px;
     padding: 32px;
@@ -2805,7 +2829,8 @@ section {
   /* Accordion Sub-menu for Mobile */
   .nav-dropdown {
     position: static !important;
-    display: none !important; /* Hidden by default on mobile */
+    display: none !important;
+    /* Hidden by default on mobile */
     flex-direction: column;
     width: 100%;
     background: transparent !important;
@@ -2877,7 +2902,8 @@ section {
   .hero-right {
     display: flex;
     justify-content: center;
-    margin-top: 48px; /* Increased for better mobile breathing room */
+    margin-top: 48px;
+    /* Increased for better mobile breathing room */
   }
 
   .hero-abstract {
@@ -2992,7 +3018,8 @@ section {
     scroll-behavior: smooth;
     -webkit-overflow-scrolling: touch;
     scroll-padding: 5%;
-    scrollbar-width: none; /* Hide scrollbar for premium look */
+    scrollbar-width: none;
+    /* Hide scrollbar for premium look */
   }
 
   .folder-sticky::-webkit-scrollbar {
@@ -3001,7 +3028,8 @@ section {
 
   .folder-card {
     position: relative;
-    flex: 0 0 90%; /* Show peeking next card */
+    flex: 0 0 90%;
+    /* Show peeking next card */
     max-width: 90%;
     margin: 0 10px;
     flex-direction: column;
@@ -3152,28 +3180,28 @@ section {
     gap: 16px 8px;
     margin-bottom: 20px;
   }
-  
+
   /* Hide redundant Connect column on mobile since the email is in Headquarters */
-  .footer-grid > div:nth-child(4) {
+  .footer-grid>div:nth-child(4) {
     display: none;
   }
 
   /* Let Headquarters span full width to breathe */
-  .footer-grid > div:nth-child(5) {
+  .footer-grid>div:nth-child(5) {
     grid-column: span 3;
   }
-  
+
   .footer-hq-address {
     font-size: 12px;
     line-height: 1.6;
   }
-  
+
   .footer-hq-address a {
     min-height: auto !important;
     margin-top: 4px !important;
   }
 
-  .footer-container > div[style] {
+  .footer-container>div[style] {
     margin-bottom: 20px !important;
   }
 
@@ -3234,12 +3262,15 @@ section {
   .nav-links {
     gap: 18px;
   }
+
   .nav-links-logo {
     padding: 0 8px;
   }
+
   .nav-logo-img-center {
     height: 36px;
   }
+
   .nav-link {
     font-size: 10px;
     letter-spacing: 0.1em;
@@ -3252,8 +3283,8 @@ section {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 32px 24px !important;
   }
-  
-  .team-grid > article:last-child:nth-child(odd) {
+
+  .team-grid>article:last-child:nth-child(odd) {
     grid-column: 1 / -1;
     max-width: 50%;
     margin: 0 auto;
@@ -3274,29 +3305,29 @@ section {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
   }
-  
-  .team-grid > article:last-child:nth-child(odd) {
+
+  .team-grid>article:last-child:nth-child(odd) {
     grid-column: unset;
     max-width: 100%;
     margin: 0;
   }
-  
+
   .team-card {
     padding: 24px 16px !important;
     min-height: auto !important;
   }
-  
+
   .team-card-photo-wrap,
   .team-photo-img {
     width: 96px !important;
     height: 96px !important;
     margin: 0 auto 12px;
   }
-  
+
   .team-card-body {
     text-align: center;
   }
-  
+
   .team-socials {
     justify-content: center;
   }
@@ -3307,7 +3338,7 @@ section {
     text-align: center;
   }
 
-  .footer-grid > div {
+  .footer-grid>div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -3349,5 +3380,3 @@ section {
 
 /* Page fade-in handled by JS transition on body.style.opacity to avoid
    creating a stacking context that breaks position:fixed on the navbar */
-
-
