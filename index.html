@@ -80,8 +80,11 @@
     <canvas id="hero-particles"></canvas>
     <div class="container hero-content">
       <div class="hero-left">
-        <div class="hero-tag" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .3em; font-weight: 700;">AI-Native Software Ecosystem</div>
-        <h1 class="hero-headline" style="font-size: clamp(2.5rem, 6vw, 4rem); font-family: var(--font-display); font-weight: 500;">
+        <div class="hero-tag"
+          style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .3em; font-weight: 700;">
+          AI-Native Software Ecosystem</div>
+        <h1 class="hero-headline"
+          style="font-size: clamp(2.5rem, 6vw, 4rem); font-family: var(--font-display); font-weight: 500;">
           <span id="typewriter-text" class="typewriter-text">Build. Deploy. Blaze.</span><span
             class="typewriter-cursor">|</span>
         </h1>
@@ -160,6 +163,181 @@
           <a href="https://blazion-form.vercel.app/" target="_blank" class="folder-cta">Build Your Form &rarr;</a>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- 05.5 Product Details -->
+  <style>
+    .product-details-section {
+      background-color: #F8FAFC;
+      padding: var(--section-pad, 120px 0);
+    }
+
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      padding-top: 40px;
+    }
+
+    .product-detail-card {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pd-status {
+      font-family: var(--font-mono, monospace);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 4px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      margin-bottom: 24px;
+      align-self: flex-start;
+    }
+
+    .pd-status.live {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: #059669;
+    }
+
+    .pd-status.soon {
+      background-color: rgba(148, 163, 184, 0.1);
+      color: #64748B;
+    }
+
+    .pd-title {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #020617;
+      margin-bottom: 12px;
+    }
+
+    .pd-tagline {
+      font-size: 1rem;
+      color: #334155;
+      margin-bottom: 24px;
+      font-family: var(--font-body);
+      flex-grow: 1;
+      min-height: 48px;
+      line-height: 1.5;
+    }
+
+    .pd-features {
+      margin-bottom: 32px;
+      list-style-type: none;
+      padding-left: 0;
+      font-size: 0.95rem;
+      color: #64748B;
+      line-height: 1.6;
+    }
+
+    .pd-features li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+    }
+
+    .pd-features li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: #94A3B8;
+    }
+
+    .pd-cta {
+      width: 100%;
+      text-align: center;
+      background-color: #94A3B8;
+      color: #FFFFFF;
+      padding: 14px 24px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background-color 0.2s;
+      border: none;
+    }
+
+    .pd-cta:hover {
+      background-color: #6B7280;
+    }
+
+    @media (max-width: 992px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .pd-tagline {
+        min-height: auto;
+      }
+    }
+  </style>
+
+  <section class="product-details-section">
+    <div class="container">
+      <div class="stats-header-content scroll-reveal" style="text-align: center;">
+        <div class="section-tag">WHAT'S INSIDE</div>
+        <h2 class="about-headline" style="color:var(--text-heading); margin-bottom: 16px;">Every product. Purpose-built.
+        </h2>
+        <p style="color: var(--text-body); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">Not tools bolted
+          together. A system designed from the ground up.</p>
+      </div>
+
+      <div class="product-detail-grid scroll-reveal">
+        <!-- CARD 1 -->
+        <div class="product-detail-card">
+          <div class="pd-status live">LIVE</div>
+          <div class="pd-title">TOOLVISE</div>
+          <div class="pd-tagline">"The stack advisor for developers who ship."</div>
+          <ul class="pd-features">
+            <li>AI analyzes your project description</li>
+            <li>Curated tech stack recommendation in seconds</li>
+            <li>Tool leaderboard — see what top teams use</li>
+            <li>Step-by-step learning paths for every tool</li>
+            <li>Completely free to use</li>
+          </ul>
+          <a href="https://toolvise.vercel.app/" target="_blank" class="pd-cta">Try Toolvise &rarr;</a>
+        </div>
+        <!-- CARD 2 -->
+        <div class="product-detail-card">
+          <div class="pd-status live">LIVE</div>
+          <div class="pd-title">BLAZION FORM</div>
+          <div class="pd-tagline">"The only AI form builder built for India."</div>
+          <ul class="pd-features">
+            <li>Plain text to full form via Gemini AI</li>
+            <li>Native Aadhaar, UPI, PAN, Pincode fields</li>
+            <li>Conversational form mode</li>
+            <li>WhatsApp and QR code sharing</li>
+            <li>DPDP compliant</li>
+          </ul>
+          <a href="https://blazion-form.vercel.app/" target="_blank" class="pd-cta">Build a Form &rarr;</a>
+        </div>
+        <!-- CARD 3 -->
+        <div class="product-detail-card">
+          <div class="pd-status soon">COMING SOON</div>
+          <div class="pd-title">BLAZION STORE</div>
+          <div class="pd-tagline">"The API marketplace for modern developers."</div>
+          <ul class="pd-features">
+            <li>Browse and connect APIs in one place</li>
+            <li>No integration headache</li>
+            <li>Developer-first documentation</li>
+            <li>Pay-per-use pricing</li>
+            <li>Built on Blazor + .NET 9</li>
+          </ul>
+          <a href="updates.html" class="pd-cta">Join Waitlist &rarr;</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 04.5 Developer Experience (DX) — The Code Base -->
@@ -371,133 +549,489 @@
 
 
 
-  <!-- 09 Testimonials -->
-  <section class="testimonials-section" id="testimonials">
-    <div class="testimonials-pin-wrapper" id="testimonials-pin">
-      <div class="testimonials-sticky-container">
-        <div class="testimonials-header">
-          <div class="section-tag">EARLY BLAZERS</div>
-          <h2 class="about-headline" style="color:var(--text-heading)">What People Are Saying.</h2>
+  <!-- 09 Stats -->
+  <style>
+    .stats-section {
+      background-color: #F8FAFC;
+      padding: var(--section-pad);
+    }
+
+    .stats-header-content {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .stat-card {
+      background-color: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 40px 24px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
+      transition: transform 0.3s var(--ease-slow);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: #020617;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .stat-label {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: #64748B;
+      font-weight: 500;
+    }
+
+    .stats-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 13px;
+      color: #64748B;
+      font-family: var(--font-body);
+    }
+
+    @media (max-width: 992px) {
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .stats-grid {
+        gap: 16px;
+      }
+
+      .stat-card {
+        padding: 24px 16px;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-header-content scroll-reveal">
+        <div class="section-tag">BY THE NUMBERS</div>
+        <h2 class="about-headline" style="color:var(--text-heading); margin-bottom: 16px;">Real traction. Early days.
+        </h2>
+        <p style="color: var(--text-body); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">We're just getting
+          started — but the numbers are moving.</p>
+      </div>
+
+      <div class="stats-grid scroll-reveal">
+        <div class="stat-card">
+          <div class="stat-number">124</div>
+          <div class="stat-label">Developers on Waitlist</div>
         </div>
-        <div class="testimonials-grid">
+        <div class="stat-card">
+          <div class="stat-number">38</div>
+          <div class="stat-label">Stacks Recommended on Toolvise</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">17</div>
+          <div class="stat-label">Forms Built on Blazion Form</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">2</div>
+          <div class="stat-label">Products Shipped</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">3</div>
+          <div class="stat-label">Products in Development</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">1</div>
+          <div class="stat-label">Team. Singular Focus.</div>
+        </div>
+      </div>
 
-          <!-- Card 1 -->
-          <div class="test-card" data-index="0">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Toolvise completely changed my project's trajectory. I was stuck on stack
-              choices for weeks, but it gave me a clear path in under a minute.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/avatar_marcus_dev_1775304690116.png" class="author-avatar" alt="Marcus T."
-                  loading="lazy">
-                <div>
-                  <div class="author-name">Marcus T.</div>
-                  <div class="author-role">Indie Developer</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
+      <div class="stats-note scroll-reveal">
+        * Numbers updated manually. Real-time tracking coming soon.
+      </div>
+    </div>
+  </section>
+
+  <!-- 09.1 Mission -->
+  <style>
+    .mission-section {
+      background-color: #050C22;
+      padding: var(--section-pad, 120px) 0;
+      text-align: center;
+    }
+
+    .mission-headline {
+      color: #FFFFFF;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 32px;
+      line-height: 1.2;
+    }
+
+    .mission-body {
+      color: #94A3B8;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 800px;
+      margin: 0 auto 24px auto;
+      font-family: var(--font-body);
+    }
+
+    .mission-cta {
+      display: inline-block;
+      margin-top: 24px;
+      padding: 14px 32px;
+      background-color: #94A3B8;
+      color: #FFFFFF;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: background-color 0.2s;
+    }
+
+    .mission-cta:hover {
+      background-color: #6B7280;
+    }
+  </style>
+
+  <section class="mission-section">
+    <div class="container scroll-reveal">
+      <div class="section-tag"
+        style="background: rgba(148, 163, 184, 0.1); color: #94A3B8; border: 1px solid rgba(148, 163, 184, 0.2);">WHY WE
+        EXIST</div>
+      <h2 class="mission-headline">We're not building products.<br>We're building the foundation.</h2>
+      <p class="mission-body">Most developer tools are built in isolation — a form builder here, a deployment tool
+        there. Developers spend more time stitching together infrastructure than actually building. Blazion exists to
+        fix that.</p>
+      <p class="mission-body">Our mission is to create a vertically integrated AI-native ecosystem where every layer —
+        from stack selection to form building to API distribution — works together seamlessly. Built in India.
+        Engineered for the world.</p>
+      <a href="#products" class="mission-cta">See What We've Built &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 09.2 Timeline -->
+  <style>
+    .timeline-section {
+      background-color: #F8FAFC;
+      padding: var(--section-pad, 120px) 0;
+    }
+
+    .timeline-wrap {
+      max-width: 800px;
+      margin: 64px auto 0;
+      position: relative;
+    }
+
+    .timeline-wrap::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: #CBD5E1;
+      transform: translateX(-50%);
+    }
+
+    .tl-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 48px;
+      position: relative;
+      width: 100%;
+    }
+
+    .tl-item:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    .tl-content {
+      width: 45%;
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
+      position: relative;
+    }
+
+    .tl-dot {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background: #CBD5E1;
+      border-radius: 50%;
+      border: 4px solid #F8FAFC;
+    }
+
+    .tl-item.active .tl-dot {
+      background: #94A3B8;
+      border-color: #E2E8F0;
+    }
+
+    .tl-item.active .tl-content {
+      border-color: #94A3B8;
+      box-shadow: 0 8px 16px rgba(148, 163, 184, 0.1);
+    }
+
+    .tl-date {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748B;
+      letter-spacing: 0.1em;
+      margin-bottom: 8px;
+    }
+
+    .tl-item.active .tl-date {
+      color: #94A3B8;
+    }
+
+    .tl-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #020617;
+      margin-bottom: 12px;
+    }
+
+    .tl-body {
+      font-size: 0.95rem;
+      color: #475569;
+      line-height: 1.6;
+      font-family: var(--font-body);
+    }
+
+    @media (max-width: 768px) {
+      .timeline-wrap::before {
+        left: 20px;
+        transform: translateX(0);
+      }
+
+      .tl-item,
+      .tl-item:nth-child(even) {
+        flex-direction: row;
+        justify-content: flex-end;
+      }
+
+      .tl-content {
+        width: calc(100% - 60px);
+      }
+
+      .tl-dot {
+        left: 20px;
+        top: 32px;
+        transform: translate(-50%, -50%);
+      }
+    }
+  </style>
+
+  <section class="timeline-section">
+    <div class="container scroll-reveal">
+      <div class="stats-header-content">
+        <div class="section-tag">THE JOURNEY</div>
+        <h2 class="about-headline" style="color:var(--text-heading); margin-bottom: 16px;">From idea to ecosystem.</h2>
+        <p style="color: var(--text-body); font-size: 1.15rem; max-width: 600px; margin: 0 auto;">A small team. A big
+          vision. One step at a time.</p>
+      </div>
+
+      <div class="timeline-wrap">
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2024 — Q3</div>
+            <div class="tl-title">The Idea</div>
+            <div class="tl-body">Blazion is conceived in Greater Noida. The problem is clear — developers waste too much
+              time on infrastructure decisions before writing a single line of code.</div>
           </div>
-
-          <!-- Card 2 -->
-          <div class="test-card" data-index="1">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">The vertically integrated AI tooling feels less like an IDE and more like
-              magic. It completely alters how teams prototype and ship software.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/test_1.png" class="author-avatar" alt="Evangeline H." loading="lazy">
-                <div>
-                  <div class="author-name">Evangeline H.</div>
-                  <div class="author-role">Senior Protocol Engineer</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2024 — Q4</div>
+            <div class="tl-title">First Product Begins</div>
+            <div class="tl-body">Work starts on Toolvise — an AI-powered tech stack advisor. The goal: give developers
+              the right stack recommendation in under 60 seconds.</div>
           </div>
-
-          <!-- Card 3 -->
-          <div class="test-card" data-index="2">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Blazion's edge network setup just works. Zero configuration deploying our
-              internal microservices. Pure unadulterated velocity.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/test_3.png" class="author-avatar" alt="Priya M." loading="lazy">
-                <div>
-                  <div class="author-name">Priya M.</div>
-                  <div class="author-role">Product Head</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2025 — Q1</div>
+            <div class="tl-title">Toolvise Launches</div>
+            <div class="tl-body">Toolvise goes live. Developers can describe their project and get an AI-curated tech
+              stack recommendation instantly.</div>
           </div>
-
-          <!-- Card 4 -->
-          <div class="test-card" data-index="3">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">Blazion Form's Bharat-native integration is a lifesaver. We saved months of dev
-              time on UPI and Aadhaar validations alone.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/avatar_rohan_cto_1775304707697.png" class="author-avatar" alt="Rohan K."
-                  loading="lazy">
-                <div>
-                  <div class="author-name">Rohan K.</div>
-                  <div class="author-role">CTO, Fintech Startup</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2025 — Q3</div>
+            <div class="tl-title">Blazion Form Launches</div>
+            <div class="tl-body">The second product ships. Blazion Form brings AI-powered form building with native
+              Indian field support — Aadhaar, UPI, PAN — to the market.</div>
           </div>
-
-          <!-- Card 5 -->
-          <div class="test-card" data-index="4">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">The sub-second deploys are real. We've moved our entire frontend to Blazion
-              Edge and seen a 40% jump in Lighthouse scores.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/avatar_sarah_engineer_1775304724280.png" class="author-avatar" alt="Sarah J."
-                  loading="lazy">
-                <div>
-                  <div class="author-name">Sarah J.</div>
-                  <div class="author-role">Full-stack Engineer</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
-            </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2025 — Q4</div>
+            <div class="tl-title">The Ecosystem Vision</div>
+            <div class="tl-body">The team formalizes the Blazion ecosystem roadmap. Blazion Store, Studio, Cloud, and
+              Intelligence join the product pipeline.</div>
           </div>
-
-          <!-- Card 6 -->
-          <div class="test-card" data-index="5">
-            <div class="test-card-quote-mark">"</div>
-            <div class="test-card-quote">An absolute game-changer for solo founders. The abstraction layer is so thin
-              yet so powerful. I feel like I have a DevOps team of ten.</div>
-            <div class="test-card-bottom">
-              <div class="test-card-author">
-                <img src="assets/avatar_liam_founder_1775304745143.png" class="author-avatar" alt="Liam O."
-                  loading="lazy">
-                <div>
-                  <div class="author-name">Liam O.</div>
-                  <div class="author-role">Solo Founder</div>
-                </div>
-              </div>
-              <div class="test-card-stars">★★★★★</div>
+        </div>
+        <div class="tl-item active">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-date">2026 — NOW</div>
+            <div class="tl-title">Building What's Next</div>
+            <div class="tl-body">Blazion Store enters active development. The waitlist grows. The ecosystem expands.
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Carousel Indicators (Mobile Only) -->
-        <div class="testimonial-indicators">
-          <span class="t-dot active"></span>
-          <span class="t-dot"></span>
-          <span class="t-dot"></span>
-          <span class="t-dot"></span>
-          <span class="t-dot"></span>
-          <span class="t-dot"></span>
+  <!-- 09.3 Built In India -->
+  <style>
+    .india-section {
+      background-color: #F8FAFC;
+      padding: 0 0 var(--section-pad, 120px) 0;
+      /* No top padding as it flows from timeline */
+    }
+
+    .india-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .india-headline {
+      color: #020617;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+      line-height: 1.2;
+    }
+
+    .india-body {
+      color: #475569;
+      font-size: 1.15rem;
+      line-height: 1.7;
+      font-family: var(--font-body);
+    }
+
+    .india-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .india-card {
+      background: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      gap: 16px;
+      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
+      transition: transform 0.3s var(--ease-slow);
+    }
+
+    .india-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .ic-icon {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+
+    .ic-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #020617;
+      margin-bottom: 8px;
+    }
+
+    .ic-body {
+      font-size: 0.9rem;
+      color: #475569;
+      line-height: 1.5;
+      font-family: var(--font-body);
+    }
+
+    @media (max-width: 992px) {
+      .india-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <section class="india-section">
+    <div class="container scroll-reveal">
+      <div class="india-grid">
+        <div class="india-left">
+          <div class="section-tag">MADE IN BHARAT</div>
+          <h2 class="india-headline">Built in Greater Noida.<br>Engineered for the world.</h2>
+          <p class="india-body">We are a lean team of builders operating out of Knowledge Park, Greater Noida, Uttar
+            Pradesh. No VC pressure. No corporate bureaucracy. Just a focused team solving real problems for developers
+            globally — starting with the tools we wished existed ourselves.</p>
         </div>
-
+        <div class="india-right india-cards">
+          <div class="india-card">
+            <div class="ic-icon">📍</div>
+            <div>
+              <div class="ic-title">Greater Noida, India</div>
+              <div class="ic-body">Our home base — Beta 1, Sector Knowledge Park</div>
+            </div>
+          </div>
+          <div class="india-card">
+            <div class="ic-icon">🇮🇳</div>
+            <div>
+              <div class="ic-title">India-First Products</div>
+              <div class="ic-body">Blazion Form is built natively for Indian data — Aadhaar, UPI, PAN support out of the
+                box</div>
+            </div>
+          </div>
+          <div class="india-card">
+            <div class="ic-icon">🌍</div>
+            <div>
+              <div class="ic-title">Global Ambition</div>
+              <div class="ic-body">Infrastructure for developers worldwide — starting from India</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -597,17 +1131,17 @@
 
   <script src="script.js"></script>
   <script>
-document.querySelectorAll('button').forEach(function(btn){
-  if(btn.textContent.trim()==='COPY'){
-    btn.addEventListener('click',function(){
-      var code=this.closest('section,div').querySelector('pre,code');
-      navigator.clipboard.writeText(code?code.innerText:'').then(function(){
-        btn.textContent='COPIED ✓';
-        setTimeout(function(){btn.textContent='COPY';},1500);
-      });
+    document.querySelectorAll('button').forEach(function (btn) {
+      if (btn.textContent.trim() === 'COPY') {
+        btn.addEventListener('click', function () {
+          var code = this.closest('section,div').querySelector('pre,code');
+          navigator.clipboard.writeText(code ? code.innerText : '').then(function () {
+            btn.textContent = 'COPIED ✓';
+            setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
+          });
+        });
+      }
     });
-  }
-});
   </script>
 </body>
 
