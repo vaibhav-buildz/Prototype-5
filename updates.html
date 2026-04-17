@@ -9,6 +9,83 @@
     content="Join the Blazion private beta. Get early access to AI-native infrastructure built for developers.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .hero-section {
+      background-color: #050C22 !important;
+      min-height: auto !important;
+      display: block !important;
+    }
+
+    .newsletter-section {
+      background-color: #F8FAFC !important;
+    }
+
+    .newsletter-glass-card {
+      background-color: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      border-radius: 12px !important;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06) !important;
+      padding: 48px !important;
+    }
+
+    .newsletter-headline {
+      color: #020617 !important;
+    }
+
+    .newsletter-sub {
+      color: #334155 !important;
+    }
+
+    .section-tag {
+      color: #94A3B8 !important;
+    }
+
+    #beta-email {
+      border: 1px solid #CBD5E1 !important;
+      color: #334155 !important;
+    }
+
+    #beta-email::placeholder {
+      color: #64748B !important;
+    }
+
+    #beta-btn {
+      background-color: #94A3B8 !important;
+      color: #0F172A !important;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    #beta-btn:hover {
+      background-color: #6B7280 !important;
+      color: #FFFFFF !important;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 24px rgba(148, 163, 184, 0.4);
+    }
+
+    #beta-success {
+      color: #64748B !important;
+    }
+
+    .newsletter-content-wrap h3 {
+      color: #020617 !important;
+    }
+
+    .newsletter-content-wrap p {
+      color: #334155 !important;
+    }
+
+    .btn-primary {
+      background-color: #94A3B8 !important;
+      color: #0F172A !important;
+    }
+
+    .btn-primary:hover {
+      background-color: #6B7280 !important;
+      color: #FFFFFF !important;
+    }
+  </style>
 </head>
 
 <body class="about-page">
@@ -63,23 +140,16 @@
   </nav>
 
   <!-- Updates Hero -->
-  <section class="updates-hero hero-section"
-    style="min-height: 80vh; padding-top: 140px; display: flex; align-items: center; justify-content: center;">
-    <div class="hero-grid-bg"></div>
-    <div class="container hero-content scroll-reveal">
-      <div class="hero-left">
-        <div class="section-tag">// COMM-LINK</div>
-        <h1 class="hero-headline" style="font-size: clamp(42px, 6vw, 76px); line-height: 1.1; margin-bottom: 24px;">
+  <section class="updates-hero hero-section" style="padding: 160px 0 100px; text-align: center; display: block;">
+    <div class="container">
+      <div class="scroll-reveal">
+        <div class="section-tag" style="margin-bottom: 24px; display: inline-block;">// COMM-LINK</div>
+        <h1 class="hero-headline" style="font-size: clamp(2.5rem, 6vw, 4rem); line-height: 1.1; margin-bottom: 24px;">
           Stay Tuned.<br>Stay Blazing.
         </h1>
-        <p class="hero-subheadline" style="max-width: 580px; opacity: 0.85; margin-bottom: 0;">
+        <p class="hero-subheadline" style="max-width: 600px; margin: 0 auto; opacity: 0.85;">
           Join the collective for real-time ignition updates, private betas, and direct access to the core team.
         </p>
-      </div>
-      <div class="hero-right">
-        <div class="hero-abstract" id="updates-hero-parallax">
-          <img src="assets/updates_hero.png" alt="Blazion Beacon Signal" class="hero-image">
-        </div>
       </div>
     </div>
   </section>
@@ -122,11 +192,11 @@
             }
           </script>
 
-          <div style="border-top: 1px solid rgba(226, 232, 240, 0.1); padding-top: 40px; margin-top: 40px;">
+          <div style="border-top: 1px solid #E2E8F0; padding-top: 40px; margin-top: 40px;">
             <div class="section-tag">DIRECT LINE</div>
-            <h3 style="color:white; font-family:var(--font-display); font-size:24px; margin-bottom: 16px;">Contact
+            <h3 style="color:#020617; font-family:var(--font-display); font-size:24px; margin-bottom: 16px;">Contact
               Support / Partnership</h3>
-            <p style="color:var(--text-body); margin-bottom: 24px;">Looking to build on Blazion or have technical
+            <p style="color:#334155; margin-bottom: 24px;">Looking to build on Blazion or have technical
               queries? Our primary channel is open.</p>
             <a href="mailto:hello@blazion.io" class="btn-primary">Send an Email</a>
           </div>

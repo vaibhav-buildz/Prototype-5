@@ -16,6 +16,137 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Styling overrides to match blog.html */
+    .hero-section {
+      background-color: #050C22 !important;
+      min-height: auto !important;
+      display: block !important;
+    }
+
+    .team-section {
+      background-color: #F8FAFC !important;
+    }
+
+    .team-headline {
+      color: #020617 !important;
+    }
+
+    .team-subline {
+      color: #334155 !important;
+    }
+
+    .team-label {
+      color: #94A3B8 !important;
+    }
+
+    .team-card {
+      background-color: #FFFFFF !important;
+      border: 1px solid #CBD5E1 !important;
+      box-shadow: none !important;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .team-card:hover {
+      transform: translateY(-6px) !important;
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06) !important;
+    }
+
+    .team-name {
+      color: #020617 !important;
+    }
+
+    .team-bio {
+      color: #334155 !important;
+      line-height: 1.6 !important;
+    }
+
+    .team-title {
+      background-color: #0F172A !important;
+      color: #94A3B8 !important;
+      padding: 6px 10px !important;
+      border-radius: 4px !important;
+      display: inline-block !important;
+      margin-bottom: 16px;
+    }
+
+    .team-social {
+      color: #94A3B8 !important;
+    }
+
+    .team-social:hover {
+      color: #6B7280 !important;
+    }
+
+    .quotes-section {
+      background-color: #F8FAFC !important;
+      padding: var(--section-pad);
+      border-top: 1px solid #CBD5E1;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .quote-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quote-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .quote-card {
+      background-color: #FFFFFF;
+      border: 1px solid #CBD5E1;
+      border-radius: 12px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    .quote-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+    }
+
+    .quote-text {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-style: italic;
+      color: #020617;
+      margin-bottom: 32px;
+      line-height: 1.5;
+      flex: 1;
+    }
+
+    .quote-author {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      border-top: 1px solid #E2E8F0;
+      padding-top: 20px;
+    }
+
+    .quote-mark {
+      font-family: Georgia, serif;
+      font-size: 60px;
+      line-height: 0.5;
+      color: #CBD5E1;
+      margin-bottom: 16px;
+    }
+  </style>
 </head>
 
 <body class="about-page">
@@ -70,24 +201,18 @@
   </nav>
 
   <!-- 02 Hero -->
-  <section class="hero-section" id="hero">
-    <div class="hero-grid-bg"></div>
-    <canvas id="hero-particles"></canvas>
-    <div class="container hero-content">
-      <div class="hero-left">
-        <div class="hero-tag">// OUR STORY</div>
-        <h1 class="hero-headline">Built for developers,<br>by architects.</h1>
-        <p class="hero-subheadline">
+  <section class="hero-section" id="hero" style="padding: 160px 0 100px; text-align: center; display: block;">
+    <div class="container">
+      <div class="scroll-reveal">
+        <div class="hero-tag" style="margin-bottom: 24px; display: inline-block;">// OUR STORY</div>
+        <h1 class="hero-headline" style="font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 24px;">Built for
+          developers,<br>by architects.</h1>
+        <p class="hero-subheadline" style="max-width: 600px; margin: 0 auto 32px;">
           Blazion is the AI-native infrastructure layer for the next generation of software — vertically integrated,
           built in India, shipped for the world.
         </p>
-        <div class="hero-ctas">
+        <div class="hero-ctas" style="justify-content: center;">
           <a href="#team" class="btn-primary">Meet The Team</a>
-        </div>
-      </div>
-      <div class="hero-right">
-        <div class="hero-abstract" id="hero-parallax">
-          <img src="assets/hero.png" alt="Blazion Our Story Visual" class="hero-image">
         </div>
       </div>
     </div>
@@ -95,7 +220,7 @@
 
   <!-- 08 Team — Architects -->
   <section class="team-section" id="team"
-    style="border-top: 1px solid var(--border-light); padding: var(--section-pad); position: relative;">
+    style="border-top: 1px solid #E2E8F0; padding: var(--section-pad); position: relative;">
     <div class="container">
 
       <!-- Section header -->
@@ -283,48 +408,48 @@
   </section>
 
 
-<!-- Leader's Words Interactive Section -->
-<section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
-  <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
-    <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">// LEADER'S WORDS</p>
-    <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;min-height:240px; display: flex; flex-direction: column; justify-content: center;">
-      <span style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
-      <div id="qt" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;"></div>
-      <div id="qa" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;"></div>
+  <!-- Leader's Words Interactive Section -->
+  <section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
+    <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">// LEADER'S WORDS</p>
+      <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;min-height:240px; display: flex; flex-direction: column; justify-content: center;">
+        <span style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
+        <div id="qt" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;"></div>
+        <div id="qa" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;"></div>
+      </div>
+      <div id="qdots" style="display:flex;gap:12px;margin-top:32px;justify-content:center;"></div>
     </div>
-    <div id="qdots" style="display:flex;gap:12px;margin-top:32px;justify-content:center;"></div>
-  </div>
-</section>
-<script>
-(function(){
-  var q=[
-    {t:"I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.",a:"— Vaibhav Yadav, Blazion"},
-    {t:"Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.",a:"— Vaibhav Yadav, Blazion"},
-    {t:"I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.",a:"— Vaibhav Yadav, Blazion"}
-  ];
-  var c=0,tmr,te=document.getElementById('qt'),ae=document.getElementById('qa'),de=document.getElementById('qdots'),card=document.getElementById('qcard');
-  if(!te || !ae || !de || !card) return;
-  function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){go(i);};de.appendChild(d);});}
-  function go(i){
-    te.style.opacity='0'; te.style.transform='translateY(-12px)'; ae.style.opacity='0';
-    setTimeout(function(){
-      c=i; te.textContent=q[c].t; ae.textContent=q[c].a;
-      te.style.transition='none'; ae.style.transition='none';
-      te.style.transform='translateY(12px)';
-      te.offsetHeight;
-      te.style.transition='opacity 0.5s ease, transform 0.5s ease';
-      ae.style.transition='opacity 0.5s ease';
-      te.style.opacity='1'; te.style.transform='translateY(0)'; ae.style.opacity='1';
-      dots();
-    },400);
-  }
-  function start(){tmr=setInterval(function(){go((c+1)%q.length);},5000);}
-  function stop(){clearInterval(tmr);}
-  card.addEventListener('mouseenter',stop);
-  card.addEventListener('mouseleave',start);
-  go(0);start();
-})();
-</script>
+  </section>
+  <script>
+  (function(){
+    var q=[
+      {t:"I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.",a:"— Vaibhav Yadav, Blazion"},
+      {t:"Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.",a:"— Vaibhav Yadav, Blazion"},
+      {t:"I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.",a:"— Vaibhav Yadav, Blazion"}
+    ];
+    var c=0,tmr,te=document.getElementById('qt'),ae=document.getElementById('qa'),de=document.getElementById('qdots'),card=document.getElementById('qcard');
+    if(!te || !ae || !de || !card) return;
+    function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){go(i);};de.appendChild(d);});}
+    function go(i){
+      te.style.opacity='0'; te.style.transform='translateY(-12px)'; ae.style.opacity='0';
+      setTimeout(function(){
+        c=i; te.textContent=q[c].t; ae.textContent=q[c].a;
+        te.style.transition='none'; ae.style.transition='none';
+        te.style.transform='translateY(12px)';
+        te.offsetHeight;
+        te.style.transition='opacity 0.5s ease, transform 0.5s ease';
+        ae.style.transition='opacity 0.5s ease';
+        te.style.opacity='1'; te.style.transform='translateY(0)'; ae.style.opacity='1';
+        dots();
+      },400);
+    }
+    function start(){tmr=setInterval(function(){go((c+1)%q.length);},5000);}
+    function stop(){clearInterval(tmr);}
+    card.addEventListener('mouseenter',stop);
+    card.addEventListener('mouseleave',start);
+    go(0);start();
+  })();
+  </script>
 
 
 
