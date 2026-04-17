@@ -1,23 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Blazion</title>
-  <meta name="description"
-    content="Engineering retrospectives, product updates, and Blazion's vision for the future of AI-native architecture.">
-  <meta property="og:title" content="Blog — Blazion Insights from the Frontier">
-  <meta property="og:description"
-    content="Build, deploy, and scale with Blazion's vertically integrated AI-native infrastructure.">
-  <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
-  <meta property="og:url" content="https://blazion-io.vercel.app/blog.html">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
+  <title>Blazion Blog — Ideas, Updates & Insights</title>
+  <meta name="description" content="From the team building the future of AI-native software.">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
+  
+  <style>
+    /* Blog Page Styles - Extending Design Tokens */
+    .blog-hero {
+      background-color: var(--deep-warm);
+      padding: 160px 0 100px;
+      text-align: center;
+      position: relative;
+    }
+    
+    .blog-hero-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: #94A3B8;
+      text-transform: uppercase;
+      letter-spacing: .3em;
+      margin-bottom: 24px;
+      display: inline-block;
+      font-weight: 700;
+    }
+    
+    .blog-hero-heading {
+      color: var(--white);
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      margin-bottom: 24px;
+      font-family: var(--font-display);
+      font-weight: 500;
+    }
+    
+    .blog-hero-subtext {
+      color: var(--text-muted); /* #64748B */
+      font-size: 1.15rem;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+      font-family: var(--font-body);
+    }
+    
+    .blog-main {
+      background-color: var(--bg-light); /* #F8FAFC */
+      padding: var(--section-pad);
+    }
+    
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    
+    @media (max-width: 1024px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    .blog-card {
+      background-color: var(--surface-white); /* #FFFFFF */
+      border: 1px solid var(--border-silver); /* #CBD5E1 */
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.3s var(--ease-slow), box-shadow 0.3s var(--ease-slow);
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06);
+    }
+    
+    .blog-card-img-wrap {
+      width: 100%;
+      aspect-ratio: 16/9;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-silver); /* #CBD5E1 */
+    }
+    
+    .blog-card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s var(--ease-slow);
+    }
+    
+    .blog-card:hover .blog-card-img {
+      transform: scale(1.05); /* Subtle zoom */
+    }
+    
+    .blog-card-content {
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    
+    .blog-category {
+      background-color: var(--accent-dark); /* #0F172A */
+      color: #94A3B8;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 6px 10px;
+      border-radius: 4px;
+      display: inline-block;
+      align-self: flex-start;
+      margin-bottom: 20px;
+    }
+    
+    .blog-card-title {
+      font-family: var(--font-display);
+      color: var(--text-heading); /* #020617 */
+      font-size: 22px;
+      margin-bottom: 16px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    
+    .blog-card-excerpt {
+      color: var(--text-body); /* #334155 */
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      flex: 1;
+    }
+    
+    .blog-card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 20px;
+      border-top: 1px solid var(--border-light); /* #E2E8F0 */
+    }
+    
+    .blog-date {
+      color: var(--text-muted); /* #64748B */
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+    
+    .blog-read-more {
+      color: #94A3B8;
+      font-size: 14px;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    
+    .blog-card:hover .blog-read-more {
+      color: #6B7280;
+    }
+  </style>
 </head>
-
 <body>
 
   <!-- Grain Overlay -->
@@ -31,27 +179,22 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="index.html#hero" class="nav-link draw-underline">Home</a></li>
+        <li><a href="index.html#hero" class="nav-link draw-underline" data-section="hero">Home</a></li>
         <li class="nav-dropdown-wrap">
-          <a href="index.html#products" class="nav-link draw-underline nav-dropdown-trigger">Products
+          <a href="index.html#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">Products
             <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
-              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round" />
+              <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
             </svg>
           </a>
           <ul class="nav-dropdown">
-            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise <span
-                  class="nav-dd-tag--prod">VISIT</span></a></li>
-            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form <span
-                  class="nav-dd-tag--prod">VISIT</span></a></li>
+            <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise <span class="nav-dd-tag--prod">VISIT</span></a></li>
+            <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form <span class="nav-dd-tag--prod">VISIT</span></a></li>
           </ul>
         </li>
-        <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
+        <li><a href="index.html#upcoming" class="nav-link draw-underline" data-section="upcoming">Upcoming</a></li>
         <li class="nav-links-logo">
-          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center"
-              loading="lazy"></a>
+          <a href="index.html#hero"><img src="assets/black_back.png" alt="Blazion Logo" class="nav-logo-img-center"></a>
         </li>
-
         <li><a href="updates.html" class="nav-link draw-underline" data-section="contact">Contact</a></li>
         <li><a href="about.html" class="nav-link draw-underline">About</a></li>
         <li><a href="blog.html" class="nav-link draw-underline active">Blog</a></li>
@@ -60,7 +203,7 @@
       <div class="nav-cta"></div>
 
       <div class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted-strong)" stroke-width="2">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
           <line x1="3" y1="12" x2="21" y2="12"></line>
           <line x1="3" y1="6" x2="21" y2="6"></line>
           <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -69,177 +212,130 @@
     </div>
   </nav>
 
-  <style>
-    .blog-coming-soon {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-left: 8px;
-      vertical-align: middle;
-      opacity: 0.8;
-      display: inline-block;
-    }
-
-    .blog-card,
-    .featured-article {
-      cursor: default !important;
-    }
-
-    .blog-card:hover,
-    .featured-article:hover {
-      transform: none !important;
-      box-shadow: none !important;
-    }
-  </style>
-
-  <!-- Blog Hero Section -->
-  <section class="blog-hero hero-section"
-    style="min-height: 80vh; padding-top: 140px; display: flex; align-items: center; justify-content: center;">
-    <div class="hero-grid-bg"></div>
-    <div class="container hero-content scroll-reveal">
-      <div class="hero-left">
-        <div class="section-tag">// THE FORGE</div>
-        <h1 class="hero-headline" style="font-size: clamp(42px, 6vw, 76px); line-height: 1.1; margin-bottom: 24px;">
-          Insights from<br>the Frontier.
-        </h1>
-        <p class="hero-subheadline" style="max-width: 580px; opacity: 0.85; margin-bottom: 0;">
-          Engineering retrospectives, product updates, and our vision for the future of AI-native architecture.
-        </p>
-      </div>
-      <div class="hero-right">
-        <div class="hero-abstract" id="blog-hero-parallax">
-          <img src="assets/blog_featured.png" alt="Engineering the future of AI-native architecture" class="hero-image">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- standalone Blog Section -->
-  <section class="blog-section" id="blog" style="padding-top: 80px;">
+  <!-- Hero Section -->
+  <section class="blog-hero">
     <div class="container">
-      <div class="featured-article scroll-reveal" style="margin-top: 0;">
-        <div class="article-image">
-          <img src="assets/blog_1.png" alt="Architecture diagram of the unified Blazion AI-native ecosystem" loading="lazy"
-            style="filter: brightness(0.8) contrast(1.2);">
-        </div>
-        <div class="featured-article-content">
-          <div class="article-tag">PRODUCT UPDATE</div>
-          <h3 class="featured-article-title">Unifying the AI-Native Stack: The Vision for Blazion</h3>
-          <span class="blog-coming-soon">COMING SOON</span>
-          <p class="featured-article-excerpt">The journey of architecting an ecosystem built on the principles of 
-            vertical integration, Bharat-native infrastructure, and developer joy.</p>
-          <div class="article-meta">
-            <span>8 min read</span>
-            <a href="updates.html#early-access" title="Article coming soon" class="draw-underline-cream">Read Article &rarr;</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="blog-grid scroll-reveal">
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="Blazor and .NET 9 technical implementation visualization" loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">ENGINEERING</div>
-            <h4 class="blog-card-title">Why We Chose Blazor + .NET 9 for Our API Marketplace</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>8 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_featured.png" alt="The future of AI-native software ecosystems abstract visual"
-              loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">VISION</div>
-            <h4 class="blog-card-title">The Future of AI-Native Software Ecosystems</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>5 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_3.png" alt="Clean and restrained UI design principles for developers" loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">DESIGN</div>
-            <h4 class="blog-card-title">Designing for Infinite Flow: The Blazion Visual Language</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>4 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_1.png" alt="Scaling global AI infrastructure across Bharat connectivity"
-              loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">ENGINEERING</div>
-            <h4 class="blog-card-title">Scaling Early Access: Our Infrastructure Playbook</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>10 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="Metrics and data visualization for developer joy and velocity"
-              loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">CULTURE</div>
-            <h4 class="blog-card-title">Beyond Velocity: Measuring Developer Joy at Blazion</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>5 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
-        <div class="blog-card">
-          <div class="blog-card-img article-image">
-            <img src="assets/blog_2.png" alt="Conceptual divide between AI-first and AI-added architectures"
-              loading="lazy">
-          </div>
-          <div style="padding: 0 24px 24px;">
-            <div class="article-tag">TECH</div>
-            <h4 class="blog-card-title">AI-First vs AI-Added: The Architectural Divide</h4>
-            <span class="blog-coming-soon">COMING SOON</span>
-            <div class="article-meta">
-              <span>12 min read</span>
-              <a href="updates.html" class="draw-underline">Coming Soon &rarr;</a>
-            </div>
-          </div>
-        </div>
+      <div class="scroll-reveal">
+        <span class="blog-hero-label">BLAZION BLOG</span>
+        <h1 class="blog-hero-heading">Ideas, Updates & Insights</h1>
+        <p class="blog-hero-subtext">From the team building the future of AI-native software.</p>
       </div>
     </div>
   </section>
 
+  <!-- Blog Main Content -->
+  <section class="blog-main">
+    <div class="container">
+      <div class="blog-grid scroll-reveal">
+        
+        <!-- Post 1 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800" alt="Developer looking at tech logos" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">Dev Tools</span>
+            <h2 class="blog-card-title">How to Choose the Right Tech Stack for Your Startup</h2>
+            <p class="blog-card-excerpt">Picking the wrong stack early can cost you months. Here's a framework to get it right from day one.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">April 10, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800" alt="Minimalist illustration choosing tools" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">Product</span>
+            <h2 class="blog-card-title">Why We Built Toolvise — The Story Behind the Tool</h2>
+            <p class="blog-card-excerpt">Every founder hits stack decision paralysis. We built Toolvise so no one else wastes that time again.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">March 28, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800" alt="Futuristic clean form UI" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">AI</span>
+            <h2 class="blog-card-title">AI-Powered Forms Are the Future of Data Collection</h2>
+            <p class="blog-card-excerpt">Static forms are dead. Blazion Form uses AI to make forms smarter, faster, and more human.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">March 15, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=800" alt="Connected API nodes" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">Blazion Store</span>
+            <h2 class="blog-card-title">What is an API Marketplace and Why Developers Need One</h2>
+            <p class="blog-card-excerpt">APIs are the building blocks of modern apps. A marketplace makes accessing them 10x faster.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">February 20, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=800" alt="Founder desk surrounded by tools" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">Startup</span>
+            <h2 class="blog-card-title">Top 5 Mistakes Founders Make When Picking Developer Tools</h2>
+            <p class="blog-card-excerpt">From over-engineering to chasing hype — these are the most common and costly mistakes.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">February 5, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card">
+          <div class="blog-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=800" alt="Small team collaborating" class="blog-card-img" loading="lazy">
+          </div>
+          <div class="blog-card-content">
+            <span class="blog-category">Behind the Scenes</span>
+            <h2 class="blog-card-title">Building Blazion: From Idea to Two Shipped Products</h2>
+            <p class="blog-card-excerpt">A behind-the-scenes look at how a small team built and launched two AI products from scratch.</p>
+            <div class="blog-card-footer">
+              <span class="blog-date">January 18, 2026</span>
+              <a href="#" class="blog-read-more">Read More &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 11 Redesigned Footer -->
   <footer class="footer-section" id="contact">
     <div class="footer-wordmark">BLAZION</div>
     <div class="container footer-container">
       <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 40px;">
         <div>
-          <a href="index.html#hero" class="footer-logo">
-            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" loading="lazy"
-              style="filter: brightness(0) invert(1);">
+          <a href="#hero" class="footer-logo">
+            <img src="assets/black_back.png" alt="Blazion Logo" class="footer-logo-img" loading="lazy" style="filter: brightness(0) invert(1);">
             BLAZION
           </a>
           <p class="footer-tagline">Build. Deploy. Blaze.</p>
@@ -261,7 +357,6 @@
         <div>
           <div class="footer-col-header">COMPANY</div>
           <div class="footer-links">
-
             <a href="about.html">About</a>
             <a href="blog.html">Blog</a>
             <a href="updates.html">News & Updates</a>
@@ -290,14 +385,12 @@
             Beta 1, Sector Knowledge Park<br>
             Greater Noida, Uttar Pradesh<br>
             India — 201310<br>
-            <a href="mailto:hello@blazion.io" class="footer-links"
-              style="color: rgba(255, 240, 230, 0.85); margin-top: 4px; display: inline-flex; align-items: center; min-height: 44px;">hello@blazion.io</a>
+            <a href="mailto:hello@blazion.io" class="footer-links" style="color: rgba(255, 240, 230, 0.85); margin-top: 4px; display: inline-flex; align-items: center; min-height: 44px;">hello@blazion.io</a>
           </address>
         </div>
       </div>
 
-      <div class="footer-bottom"
-        style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
+      <div class="footer-bottom" style="font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
         <div>© 2026 Blazion. All rights reserved.</div>
         <div class="footer-legal-links">
           <a href="updates.html#early-access" title="Coming soon">Privacy Policy</a>
@@ -312,5 +405,4 @@
 
   <script src="script.js"></script>
 </body>
-
 </html>
