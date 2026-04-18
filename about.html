@@ -40,43 +40,160 @@
       color: #94A3B8 !important;
     }
 
+    .team-grid {
+      display: grid;
+      gap: 32px !important;
+      border: none !important;
+    }
+
     .team-card {
-      background-color: #FFFFFF !important;
-      border: 1px solid #CBD5E1 !important;
-      box-shadow: none !important;
-      transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+      position: relative !important;
+      background: transparent !important;
+      border: none !important;
+      border-radius: 24px !important;
+      box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.1) !important;
+      transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1) !important;
+      overflow: hidden !important;
+      aspect-ratio: 10 / 13 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-end !important;
+      padding: 16px !important;
+      z-index: 1;
+      cursor: pointer !important;
+      -webkit-tap-highlight-color: transparent !important;
     }
 
     .team-card:hover {
-      transform: translateY(-6px) !important;
-      box-shadow: 0 16px 32px rgba(15, 23, 42, 0.06) !important;
+      transform: translateY(-8px) !important;
+      box-shadow: 0 24px 40px -12px rgba(15, 23, 42, 0.2) !important;
+    }
+
+    /* Make the photo wrap fill the absolute background */
+    .team-card-photo-wrap {
+      position: absolute !important;
+      top: 0 !important; 
+      left: 0 !important; 
+      width: 100% !important; 
+      height: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      z-index: -1 !important;
+    }
+
+    .team-card-photo {
+      width: 100% !important;
+      height: 100% !important;
+      border: none !important;
+      border-radius: 0 !important;
+      box-shadow: none !important;
+    }
+    
+    .team-photo-img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    .team-card:hover .team-photo-img {
+      transform: scale(1.08) !important;
+    }
+
+    /* Add a gradient overlay to ensure text legibility just in case */
+    .team-card::before {
+      content: "";
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 60%;
+      background: linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, transparent 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Floater glass bottom panel */
+    .team-card-body {
+      position: relative !important;
+      z-index: 2 !important;
+      background: rgba(255, 255, 255, 0.9) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255, 255, 255, 1) !important;
+      border-radius: 16px !important;
+      padding: 24px !important;
+      transform: translateY(12px) !important;
+      opacity: 0.95 !important;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+      border-bottom-left-radius: 20px !important;
+      border-bottom-right-radius: 20px !important;
+    }
+
+    .team-card:hover .team-card-body,
+    .team-card.touch-expanded .team-card-body {
+      transform: translateY(0) !important;
+      opacity: 1 !important;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
     }
 
     .team-name {
       color: #020617 !important;
+      font-size: 24px !important;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px !important;
     }
 
-    .team-bio {
-      color: #334155 !important;
-      line-height: 1.6 !important;
+    .team-bio, .team-socials {
+      color: #475569 !important;
+      line-height: 1.5 !important;
+      font-size: 13.5px !important;
+      opacity: 0 !important;
+      max-height: 0 !important;
+      overflow: hidden !important;
+      margin: 0 !important;
+      transform: translateY(10px) !important;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1) !important;
+    }
+
+    .team-card:hover .team-bio,
+    .team-card.touch-expanded .team-bio {
+      opacity: 1 !important;
+      max-height: 150px !important;
+      margin-bottom: 24px !important;
+      margin-top: 12px !important;
+      transform: translateY(0) !important;
+    }
+
+    .team-card:hover .team-socials,
+    .team-card.touch-expanded .team-socials {
+      opacity: 1 !important;
+      max-height: 50px !important;
+      transform: translateY(0) !important;
     }
 
     .team-title {
-      background-color: #0F172A !important;
-      color: #94A3B8 !important;
-      padding: 6px 10px !important;
-      border-radius: 4px !important;
+      background: linear-gradient(135deg, #0F172A, #1E293B) !important;
+      color: #FFFFFF !important;
+      padding: 6px 14px !important;
+      border-radius: 100px !important;
       display: inline-block !important;
-      margin-bottom: 16px;
+      margin-bottom: 16px !important;
+      font-size: 10px !important;
+      letter-spacing: 0.1em;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.1) !important;
+      text-transform: uppercase !important;
     }
 
     .team-social {
       color: #94A3B8 !important;
+      transition: all 0.3s ease !important;
     }
 
     .team-social:hover {
-      color: #6B7280 !important;
+      color: #0F172A !important;
+      transform: translateY(-2px);
     }
+
+
 
     .quotes-section {
       background-color: #F8FAFC !important;
@@ -407,71 +524,93 @@
     </div>
   </section>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const teamCards = document.querySelectorAll('.team-card');
+      teamCards.forEach(card => {
+        card.addEventListener('click', () => {
+          teamCards.forEach(c => {
+            if(c !== card) c.classList.remove('touch-expanded');
+          });
+          card.classList.toggle('touch-expanded');
+        });
+      });
+    });
+  </script>
+
 
   <!-- Leader's Words Interactive Section -->
   <section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
     <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
-      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">// LEADER'S WORDS</p>
-      <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;height:380px; display: flex; flex-direction: column; justify-content: center;">
-        <span style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
-        <div id="qt" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;"></div>
-        <div id="qa" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;"></div>
+      <p
+        style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">
+        // LEADER'S WORDS</p>
+      <div id="qcard"
+        style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;height:380px; display: flex; flex-direction: column; justify-content: center;">
+        <span
+          style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
+        <div id="qt"
+          style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;">
+        </div>
+        <div id="qa"
+          style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;">
+        </div>
       </div>
       <div id="qdots" style="display:flex;gap:12px;margin-top:32px;justify-content:center;"></div>
     </div>
   </section>
   <script>
-  (function(){
-    var q=[
-      {t:"I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.",a:"— Vaibhav Yadav, Lead Designer"},
-      {t:"Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.",a:"— Aditya kr Singh, Founder & CEO"},
-      {t:"I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.",a:"— Aryan Yadav, Co-Founder & CTO"}
-    ];
-    var c=0,tmr,te=document.getElementById('qt'),ae=document.getElementById('qa'),de=document.getElementById('qdots'),card=document.getElementById('qcard');
-    if(!te || !ae || !de || !card) return;
-    function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){clearInterval(tmr);go(i);start();};de.appendChild(d);});}
-    function go(i){
-      te.style.opacity='0'; te.style.transform='translateY(-12px)'; ae.style.opacity='0';
-      setTimeout(function(){
-        c=i; te.textContent=q[c].t; ae.textContent=q[c].a;
-        te.style.transition='none'; ae.style.transition='none';
-        te.style.transform='translateY(12px)';
-        te.offsetHeight;
-        te.style.transition='opacity 0.5s ease, transform 0.5s ease';
-        ae.style.transition='opacity 0.5s ease';
-        te.style.opacity='1'; te.style.transform='translateY(0)'; ae.style.opacity='1';
-        dots();
-      },400);
-    }
-    function start(){ stop(); tmr=setInterval(function(){go((c+1)%q.length);},5000); }
-    function stop(){ clearInterval(tmr); }
-    
-    // Prevent browser horizontal swipe navigation 
-    card.style.touchAction = 'pan-y';
-
-    card.addEventListener('mouseenter',stop);
-    card.addEventListener('mouseleave',start);
-    
-    // Swipe support for mobile
-    var touchstartX = 0;
-    card.addEventListener('touchstart', function(e) {
-      touchstartX = e.changedTouches[0].clientX;
-      stop();
-    }, {passive: true});
-
-    card.addEventListener('touchend', function(e) {
-      var touchendX = e.changedTouches[0].clientX;
-      var diff = touchstartX - touchendX;
-      
-      if (Math.abs(diff) > 40) {
-        if (diff > 0) go((c+1)%q.length);
-        else go((c-1+q.length)%q.length);
+    (function () {
+      var q = [
+        { t: "I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.", a: "— Vaibhav Yadav, Lead Designer" },
+        { t: "Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.", a: "— Aditya kr Singh, Founder & CEO" },
+        { t: "I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.", a: "— Aryan Yadav, Co-Founder & CTO" }
+      ];
+      var c = 0, tmr, te = document.getElementById('qt'), ae = document.getElementById('qa'), de = document.getElementById('qdots'), card = document.getElementById('qcard');
+      if (!te || !ae || !de || !card) return;
+      function dots() { de.innerHTML = ''; q.forEach(function (_, i) { var d = document.createElement('div'); d.style.cssText = 'width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;' + (i === c ? 'background:#fff;transform:scale(1.2);' : 'background:rgba(255,255,255,0.2);'); d.onclick = function () { clearInterval(tmr); go(i); start(); }; de.appendChild(d); }); }
+      function go(i) {
+        te.style.opacity = '0'; te.style.transform = 'translateY(-12px)'; ae.style.opacity = '0';
+        setTimeout(function () {
+          c = i; te.textContent = q[c].t; ae.textContent = q[c].a;
+          te.style.transition = 'none'; ae.style.transition = 'none';
+          te.style.transform = 'translateY(12px)';
+          te.offsetHeight;
+          te.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+          ae.style.transition = 'opacity 0.5s ease';
+          te.style.opacity = '1'; te.style.transform = 'translateY(0)'; ae.style.opacity = '1';
+          dots();
+        }, 400);
       }
-      start();
-    }, {passive: true});
+      function start() { stop(); tmr = setInterval(function () { go((c + 1) % q.length); }, 5000); }
+      function stop() { clearInterval(tmr); }
 
-    go(0);start();
-  })();
+      // Prevent browser horizontal swipe navigation 
+      card.style.touchAction = 'pan-y';
+
+      card.addEventListener('mouseenter', stop);
+      card.addEventListener('mouseleave', start);
+
+      // Swipe support for mobile
+      var touchstartX = 0;
+      card.addEventListener('touchstart', function (e) {
+        touchstartX = e.changedTouches[0].clientX;
+        stop();
+      }, { passive: true });
+
+      card.addEventListener('touchend', function (e) {
+        var touchendX = e.changedTouches[0].clientX;
+        var diff = touchstartX - touchendX;
+
+        if (Math.abs(diff) > 40) {
+          if (diff > 0) go((c + 1) % q.length);
+          else go((c - 1 + q.length) % q.length);
+        }
+        start();
+      }, { passive: true });
+
+      go(0); start();
+    })();
   </script>
 
 
