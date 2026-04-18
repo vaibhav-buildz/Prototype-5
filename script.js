@@ -1,4 +1,4 @@
-// Page fade-in: opacity only — using transform would break position:fixed on navbar
+// Page fade-in: opacity only - using transform would break position:fixed on navbar
 document.documentElement.style.opacity = '0';
 document.addEventListener('DOMContentLoaded', () => {
   document.documentElement.style.transition = 'opacity 0.25s ease';
@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   /* ---------------------------------
-   * 9. FOLDER CARD STACK — LIVE & RUNNING
+   * 9. FOLDER CARD STACK - LIVE & RUNNING
    * --------------------------------- */
   const folderSection = document.querySelector('.folder-section');
   const folderCards = document.querySelectorAll('.folder-card');
@@ -366,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ============================================================
- * SCROLL SPY — highlights active nav-link as sections enter view
+ * SCROLL SPY - highlights active nav-link as sections enter view
  * ============================================================ */
 (function () {
   const sections = [

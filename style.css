@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=DM+Sans:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
 
 /* ============================================================
-   DESIGN TOKENS — Classic Onyx & Slate Brand System
+   DESIGN TOKENS - Classic Onyx & Slate Brand System
    ============================================================ */
 :root {
   --bg-light: #F8FAFC;
@@ -414,7 +414,7 @@ section {
   align-items: center;
 }
 
-/* Invisible bridge — fills the gap between trigger and dropdown */
+/* Invisible bridge - fills the gap between trigger and dropdown */
 .nav-dropdown-wrap::after {
   content: '';
   position: absolute;
@@ -636,7 +636,7 @@ section {
   opacity: 0.9;
 }
 
-/* Hero headline override — white/cream text on dark deep-warm background */
+/* Hero headline override - white/cream text on dark deep-warm background */
 .hero-headline {
   font-size: clamp(3rem, 10vw, 6rem);
   line-height: .9;
@@ -731,7 +731,7 @@ section {
   transform: translateY(-2px);
 }
 
-/* Hero right — image contained */
+/* Hero right - image contained */
 .hero-right {
   position: relative;
 }
@@ -1124,7 +1124,7 @@ section {
 }
 
 /* ============================================================
-   05-A FOLDER CARD STACK — LIVE & RUNNING
+   05-A FOLDER CARD STACK - LIVE & RUNNING
    ============================================================ */
 .folder-section {
   height: 350vh;
@@ -1362,7 +1362,7 @@ section {
 }
 
 /* ============================================================
-   04.5 DEVELOPER EXPERIENCE (DX) — THE CODE BASE
+   04.5 DEVELOPER EXPERIENCE (DX) - THE CODE BASE
    ============================================================ */
 .dx-section {
   padding: 80px 0;
@@ -1570,7 +1570,7 @@ section {
 }
 
 /* ============================================================
-   06 UPCOMING  (deep-warm dark bg — strong contrast from section above)
+   06 UPCOMING  (deep-warm dark bg - strong contrast from section above)
    ============================================================ */
 .upcoming-section {
   background: var(--deep-warm);
