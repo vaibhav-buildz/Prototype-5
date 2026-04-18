@@ -539,77 +539,214 @@
   </script>
 
 
-  <!-- Leader's Words Interactive Section -->
-  <section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
-    <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
-      <p
-        style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">
-        // LEADER'S WORDS</p>
-      <div id="qcard"
-        style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;height:380px; display: flex; flex-direction: column; justify-content: center;">
-        <span
-          style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
-        <div id="qt"
-          style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;">
+  <!-- Leader's Words Section -->
+  <section style="padding:100px 5%; background: #F8FAFC; position: relative;">
+    <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
+      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#94A3B8;text-transform:uppercase;margin-bottom:16px;">
+        // LEADER'S WORDS
+      </p>
+      <h2 style="font-size: 36px; color: #020617; font-weight: 500; margin-bottom: 64px; letter-spacing: -0.02em;">
+        The vision, in his own words.
+      </h2>
+      
+      <style>
+        .vision-carousel-container {
+          position: relative;
+          max-width: 920px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+        .vision-carousel-track {
+          display: grid;
+          position: relative;
+          width: 100%;
+          max-width: 800px;
+          margin: 0 auto;
+        }
+        .vision-card {
+          grid-area: 1 / 1;
+          padding: 32px;
+          border-radius: 12px;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+          
+          width: 100%;
+          opacity: 0;
+          transition: opacity 0.4s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .vision-card.active {
+          opacity: 1;
+          pointer-events: auto;
+          z-index: 2;
+        }
+        .vision-quote-mark {
+          font-size: 4rem;
+          line-height: 0;
+          display: block;
+          margin-bottom: 8px;
+          color: #94A3B8;
+          font-family: Georgia, serif;
+          margin-top: 24px;
+        }
+        .vision-quote-text {
+          font-style: italic;
+          font-size: 1.1rem;
+          line-height: 1.8;
+          flex-grow: 1;
+          margin: 0;
+        }
+        .vision-attribution {
+          font-style: normal;
+          font-size: 0.85rem;
+          margin-top: 16px;
+          margin-bottom: 0;
+          letter-spacing: 0.05em;
+          font-family: 'IBM Plex Mono', monospace;
+        }
+        .vision-nav-btn {
+          width: 48px;
+          height: 48px;
+          border-radius: 50%;
+          background: #0F172A;
+          color: #94A3B8;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          cursor: pointer;
+          position: absolute;
+          z-index: 10;
+          transition: background 0.3s;
+          font-size: 32px;
+          font-family: inherit;
+          padding-bottom: 4px;
+        }
+        .vision-nav-btn:hover {
+          background: #1E293B;
+        }
+        .vision-nav-prev { left: 0; padding-right: 4px; }
+        .vision-nav-next { right: 0; padding-left: 4px; }
+
+        @media (max-width: 768px) {
+          .vision-nav-btn { display: none; }
+        }
+
+        .vision-dots {
+          display: flex;
+          gap: 12px;
+          justify-content: center;
+          margin-top: 24px;
+        }
+        .vision-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: #CBD5E1;
+          cursor: pointer;
+          transition: background 0.3s;
+        }
+        .vision-dot.active {
+          background: #94A3B8;
+        }
+      </style>
+
+      <div class="vision-carousel-container">
+        <button class="vision-nav-btn vision-nav-prev" onclick="visionChangeSlide(-1)">&#8249;</button>
+        
+        <div class="vision-carousel-track" id="visionTrack">
+          <!-- Card 1 -->
+          <div class="vision-card active" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
+            <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
+            <p class="vision-quote-text" style="color: #020617;">Design is not how it looks. Design is how it works, how it feels, and how fast it gets out of the way so the developer can just build. That is the standard I hold every pixel of Blazion to.</p>
+            <p class="vision-attribution" style="color: #64748B;">— Vaibhav Yadav, Lead Designer, Blazion</p>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="vision-card" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
+            <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
+            <p class="vision-quote-text" style="color: #020617;">We didn't set out to build a product company. We set out to fix the foundation — so every developer who comes after us has a cleaner, faster, smarter infrastructure to build on.</p>
+            <p class="vision-attribution" style="color: #64748B;">— Aditya Singh, Founder &amp; CEO, Blazion</p>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="vision-card" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
+            <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
+            <p class="vision-quote-text" style="color: #020617;">Infrastructure should be invisible. Zero cold starts, zero config overhead, zero excuses. The moment a developer has to fight their deployment pipeline, we have already failed.</p>
+            <p class="vision-attribution" style="color: #64748B;">— Aryan, Co-Founder, Blazion</p>
+          </div>
         </div>
-        <div id="qa"
-          style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;">
-        </div>
+        
+        <button class="vision-nav-btn vision-nav-next" onclick="visionChangeSlide(1)">&#8250;</button>
       </div>
-      <div id="qdots" style="display:flex;gap:12px;margin-top:32px;justify-content:center;"></div>
+
+      <div class="vision-dots" id="visionDots">
+        <div class="vision-dot active" onclick="visionGoToSlide(0)"></div>
+        <div class="vision-dot" onclick="visionGoToSlide(1)"></div>
+        <div class="vision-dot" onclick="visionGoToSlide(2)"></div>
+      </div>
+
     </div>
   </section>
+
   <script>
-    (function () {
-      var q = [
-        { t: "I got tired of stitching together ten different tools just to ship one idea. Blazion is what I kept wishing existed — everything in one place, actually built for developers.", a: "— Vaibhav Yadav, Lead Designer" },
-        { t: "Most dev infrastructure is built by corporations, for corporations. I'm building Blazion for the solo founder at 2am who just wants to ship without fighting their own stack.", a: "— Aditya kr Singh, Founder & CEO" },
-        { t: "I'm not building a product company. I'm building the layer underneath — so that every builder who comes after me has a cleaner foundation to stand on.", a: "— Aryan Yadav, Co-Founder & CTO" }
-      ];
-      var c = 0, tmr, te = document.getElementById('qt'), ae = document.getElementById('qa'), de = document.getElementById('qdots'), card = document.getElementById('qcard');
-      if (!te || !ae || !de || !card) return;
-      function dots() { de.innerHTML = ''; q.forEach(function (_, i) { var d = document.createElement('div'); d.style.cssText = 'width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;' + (i === c ? 'background:#fff;transform:scale(1.2);' : 'background:rgba(255,255,255,0.2);'); d.onclick = function () { clearInterval(tmr); go(i); start(); }; de.appendChild(d); }); }
-      function go(i) {
-        te.style.opacity = '0'; te.style.transform = 'translateY(-12px)'; ae.style.opacity = '0';
-        setTimeout(function () {
-          c = i; te.textContent = q[c].t; ae.textContent = q[c].a;
-          te.style.transition = 'none'; ae.style.transition = 'none';
-          te.style.transform = 'translateY(12px)';
-          te.offsetHeight;
-          te.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-          ae.style.transition = 'opacity 0.5s ease';
-          te.style.opacity = '1'; te.style.transform = 'translateY(0)'; ae.style.opacity = '1';
-          dots();
-        }, 400);
+    (function() {
+      let currentSlide = 0;
+      const track = document.getElementById('visionTrack');
+      if(!track) return;
+      const cards = track.querySelectorAll('.vision-card');
+      const dots = document.getElementById('visionDots').querySelectorAll('.vision-dot');
+      let timer;
+
+      function go(idx) {
+        cards[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        currentSlide = (idx + cards.length) % cards.length;
+        cards[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
       }
-      function start() { stop(); tmr = setInterval(function () { go((c + 1) % q.length); }, 5000); }
-      function stop() { clearInterval(tmr); }
 
-      // Prevent browser horizontal swipe navigation 
-      card.style.touchAction = 'pan-y';
+      window.visionChangeSlide = function(dir) {
+        clearInterval(timer);
+        go(currentSlide + dir);
+        startAuto();
+      }
 
-      card.addEventListener('mouseenter', stop);
-      card.addEventListener('mouseleave', start);
+      window.visionGoToSlide = function(idx) {
+        clearInterval(timer);
+        go(idx);
+        startAuto();
+      }
 
-      // Swipe support for mobile
-      var touchstartX = 0;
-      card.addEventListener('touchstart', function (e) {
+      function startAuto() {
+        timer = setInterval(() => {
+          go(currentSlide + 1);
+        }, 5000);
+      }
+      
+      // Swipe gestures for mobile
+      let touchstartX = 0;
+      track.style.touchAction = 'pan-y'; // allow vertical scroll, block horizontal for reliable swipe
+      
+      track.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].clientX;
-        stop();
-      }, { passive: true });
-
-      card.addEventListener('touchend', function (e) {
-        var touchendX = e.changedTouches[0].clientX;
-        var diff = touchstartX - touchendX;
-
-        if (Math.abs(diff) > 40) {
-          if (diff > 0) go((c + 1) % q.length);
-          else go((c - 1 + q.length) % q.length);
+        clearInterval(timer);
+      }, {passive: true});
+      
+      track.addEventListener('touchend', e => {
+        const diff = touchstartX - e.changedTouches[0].clientX;
+        if(Math.abs(diff) > 50) {
+          if(diff > 0) go(currentSlide + 1);
+          else go(currentSlide - 1);
         }
-        start();
-      }, { passive: true });
+        startAuto();
+      }, {passive: true});
 
-      go(0); start();
+      startAuto();
     })();
   </script>
 
