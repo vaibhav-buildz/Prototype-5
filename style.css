@@ -286,7 +286,7 @@ section {
 
 @media (max-width: 1024px) {
   .navbar.nav-hidden {
-    transform: translate(-50%, -120%) !important;
+    transform: translate(-50%, calc(-100% - 40px)) !important;
   }
 }
 
@@ -2412,12 +2412,6 @@ section {
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  filter: grayscale(1);
-  transition: filter 0.4s ease;
-}
-
-.team-card:hover .team-photo-img {
-  filter: grayscale(0);
 }
 
 .team-card-body {
@@ -3317,11 +3311,22 @@ section {
     min-height: auto !important;
   }
 
-  .team-card-photo-wrap,
+  .team-card-photo-wrap {
+    padding: 0 !important;
+    margin: 0 auto 24px !important;
+    width: 120px !important;
+  }
+  .team-card-photo {
+    width: 120px !important;
+    height: 120px !important;
+    aspect-ratio: auto !important;
+    border-radius: 50% !important;
+    margin: 0 auto;
+  }
   .team-photo-img {
-    width: 96px !important;
-    height: 96px !important;
-    margin: 0 auto 12px;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
   }
 
   .team-card-body {

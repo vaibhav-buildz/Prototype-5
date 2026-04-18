@@ -412,7 +412,7 @@
   <section style="padding:100px 5%; background: var(--accent-dark, #0F172A); position: relative; overflow: hidden;">
     <div style="max-width:780px;margin:0 auto; position: relative; z-index: 2;">
       <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:32px;">// LEADER'S WORDS</p>
-      <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;min-height:240px; display: flex; flex-direction: column; justify-content: center;">
+      <div id="qcard" style="position:relative;border:1px solid rgba(255,255,255,0.1);border-left:3px solid #fff;padding:52px 52px 44px;background:rgba(255,255,255,0.03);backdrop-filter: blur(10px);overflow:hidden;height:380px; display: flex; flex-direction: column; justify-content: center;">
         <span style="position:absolute;top:12px;left:24px;font-size:120px;line-height:1;color:#fff;opacity:0.08;font-family:Georgia,serif;user-select:none;">"</span>
         <div id="qt" style="position:relative;font-family:'Cormorant Garamond',serif;font-size:26px;line-height:1.6;color:#fff;transition:opacity 0.4s ease,transform 0.4s ease;"></div>
         <div id="qa" style="margin-top:28px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;transition:opacity 0.4s ease; text-transform: uppercase;"></div>
@@ -429,7 +429,7 @@
     ];
     var c=0,tmr,te=document.getElementById('qt'),ae=document.getElementById('qa'),de=document.getElementById('qdots'),card=document.getElementById('qcard');
     if(!te || !ae || !de || !card) return;
-    function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){go(i);};de.appendChild(d);});}
+    function dots(){de.innerHTML='';q.forEach(function(_,i){var d=document.createElement('div');d.style.cssText='width:8px;height:8px;border-radius:50%;cursor:pointer;transition:all 0.3s;'+(i===c?'background:#fff;transform:scale(1.2);':'background:rgba(255,255,255,0.2);');d.onclick=function(){clearInterval(tmr);go(i);start();};de.appendChild(d);});}
     function go(i){
       te.style.opacity='0'; te.style.transform='translateY(-12px)'; ae.style.opacity='0';
       setTimeout(function(){
@@ -443,10 +443,33 @@
         dots();
       },400);
     }
-    function start(){tmr=setInterval(function(){go((c+1)%q.length);},5000);}
-    function stop(){clearInterval(tmr);}
+    function start(){ stop(); tmr=setInterval(function(){go((c+1)%q.length);},5000); }
+    function stop(){ clearInterval(tmr); }
+    
+    // Prevent browser horizontal swipe navigation 
+    card.style.touchAction = 'pan-y';
+
     card.addEventListener('mouseenter',stop);
     card.addEventListener('mouseleave',start);
+    
+    // Swipe support for mobile
+    var touchstartX = 0;
+    card.addEventListener('touchstart', function(e) {
+      touchstartX = e.changedTouches[0].clientX;
+      stop();
+    }, {passive: true});
+
+    card.addEventListener('touchend', function(e) {
+      var touchendX = e.changedTouches[0].clientX;
+      var diff = touchstartX - touchendX;
+      
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) go((c+1)%q.length);
+        else go((c-1+q.length)%q.length);
+      }
+      start();
+    }, {passive: true});
+
     go(0);start();
   })();
   </script>
@@ -509,8 +532,7 @@
         <div>
           <div class="footer-col-header">HEADQUARTERS</div>
           <address class="footer-hq-address">
-            <strong>Blazion Technologies</strong>
-            Beta 1, Sector Knowledge Park<br>
+            <strong>Blazion Technologies</strong><br>
             Greater Noida, Uttar Pradesh<br>
             India — 201310<br>
             <a href="mailto:hello@blazion.io" class="footer-links"
