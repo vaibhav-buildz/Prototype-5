@@ -50,7 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i < particleCount; i++) particles.push(new Particle());
 
     let heroAnimating = false;
-    const heroObserver = new IntersectionObserver(([e]) => { heroAnimating = e.isIntersecting; });
+    let rafId = null;
+    const heroObserver = new IntersectionObserver(([e]) => {
+      heroAnimating = e.isIntersecting;
+      if (heroAnimating) {
+        rafId = requestAnimationFrame(animateParticles);
+      } else {
+        cancelAnimationFrame(rafId);
+      }
+    });
     const heroSectionEl = document.getElementById('hero');
     if (heroSectionEl) heroObserver.observe(heroSectionEl);
 
@@ -69,9 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         }
       });
-      requestAnimationFrame(animateParticles);
+      rafId = requestAnimationFrame(animateParticles);
     };
-    animateParticles();
+    rafId = requestAnimationFrame(animateParticles);
   }
 
 
@@ -371,8 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
 (function () {
   const sections = [
     { id: 'hero', selector: '#hero' },
-    { id: 'about', selector: '#about' },
-    { id: 'about', selector: '#team' },
     { id: 'products', selector: '#products' },
     { id: 'upcoming', selector: '#upcoming' },
     { id: 'blog', selector: '#blog' },
@@ -412,6 +418,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileMenuBtn && navbarFixed) {
     const syncBtnState = () => {
       const isOpen = document.body.classList.contains('nav-open');
+      document.body.style.overflow = isOpen ? 'hidden' : '';
       // Update SVG to either Hamburger or Close (X)
       mobileMenuBtn.innerHTML = isOpen
         ? `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>`

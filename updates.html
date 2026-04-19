@@ -7,6 +7,12 @@
   <title>Updates - Blazion</title>
   <meta name="description"
     content="Join the Blazion private beta. Get early access to AI-native infrastructure built for developers.">
+  <meta property="og:title" content="Updates - Blazion">
+  <meta property="og:description" content="Join the Blazion private beta. Get early access to AI-native infrastructure built for developers.">
+  <meta property="og:image" content="https://blazion-io.vercel.app/assets/hero.png">
+  <meta property="og:url" content="https://blazion-io.vercel.app/updates.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="style.css">
   <style>
@@ -88,7 +94,7 @@
   </style>
 </head>
 
-<body class="about-page">
+<body class="updates-page">
 
   <!-- Grain Overlay -->
   <div class="grain-overlay"></div>
@@ -104,16 +110,16 @@
         <li><a href="index.html#hero" class="nav-link draw-underline">Home</a></li>
         <li class="nav-dropdown-wrap">
           <a href="index.html#products" class="nav-link draw-underline nav-dropdown-trigger">Products
-            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
               <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
           </a>
           <ul class="nav-dropdown">
             <li><a href="https://toolvise.vercel.app/" target="_blank" class="nav-dropdown-item">Toolvise <span
-                  class="nav-dd-tag--prod"> VISIT</span></a></li>
+                  class="nav-dd-tag--prod">VISIT</span></a></li>
             <li><a href="https://blazion-form.vercel.app/" target="_blank" class="nav-dropdown-item">Blazion Form <span
-                  class="nav-dd-tag--prod"> VISIT</span></a></li>
+                  class="nav-dd-tag--prod">VISIT</span></a></li>
           </ul>
         </li>
         <li><a href="index.html#upcoming" class="nav-link draw-underline">Upcoming</a></li>
@@ -184,7 +190,8 @@
               var success = document.getElementById('beta-success');
               var btn = document.getElementById('beta-btn');
               var input = document.getElementById('beta-email');
-              if (!email || !email.includes('@')) { err.style.display = 'block'; return; }
+              var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+              if (!email || !regex.test(email)) { err.style.display = 'block'; return; }
               err.style.display = 'none';
               input.style.display = 'none';
               btn.style.display = 'none';
@@ -263,8 +270,7 @@
             <strong>Blazion Technologies</strong><br>
             Greater Noida, Uttar Pradesh<br>
             India - 201310<br>
-            <a href="mailto:hello@blazion.io" class="footer-links"
-              style="color: rgba(255, 240, 230, 0.85); margin-top: 4px; display: inline-flex; align-items: center; min-height: 44px;">hello@blazion.io</a>
+
           </address>
         </div>
       </div>

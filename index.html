@@ -40,7 +40,7 @@
         <li class="nav-dropdown-wrap">
           <a href="#products" class="nav-link draw-underline nav-dropdown-trigger" data-section="products">Products
 
-            <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none">
+        <svg class="nav-chevron" width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
               <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg>
@@ -167,121 +167,7 @@
   </section>
 
   <!-- 05.5 Product Details -->
-  <style>
-    .product-details-section {
-      background-color: #F8FAFC;
-      padding: var(--section-pad);
-    }
 
-    .product-detail-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      margin-top: 48px;
-    }
-
-    .product-detail-card {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 12px;
-      padding: 32px 24px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .pd-status {
-      font-family: var(--font-mono, monospace);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      padding: 4px 10px;
-      border-radius: 4px;
-      display: inline-block;
-      margin-bottom: 24px;
-      align-self: flex-start;
-    }
-
-    .pd-status.live {
-      background-color: rgba(16, 185, 129, 0.1);
-      color: #059669;
-    }
-
-    .pd-status.soon {
-      background-color: rgba(148, 163, 184, 0.1);
-      color: #64748B;
-    }
-
-    .pd-title {
-      font-family: var(--font-display);
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: #020617;
-      margin-bottom: 12px;
-    }
-
-    .pd-tagline {
-      font-size: 1rem;
-      color: #334155;
-      margin-bottom: 24px;
-      font-family: var(--font-body);
-      flex-grow: 1;
-      min-height: 48px;
-      line-height: 1.5;
-    }
-
-    .pd-features {
-      margin-bottom: 32px;
-      list-style-type: none;
-      padding-left: 0;
-      font-size: 0.95rem;
-      color: #64748B;
-      line-height: 1.6;
-    }
-
-    .pd-features li {
-      padding-left: 20px;
-      position: relative;
-      margin-bottom: 8px;
-    }
-
-    .pd-features li:before {
-      content: "✓";
-      position: absolute;
-      left: 0;
-      color: #94A3B8;
-    }
-
-    .pd-cta {
-      width: 100%;
-      text-align: center;
-      background-color: #94A3B8;
-      color: #FFFFFF;
-      padding: 14px 24px;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: background-color 0.2s;
-      border: none;
-    }
-
-    .pd-cta:hover {
-      background-color: #6B7280;
-    }
-
-    @media (max-width: 992px) {
-      .product-detail-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .pd-tagline {
-        min-height: auto;
-      }
-    }
-  </style>
 
   <section class="product-details-section">
     <div class="container">
@@ -494,7 +380,7 @@
 
 
   <!-- 07 Features -->
-  <section class="features-section dark-bg" id="features" style="padding-top: 0;">
+  <section class="features-section dark-bg" id="features">
     <div class="container">
       <div class="section-tag scroll-reveal">WHY BLAZION</div>
       <h2 class="blog-headline" style="color:var(--white); margin-bottom: 0;">Built Different.</h2>
@@ -550,82 +436,7 @@
 
 
   <!-- 09 Stats -->
-  <style>
-    .stats-section {
-      background-color: #F8FAFC;
-      padding: var(--section-pad);
-    }
 
-    .stats-header-content {
-      text-align: center;
-      margin-bottom: 48px;
-    }
-
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .stat-card {
-      background-color: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 12px;
-      padding: 40px 24px;
-      text-align: center;
-      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
-      transition: transform 0.3s var(--ease-slow);
-    }
-
-    .stat-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.08);
-    }
-
-    .stat-number {
-      font-family: var(--font-display);
-      font-size: 3.5rem;
-      font-weight: 700;
-      color: #020617;
-      line-height: 1;
-      margin-bottom: 12px;
-    }
-
-    .stat-label {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      color: #64748B;
-      font-weight: 500;
-    }
-
-    .stats-note {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 13px;
-      color: #64748B;
-      font-family: var(--font-body);
-    }
-
-    @media (max-width: 992px) {
-      .stats-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 480px) {
-      .stats-grid {
-        gap: 16px;
-      }
-
-      .stat-card {
-        padding: 24px 16px;
-      }
-
-      .stat-number {
-        font-size: 2.5rem;
-      }
-    }
-  </style>
 
   <section class="stats-section" id="stats">
     <div class="container">
@@ -671,50 +482,7 @@
   </section>
 
   <!-- 09.1 Mission -->
-  <style>
-    .mission-section {
-      background-color: #050C22;
-      padding: var(--section-pad);
-      text-align: center;
-    }
 
-    .mission-headline {
-      color: #FFFFFF;
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      margin-bottom: 32px;
-      line-height: 1.2;
-    }
-
-    .mission-body {
-      color: #94A3B8;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      max-width: 800px;
-      margin: 0 auto 24px auto;
-      font-family: var(--font-body);
-    }
-
-    .mission-cta {
-      display: inline-block;
-      margin-top: 24px;
-      padding: 14px 32px;
-      background-color: #94A3B8;
-      color: #FFFFFF;
-      border-radius: 6px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      text-decoration: none;
-      transition: background-color 0.2s;
-    }
-
-    .mission-cta:hover {
-      background-color: #6B7280;
-    }
-  </style>
 
   <section class="mission-section">
     <div class="container scroll-reveal">
@@ -914,81 +682,7 @@
   </section>
 
   <!-- 09.3 Built In India -->
-  <style>
-    .india-section {
-      background-color: #F8FAFC;
-      padding: 0 0 140px 0;
-    }
 
-    .india-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      align-items: center;
-    }
-
-    .india-headline {
-      color: #020617;
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 3rem);
-      margin-bottom: 24px;
-      line-height: 1.2;
-    }
-
-    .india-body {
-      color: #475569;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      font-family: var(--font-body);
-    }
-
-    .india-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .india-card {
-      background: #FFFFFF;
-      border: 1px solid #CBD5E1;
-      border-radius: 12px;
-      padding: 24px;
-      display: flex;
-      gap: 16px;
-      box-shadow: 0 4px 6px rgba(15, 23, 42, 0.05);
-      transition: transform 0.3s var(--ease-slow);
-    }
-
-    .india-card:hover {
-      transform: translateY(-2px);
-    }
-
-    .ic-icon {
-      font-size: 2.5rem;
-      line-height: 1;
-    }
-
-    .ic-title {
-      font-family: var(--font-display);
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #020617;
-      margin-bottom: 8px;
-    }
-
-    .ic-body {
-      font-size: 0.9rem;
-      color: #475569;
-      line-height: 1.5;
-      font-family: var(--font-body);
-    }
-
-    @media (max-width: 992px) {
-      .india-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 
   <section class="india-section">
     <div class="container scroll-reveal">
@@ -1097,9 +791,7 @@
           <address class="footer-hq-address">
             <strong>Blazion Technologies</strong><br>
             Greater Noida, Uttar Pradesh<br>
-            India - 201310<br>
-            <a href="mailto:hello@blazion.io" class="footer-links"
-              style="color: rgba(255, 240, 230, 0.85); margin-top: 4px; display: inline-flex; align-items: center; min-height: 44px;">hello@blazion.io</a>
+            India - 201310
           </address>
         </div>
       </div>
@@ -1124,8 +816,8 @@
     document.querySelectorAll('button').forEach(function (btn) {
       if (btn.textContent.trim() === 'COPY') {
         btn.addEventListener('click', function () {
-          var code = this.closest('section,div').querySelector('pre,code');
-          navigator.clipboard.writeText(code ? code.innerText : '').then(function () {
+          var termBody = document.querySelector('.terminal-body');
+          navigator.clipboard.writeText(termBody ? termBody.innerText : '').then(function () {
             btn.textContent = 'COPIED ✓';
             setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
           });
