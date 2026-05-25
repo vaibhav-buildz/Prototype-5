@@ -817,13 +817,37 @@
       if (btn.textContent.trim() === 'COPY') {
         btn.addEventListener('click', function () {
           var termBody = document.querySelector('.terminal-body');
-          navigator.clipboard.writeText(termBody ? termBody.innerText : '').then(function () {
-            btn.textContent = 'COPIED ✓';
-            setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
-          });
+          var text = termBody ? termBody.innerText : '';
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function () {
+              btn.textContent = 'COPIED ✓';
+              setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
+            }).catch(function () {
+              fallbackCopy(text, btn);
+            });
+          } else {
+            fallbackCopy(text, btn);
+          }
         });
       }
     });
+
+    function fallbackCopy(text, btn) {
+      var textArea = document.createElement("textarea");
+      textArea.value = text;
+      textArea.style.position = "fixed";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        btn.textContent = 'COPIED ✓';
+      } catch (err) {
+        btn.textContent = 'ERROR ✗';
+      }
+      document.body.removeChild(textArea);
+      setTimeout(function () { btn.textContent = 'COPY'; }, 1500);
+    }
   </script>
 </body>
 

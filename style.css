@@ -453,7 +453,6 @@ section {
 }
 
 .nav-dropdown-wrap:hover .nav-dropdown,
-.nav-dropdown-wrap:focus-within .nav-dropdown,
 .nav-dropdown-wrap.dropdown-open .nav-dropdown {
   opacity: 1;
   pointer-events: auto;
@@ -3282,12 +3281,6 @@ section {
     gap: 32px 24px !important;
   }
 
-  .team-grid>article:last-child:nth-child(odd) {
-    grid-column: 1 / -1;
-    max-width: 50%;
-    margin: 0 auto;
-  }
-
   .footer-links a {
     min-height: 44px;
     padding: 8px 0;
@@ -3302,12 +3295,6 @@ section {
   .team-grid {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
-  }
-
-  .team-grid>article:last-child:nth-child(odd) {
-    grid-column: unset;
-    max-width: 100%;
-    margin: 0;
   }
 
   .team-card {

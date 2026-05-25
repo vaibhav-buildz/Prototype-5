@@ -315,15 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const animWindow = total * 0.85;
 
       folderCards.forEach((card, i) => {
-        // Skip first card
-        if (i === 0) return;
-
         const cardProgress = (scrolled - staggerStep) / animWindow;
-        // smooth step interpolation instead of pure linear
         const clamped = Math.max(0, Math.min(cardProgress, 1));
-
-        // Sine ease-in-out for a very smooth arrival without harsh stops
         const eased = -(Math.cos(Math.PI * clamped) - 1) / 2;
+
+        if (i === 0) {
+          // Slide the base card slightly left and fade slightly as Card 2 comes in to prevent text clipping
+          card.style.transform = `translateX(${-eased * 15}%)`;
+          card.style.opacity = 1 - (eased * 0.25);
+          return;
+        }
 
         const translateX = (1 - eased) * 100;
         card.style.transform = `translateX(${translateX}%)`;
