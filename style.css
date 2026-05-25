@@ -3281,6 +3281,12 @@ section {
     gap: 32px 24px !important;
   }
 
+  .team-grid>article:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
   .footer-links a {
     min-height: 44px;
     padding: 8px 0;
@@ -3297,6 +3303,12 @@ section {
     gap: 24px !important;
   }
 
+  .team-grid>article:last-child:nth-child(odd) {
+    grid-column: unset;
+    max-width: 100%;
+    margin: 0;
+  }
+
   .team-card {
     padding: 24px 16px !important;
     min-height: auto !important;
@@ -3307,6 +3319,7 @@ section {
     margin: 0 auto 24px !important;
     width: 120px !important;
   }
+
   .team-card-photo {
     width: 120px !important;
     height: 120px !important;
@@ -3314,6 +3327,7 @@ section {
     border-radius: 50% !important;
     margin: 0 auto;
   }
+
   .team-photo-img {
     width: 100% !important;
     height: 100% !important;
@@ -3490,6 +3504,7 @@ section {
   .product-detail-grid {
     grid-template-columns: 1fr;
   }
+
   .pd-tagline {
     min-height: auto;
   }
@@ -3709,13 +3724,17 @@ section {
     left: 20px;
     transform: translateX(0);
   }
-  .tl-item, .tl-item:nth-child(even) {
+
+  .tl-item,
+  .tl-item:nth-child(even) {
     flex-direction: row;
     justify-content: flex-end;
   }
+
   .tl-content {
     width: calc(100% - 60px);
   }
+
   .tl-dot {
     left: 20px;
     top: 32px;
@@ -3796,4 +3815,4 @@ section {
   .india-grid {
     grid-template-columns: 1fr;
   }
-}
+}

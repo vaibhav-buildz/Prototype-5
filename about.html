@@ -50,6 +50,71 @@
       .team-grid {
         grid-template-columns: 1fr !important;
       }
+
+      .team-grid>article:last-child:nth-child(odd) {
+        grid-column: unset !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+    }
+
+    /* Override style.css 768px breakpoint that shrinks 3rd card to 50% */
+    @media (max-width: 768px) {
+      .team-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .team-grid>article:last-child:nth-child(odd) {
+        grid-column: unset !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+    }
+
+    /* Override style.css 480px breakpoint that turns photos into small circles */
+    @media (max-width: 480px) {
+      .team-grid {
+        grid-template-columns: 1fr !important;
+      }
+
+      .team-grid>article:last-child:nth-child(odd) {
+        grid-column: unset !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+      }
+
+      .team-card {
+        aspect-ratio: 10 / 13 !important;
+        padding: 16px !important;
+        min-height: unset !important;
+      }
+
+      .team-card-photo-wrap {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        z-index: -1 !important;
+      }
+
+      .team-card-photo {
+        width: 100% !important;
+        height: 100% !important;
+        aspect-ratio: unset !important;
+        border-radius: 0 !important;
+        margin: 0 !important;
+      }
+
+      .team-card-body {
+        text-align: left !important;
+      }
+
+      .team-socials {
+        justify-content: flex-start !important;
+      }
     }
 
     .team-card {
@@ -78,9 +143,9 @@
     /* Make the photo wrap fill the absolute background */
     .team-card-photo-wrap {
       position: absolute !important;
-      top: 0 !important; 
-      left: 0 !important; 
-      width: 100% !important; 
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
       height: 100% !important;
       padding: 0 !important;
       margin: 0 !important;
@@ -94,7 +159,7 @@
       border-radius: 0 !important;
       box-shadow: none !important;
     }
-    
+
     .team-photo-img {
       width: 100% !important;
       height: 100% !important;
@@ -110,7 +175,9 @@
     .team-card::before {
       content: "";
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 60%;
       background: linear-gradient(to top, rgba(15, 23, 42, 0.6) 0%, transparent 100%);
       z-index: 0;
@@ -138,7 +205,7 @@
     .team-card.touch-expanded .team-card-body {
       transform: translateY(0) !important;
       opacity: 1 !important;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1) !important;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
     }
 
     .team-name {
@@ -148,7 +215,8 @@
       margin-bottom: 6px !important;
     }
 
-    .team-bio, .team-socials {
+    .team-bio,
+    .team-socials {
       color: #475569 !important;
       line-height: 1.5 !important;
       font-size: 13.5px !important;
@@ -523,12 +591,12 @@
   </section>
 
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function () {
       const teamCards = document.querySelectorAll('.team-card');
       teamCards.forEach(card => {
         card.addEventListener('click', () => {
           teamCards.forEach(c => {
-            if(c !== card) c.classList.remove('touch-expanded');
+            if (c !== card) c.classList.remove('touch-expanded');
           });
           card.classList.toggle('touch-expanded');
         });
@@ -540,13 +608,14 @@
   <!-- Leader's Words Section -->
   <section style="padding:100px 5%; background: #F8FAFC; position: relative;">
     <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 2;">
-      <p style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#94A3B8;text-transform:uppercase;margin-bottom:16px;">
+      <p
+        style="font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:0.15em;color:#94A3B8;text-transform:uppercase;margin-bottom:16px;">
         // LEADER'S WORDS
       </p>
       <h2 style="font-size: 36px; color: #020617; font-weight: 500; margin-bottom: 64px; letter-spacing: -0.02em;">
         The vision, in their own words.
       </h2>
-      
+
       <style>
         .vision-carousel-container {
           position: relative;
@@ -556,6 +625,7 @@
           align-items: center;
           justify-content: center;
         }
+
         .vision-carousel-track {
           display: grid;
           position: relative;
@@ -563,6 +633,7 @@
           max-width: 800px;
           margin: 0 auto;
         }
+
         .vision-card {
           grid-area: 1 / 1;
           padding: 32px;
@@ -570,7 +641,7 @@
           display: flex;
           flex-direction: column;
           box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
-          
+
           width: 100%;
           opacity: 0;
           visibility: hidden;
@@ -578,12 +649,14 @@
           pointer-events: none;
           z-index: 1;
         }
+
         .vision-card.active {
           opacity: 1;
           visibility: visible;
           pointer-events: auto;
           z-index: 2;
         }
+
         .vision-quote-mark {
           font-size: 4rem;
           line-height: 0;
@@ -593,6 +666,7 @@
           font-family: Georgia, serif;
           margin-top: 24px;
         }
+
         .vision-quote-text {
           font-style: italic;
           font-size: 1.1rem;
@@ -600,6 +674,7 @@
           flex-grow: 1;
           margin: 0;
         }
+
         .vision-attribution {
           font-style: normal;
           font-size: 0.85rem;
@@ -608,6 +683,7 @@
           letter-spacing: 0.05em;
           font-family: 'IBM Plex Mono', monospace;
         }
+
         .vision-nav-btn {
           width: 48px;
           height: 48px;
@@ -626,14 +702,25 @@
           font-family: inherit;
           padding-bottom: 4px;
         }
+
         .vision-nav-btn:hover {
           background: #1E293B;
         }
-        .vision-nav-prev { left: 0; padding-right: 4px; }
-        .vision-nav-next { right: 0; padding-left: 4px; }
+
+        .vision-nav-prev {
+          left: 0;
+          padding-right: 4px;
+        }
+
+        .vision-nav-next {
+          right: 0;
+          padding-left: 4px;
+        }
 
         @media (max-width: 768px) {
-          .vision-nav-btn { display: none; }
+          .vision-nav-btn {
+            display: none;
+          }
         }
 
         .vision-dots {
@@ -642,6 +729,7 @@
           justify-content: center;
           margin-top: 24px;
         }
+
         .vision-dot {
           width: 10px;
           height: 10px;
@@ -650,6 +738,7 @@
           cursor: pointer;
           transition: background 0.3s;
         }
+
         .vision-dot.active {
           background: #94A3B8;
         }
@@ -657,30 +746,36 @@
 
       <div class="vision-carousel-container">
         <button class="vision-nav-btn vision-nav-prev" onclick="visionChangeSlide(-1)">&#8249;</button>
-        
+
         <div class="vision-carousel-track" id="visionTrack">
           <!-- Card 1 -->
           <div class="vision-card active" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
             <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
-            <p class="vision-quote-text" style="color: #020617;">Design is not how it looks. Design is how it works, how it feels, and how fast it gets out of the way so the developer can just build. That is the standard I hold every pixel of Blazion to.</p>
+            <p class="vision-quote-text" style="color: #020617;">Design is not how it looks. Design is how it works, how
+              it feels, and how fast it gets out of the way so the developer can just build. That is the standard I hold
+              every pixel of Blazion to.</p>
             <p class="vision-attribution" style="color: #64748B;">~ Vaibhav Yadav, Lead Designer, Blazion</p>
           </div>
-          
+
           <!-- Card 2 -->
           <div class="vision-card" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
             <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
-            <p class="vision-quote-text" style="color: #020617;">We didn't set out to build a product company. We set out to fix the foundation - so every developer who comes after us has a cleaner, faster, smarter infrastructure to build on.</p>
+            <p class="vision-quote-text" style="color: #020617;">We didn't set out to build a product company. We set
+              out to fix the foundation - so every developer who comes after us has a cleaner, faster, smarter
+              infrastructure to build on.</p>
             <p class="vision-attribution" style="color: #64748B;">~ Aditya Singh, Founder &amp; CEO, Blazion</p>
           </div>
-          
+
           <!-- Card 3 -->
           <div class="vision-card" style="background: #FFFFFF; border: 1px solid #CBD5E1;">
             <span class="vision-quote-mark" style="color: #94A3B8;">"</span>
-            <p class="vision-quote-text" style="color: #020617;">Infrastructure should be invisible. Zero cold starts, zero config overhead, zero excuses. The moment a developer has to fight their deployment pipeline, we have already failed.</p>
+            <p class="vision-quote-text" style="color: #020617;">Infrastructure should be invisible. Zero cold starts,
+              zero config overhead, zero excuses. The moment a developer has to fight their deployment pipeline, we have
+              already failed.</p>
             <p class="vision-attribution" style="color: #64748B;">~ Aryan, Co-Founder, Blazion</p>
           </div>
         </div>
-        
+
         <button class="vision-nav-btn vision-nav-next" onclick="visionChangeSlide(1)">&#8250;</button>
       </div>
 
@@ -694,10 +789,10 @@
   </section>
 
   <script>
-    (function() {
+    (function () {
       let currentSlide = 0;
       const track = document.getElementById('visionTrack');
-      if(!track) return;
+      if (!track) return;
       const cards = track.querySelectorAll('.vision-card');
       const dots = document.getElementById('visionDots').querySelectorAll('.vision-dot');
       let timer;
@@ -710,13 +805,13 @@
         dots[currentSlide].classList.add('active');
       }
 
-      window.visionChangeSlide = function(dir) {
+      window.visionChangeSlide = function (dir) {
         clearInterval(timer);
         go(currentSlide + dir);
         startAuto();
       }
 
-      window.visionGoToSlide = function(idx) {
+      window.visionGoToSlide = function (idx) {
         clearInterval(timer);
         go(idx);
         startAuto();
@@ -727,24 +822,24 @@
           go(currentSlide + 1);
         }, 5000);
       }
-      
+
       // Swipe gestures for mobile
       let touchstartX = 0;
       track.style.touchAction = 'pan-y'; // allow vertical scroll, block horizontal for reliable swipe
-      
+
       track.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].clientX;
         clearInterval(timer);
-      }, {passive: true});
-      
+      }, { passive: true });
+
       track.addEventListener('touchend', e => {
         const diff = touchstartX - e.changedTouches[0].clientX;
-        if(Math.abs(diff) > 50) {
-          if(diff > 0) go(currentSlide + 1);
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) go(currentSlide + 1);
           else go(currentSlide - 1);
         }
         startAuto();
-      }, {passive: true});
+      }, { passive: true });
 
       startAuto();
     })();
